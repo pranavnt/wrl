@@ -160,6 +160,10 @@ class RoboMimicPixelEnv(gym.Env):
         return out
 
     def reset(self, *, seed=None, options=None):
+        if seed is not None:
+            # robosuite samples object placement from the global numpy RNG;
+            # seeding it makes resets reproducible (for paired evaluation).
+            np.random.seed(seed)
         self._elapsed = 0
         return self._obs(self.env.reset()), {}
 

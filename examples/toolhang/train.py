@@ -13,12 +13,24 @@ Example (EXPO-FT):
         --base dp --dp-port 8200 --horizon 8 --warmstart-demos
 """
 
+import math
 import time
 
 import jax
 import jax.numpy as jnp
 import numpy as np
 import tyro
+
+
+def _mcnemar_exact_p(b: int, c: int) -> float:
+    """Two-sided exact McNemar p-value for paired binary outcomes.
+    b = base success & residual fail, c = base fail & residual success."""
+    n = b + c
+    if n == 0:
+        return 1.0
+    k = min(b, c)
+    tail = sum(math.comb(n, i) for i in range(k + 1)) * (0.5 ** n)
+    return min(1.0, 2.0 * tail)
 
 import wrl
 from envs.chunk_wrapper import ActionChunkWrapper
@@ -51,6 +63,7 @@ def main(
     encoder_type: str = "resnet",
     eval_every: int = 0,        # chunks between evals (0 = off)
     eval_episodes: int = 10,
+    final_eval_episodes: int = 0,   # paired base-only vs residual at end (0 = off)
     wandb_project: str = "",
     seed: int = 0,
     smoke: bool = False,
@@ -110,22 +123,36 @@ def main(
     print(f"[actor] base={base} edit_scale={edit_scale} chunk_dim={chunk_dim} "
           f"action_dim={A} horizon={horizon}")
 
-    def evaluate(n):
-        """Deterministic (argmax) rollouts of the current residual policy."""
-        succ, rets = 0, []
-        for _ in range(n):
-            o, _ = cenv.reset()
+    def _rollout(use_residual: bool, reset_seed):
+        """One argmax rollout. use_residual=False executes the raw base chunk
+        (DP only); True executes base + residual."""
+        o, _ = cenv.reset(seed=reset_seed)
+        b = np.asarray(query_base(o), np.float32)
+        ret, s, d, t = 0.0, 0.0, False, False
+        while not (d or t):
+            full = session.policy.sample(o, b, argmax=True) if use_residual else b
+            o, r, d, t, info = cenv.step(full)
             b = np.asarray(query_base(o), np.float32)
-            ret, s, d, t = 0.0, 0.0, False, False
-            while not (d or t):
-                full = session.policy.sample(o, b, argmax=True)
-                o, r, d, t, info = cenv.step(full)
-                b = np.asarray(query_base(o), np.float32)
-                ret += r
-                s = max(s, float(info.get("success", 0.0)))
-            succ += int(s > 0)
-            rets.append(ret)
-        return succ / n, float(np.mean(rets))
+            ret += r
+            s = max(s, float(info.get("success", 0.0)))
+        return int(s > 0), ret
+
+    def evaluate(n):
+        """Residual policy success/return over n episodes."""
+        outs = [_rollout(True, None) for _ in range(n)]
+        return np.mean([o[0] for o in outs]), float(np.mean([o[1] for o in outs]))
+
+    def paired_eval(n):
+        """Paired base-only vs base+residual over the same n reset seeds."""
+        base_s, res_s = [], []
+        for s in range(n):
+            base_s.append(_rollout(False, 1000 + s)[0])
+            res_s.append(_rollout(True, 1000 + s)[0])
+        base_s, res_s = np.array(base_s), np.array(res_s)
+        b = int(np.sum((base_s == 1) & (res_s == 0)))  # base win, res lose
+        c = int(np.sum((base_s == 0) & (res_s == 1)))  # res win, base lose
+        p = _mcnemar_exact_p(b, c)
+        return base_s.mean(), res_s.mean(), b, c, p
 
     obs, _ = cenv.reset(seed=seed)
     a_base = np.asarray(query_base(obs), np.float32)
@@ -185,6 +212,23 @@ def main(
             if time.time() - last_log > 30:
                 last_log = time.time()
                 print(f"[actor] heartbeat {session.status()}")
+
+        if final_eval_episodes > 0:
+            print(f"[final-eval] paired base-only vs residual over "
+                  f"{final_eval_episodes} seeds...")
+            base_sr, res_sr, b, c, p = paired_eval(final_eval_episodes)
+            print(f"[final-eval] base-only={base_sr:.1%}  residual={res_sr:.1%}  "
+                  f"discordant(base+/res-={b}, base-/res+={c})  McNemar p={p:.4f}  "
+                  f"n={final_eval_episodes}")
+            if wandb_project:
+                import wandb
+                wandb.run.summary.update({
+                    "final/base_only_success": base_sr,
+                    "final/residual_success": res_sr,
+                    "final/delta": res_sr - base_sr,
+                    "final/mcnemar_p": p,
+                    "final/n": final_eval_episodes,
+                })
     finally:
         session.stop_learner()
         cenv.close()
