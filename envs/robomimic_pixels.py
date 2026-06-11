@@ -1,32 +1,31 @@
 """robomimic / robosuite pixel env wrapper (tool-hang, transport, ...).
 
-Single-frame image obs + proprio state, sparse reward, gym API. Built directly
-on robosuite.make so we control the camera config; the matching base Diffusion
-Policy and the residual RL agent both consume this wrapper, so they stay
-consistent with each other.
+Built from a robomimic dataset's env metadata so the controller (and thus the
+action space) matches the demos the base Diffusion Policy is trained on. Adds
+offscreen camera rendering on top. Single-frame image obs + proprio state,
+sparse reward, gym API.
 
 Obs dict (each value has a leading frame dim of 1 for the memory-efficient
 pixel buffer):
     <cam>_image : (1, H, W, 3) uint8     for each camera
     state       : (1, proprio)  float32
 
-Action: robosuite's native action vector, Box(-1, 1). Wrap with
+Action: robosuite's native action vector (Box(-1, 1)). Wrap with
 `envs.chunk_wrapper.ActionChunkWrapper` for chunked (EXPO-FT) control.
 """
 
+import json
 import os
 import sys
 import types
 
-# Headless GPU rendering: mujoco + robosuite use EGL via PyOpenGL. Must be set
-# before robosuite is imported. (The EGLError noise at interpreter exit is a
-# harmless robosuite/PyOpenGL teardown issue.)
+# Headless GPU rendering via EGL. Must be set before robosuite is imported.
+# (The EGLError noise at interpreter exit is a harmless robosuite teardown bug.)
 os.environ.setdefault("MUJOCO_GL", "egl")
 os.environ.setdefault("PYOPENGL_PLATFORM", "egl")
 os.environ.setdefault("MUJOCO_EGL_DEVICE_ID", "0")
 
-# robomimic 0.3.0 hard-imports the deprecated mujoco_py; stub it (we never call
-# the code path that uses it).
+# robomimic 0.3.0 hard-imports the deprecated mujoco_py; stub it.
 if "mujoco_py" not in sys.modules:
     _stub = types.ModuleType("mujoco_py")
     _stub.builder = types.ModuleType("mujoco_py.builder")
@@ -35,53 +34,74 @@ if "mujoco_py" not in sys.modules:
     sys.modules["mujoco_py.builder"] = _stub.builder
 
 import gymnasium as gym  # noqa: E402
+import h5py  # noqa: E402
 import numpy as np  # noqa: E402
 import robosuite  # noqa: E402
 
-
-# task -> robosuite construction. `proprio_prefixes` selects which robotN_* obs
-# go into the proprio `state` vector.
-TASKS = {
-    "tool-hang": dict(
-        robosuite_name="ToolHang",
-        robots="Panda",
+# camera + proprio layout per robosuite env name
+_ENV_SPECS = {
+    "ToolHang": dict(
         cameras=("agentview", "robot0_eye_in_hand"),
         proprio_prefixes=("robot0",),
-        extra_kwargs={},
     ),
-    "transport": dict(
-        robosuite_name="TwoArmTransport",
-        robots=["Panda", "Panda"],
+    "TwoArmTransport": dict(
         cameras=("agentview", "robot0_eye_in_hand", "robot1_eye_in_hand"),
         proprio_prefixes=("robot0", "robot1"),
-        extra_kwargs=dict(env_configuration="single-arm-opposed"),
     ),
 }
 
 _PROPRIO_SUFFIXES = ("eef_pos", "eef_quat", "gripper_qpos")
+_RENDER_KEYS = (
+    "has_renderer", "has_offscreen_renderer", "use_camera_obs", "use_object_obs",
+    "camera_names", "camera_heights", "camera_widths", "camera_depths",
+    "reward_shaping", "render_camera", "horizon", "ignore_done", "hard_reset",
+)
+
+
+def _coerce_env_kwargs_for_robosuite_1_4(env_kwargs: dict) -> None:
+    """In-place: drop/translate fields newer datasets carry that pinned
+    robosuite==1.4.1 doesn't accept (lite_physics; 1.5 composite controller)."""
+    env_kwargs.pop("lite_physics", None)
+    cc = env_kwargs.get("controller_configs")
+    if isinstance(cc, dict) and "body_parts" in cc:
+        inner = next(iter(cc["body_parts"].values()))
+        for k in ("gripper", "input_ref_frame"):
+            inner.pop(k, None)
+        env_kwargs["controller_configs"] = inner
+
+
+def read_env_meta(dataset_path: str) -> dict:
+    with h5py.File(dataset_path, "r") as f:
+        return json.loads(f["data"].attrs["env_args"])
 
 
 class RoboMimicPixelEnv(gym.Env):
     def __init__(
         self,
-        task: str,
+        dataset_path: str,
         *,
         image_size: int = 84,
-        control_freq: int = 20,
-        max_episode_steps: int = 400,
+        max_episode_steps: int = 700,
         reward_shaping: bool = False,
+        cameras=None,
     ):
-        if task not in TASKS:
-            raise ValueError(f"unknown task {task!r}; expected one of {list(TASKS)}")
-        spec = TASKS[task]
-        self.task = task
-        self.cameras = tuple(spec["cameras"])
+        env_meta = read_env_meta(dataset_path)
+        env_name = env_meta["env_name"]
+        if env_name not in _ENV_SPECS:
+            raise ValueError(f"unsupported env {env_name!r}; known: {list(_ENV_SPECS)}")
+        spec = _ENV_SPECS[env_name]
+        self.env_name = env_name
+        self.cameras = tuple(cameras or spec["cameras"])
         self.image_size = image_size
         self._max_episode_steps = max_episode_steps
 
+        kwargs = dict(env_meta["env_kwargs"])
+        _coerce_env_kwargs_for_robosuite_1_4(kwargs)
+        for k in _RENDER_KEYS:
+            kwargs.pop(k, None)
+
         self.env = robosuite.make(
-            env_name=spec["robosuite_name"],
-            robots=spec["robots"],
+            env_name=env_name,
             has_renderer=False,
             has_offscreen_renderer=True,
             use_camera_obs=True,
@@ -90,14 +110,11 @@ class RoboMimicPixelEnv(gym.Env):
             camera_names=list(self.cameras),
             camera_heights=image_size,
             camera_widths=image_size,
-            control_freq=control_freq,
-            horizon=max_episode_steps,
             ignore_done=True,
             hard_reset=False,
-            **spec["extra_kwargs"],
+            **kwargs,
         )
 
-        # proprio keys present in robosuite obs
         first = self.env.reset()
         self._proprio_keys = [
             f"{p}_{s}"
@@ -117,24 +134,24 @@ class RoboMimicPixelEnv(gym.Env):
         adim = self.env.action_dim
         self.action_space = gym.spaces.Box(-1.0, 1.0, (adim,), np.float32)
         self.image_keys = tuple(f"{cam}_image" for cam in self.cameras)
+        self.proprio_keys = tuple(self._proprio_keys)
         self._elapsed = 0
 
     def _obs(self, raw: dict) -> dict:
         out = {}
         for cam in self.cameras:
-            # robosuite renders bottom-up; flip vertically to a natural frame.
-            img = raw[f"{cam}_image"][::-1]
-            out[f"{cam}_image"] = img[None].astype(np.uint8)  # (1, H, W, 3)
+            # Keep robosuite's native orientation so frames match the rendered
+            # demo hdf5 (which the base DP is trained on). Do NOT flip.
+            out[f"{cam}_image"] = raw[f"{cam}_image"][None].astype(np.uint8)
         state = np.concatenate(
             [np.asarray(raw[k], np.float32).reshape(-1) for k in self._proprio_keys]
         )
-        out["state"] = state[None].astype(np.float32)  # (1, proprio)
+        out["state"] = state[None].astype(np.float32)
         return out
 
     def reset(self, *, seed=None, options=None):
         self._elapsed = 0
-        raw = self.env.reset()
-        return self._obs(raw), {}
+        return self._obs(self.env.reset()), {}
 
     def step(self, action):
         action = np.clip(
@@ -144,9 +161,8 @@ class RoboMimicPixelEnv(gym.Env):
         self._elapsed += 1
         success = bool(self.env._check_success())
         truncated = self._elapsed >= self._max_episode_steps
-        done = success
         info = {"success": float(success)}
-        return self._obs(raw), float(reward), done, truncated, info
+        return self._obs(raw), float(reward), success, truncated, info
 
     def close(self):
         try:
@@ -155,5 +171,5 @@ class RoboMimicPixelEnv(gym.Env):
             pass
 
 
-def make_robomimic_pixel_env(task: str, **kwargs) -> RoboMimicPixelEnv:
-    return RoboMimicPixelEnv(task, **kwargs)
+def make_robomimic_pixel_env(dataset_path: str, **kwargs) -> RoboMimicPixelEnv:
+    return RoboMimicPixelEnv(dataset_path, **kwargs)

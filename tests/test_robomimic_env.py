@@ -4,25 +4,32 @@ Requires working mujoco/EGL offscreen rendering; skips cleanly otherwise so the
 rest of the suite still runs on machines without a GPU/GL.
 """
 
+import os
+
 import numpy as np
 import pytest
 
+TOOLHANG_DATASET = "data/robomimic/tool_hang/ph/demo_v141.hdf5"
 
-def _make(task):
+
+def _make():
+    if not os.path.exists(TOOLHANG_DATASET):
+        pytest.skip(f"dataset not present: {TOOLHANG_DATASET}")
     try:
         from envs.robomimic_pixels import make_robomimic_pixel_env
 
-        return make_robomimic_pixel_env(task, image_size=84, max_episode_steps=50)
-    except Exception as e:  # missing GL / robosuite / dataset
+        return make_robomimic_pixel_env(TOOLHANG_DATASET, image_size=84, max_episode_steps=50)
+    except Exception as e:  # missing GL / robosuite
         pytest.skip(f"robomimic pixel env unavailable: {type(e).__name__}: {e}")
 
 
 def test_toolhang_pixel_env_shapes():
     from envs.chunk_wrapper import ActionChunkWrapper
 
-    env = _make("tool-hang")
+    env = _make()
     try:
         assert env.image_keys == ("agentview_image", "robot0_eye_in_hand_image")
+        assert env.action_space.shape == (7,)  # OSC_POSE matches the demos
         A = env.action_space.shape[0]
         H = 4
         cenv = ActionChunkWrapper(env, A, H, discount=0.97)

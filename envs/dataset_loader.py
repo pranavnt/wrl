@@ -1,0 +1,116 @@
+"""Load a rendered robomimic image dataset into:
+
+  * DP training chunks  -- (obs, flattened H-step action chunk) for the base
+    Diffusion Policy (behavior cloning).
+  * residual warm-start transitions -- chunk-level transitions for the residual
+    SAC demo buffer (base_actions == actions, i.e. residual 0).
+
+Obs layout matches `envs.robomimic_pixels.RoboMimicPixelEnv`: each image key is
+(1, H, W, C) uint8 and `state` is (1, proprio) float32, with proprio built by
+concatenating `proprio_keys` in order. Pass `env.image_keys` / `env.proprio_keys`
+so the base policy and the RL env are guaranteed consistent.
+"""
+
+import h5py
+import numpy as np
+
+
+class RobomimicPixelData:
+    def __init__(self, dataset_path, image_keys, proprio_keys, horizon):
+        self.image_keys = tuple(image_keys)
+        self.proprio_keys = tuple(proprio_keys)
+        self.H = horizon
+
+        imgs = {k: [] for k in self.image_keys}
+        proprio, actions, rewards, dones, demo_of_step = [], [], [], [], []
+
+        with h5py.File(dataset_path, "r") as f:
+            demos = sorted(f["data"].keys(), key=lambda d: int(d.split("_")[1]))
+            for di, demo in enumerate(demos):
+                g = f["data"][demo]
+                obs = g["obs"]
+                T = g["actions"].shape[0]
+                for k in self.image_keys:
+                    imgs[k].append(np.asarray(obs[k][:], np.uint8))
+                p = np.concatenate(
+                    [np.asarray(obs[k][:], np.float32).reshape(T, -1) for k in self.proprio_keys],
+                    axis=1,
+                )
+                proprio.append(p)
+                actions.append(np.asarray(g["actions"][:], np.float32))
+                rewards.append(np.asarray(g["rewards"][:], np.float32))
+                dones.append(np.asarray(g["dones"][:], np.float32))
+                demo_of_step.append(np.full(T, di, np.int32))
+
+        self.imgs = {k: np.concatenate(v, axis=0) for k, v in imgs.items()}
+        self.proprio = np.concatenate(proprio, axis=0)
+        self.actions = np.concatenate(actions, axis=0)
+        self.rewards = np.concatenate(rewards, axis=0)
+        self.dones = np.concatenate(dones, axis=0)
+        self.demo_of_step = np.concatenate(demo_of_step, axis=0)
+        self.action_dim = self.actions.shape[1]
+        self.N = self.actions.shape[0]
+
+        # valid chunk start = same demo across [s, s+H-1]
+        same_demo = self.demo_of_step[: self.N - self.H + 1] == self.demo_of_step[self.H - 1:]
+        self.valid_starts = np.nonzero(same_demo)[0]
+
+    def _chunk(self, starts):
+        idx = starts[:, None] + np.arange(self.H)[None, :]  # (B, H)
+        return self.actions[idx].reshape(len(starts), self.H * self.action_dim)
+
+    def _obs_at(self, idx):
+        out = {k: self.imgs[k][idx][:, None] for k in self.image_keys}  # (B,1,H,W,C)
+        out["state"] = self.proprio[idx][:, None]  # (B,1,proprio)
+        return out
+
+    # ---- DP behavior-cloning batches ------------------------------------
+
+    def dp_sample(self, batch_size, rng):
+        starts = self.valid_starts[rng.integers(0, len(self.valid_starts), batch_size)]
+        return {"observations": self._obs_at(starts), "actions": self._chunk(starts)}
+
+    # ---- residual warm-start transitions --------------------------------
+
+    def residual_transitions(self, discount, max_transitions=None, seed=0):
+        """Chunk-level transitions for the residual demo buffer. base == full
+        (residual 0). Only starts whose next chunk also exists are used."""
+        H, A = self.H, self.action_dim
+        ok = self.valid_starts[
+            (self.valid_starts + 2 * H - 1 < self.N)
+            & (self.demo_of_step[np.clip(self.valid_starts + 2 * H - 1, 0, self.N - 1)]
+               == self.demo_of_step[self.valid_starts])
+        ]
+        if max_transitions is not None and len(ok) > max_transitions:
+            ok = np.random.default_rng(seed).choice(ok, max_transitions, replace=False)
+            ok.sort()
+
+        gammas = discount ** np.arange(H, dtype=np.float32)
+        out = []
+        for s in ok:
+            chunk = self.actions[s : s + H].reshape(H * A).astype(np.float32)
+            next_chunk = self.actions[s + H : s + 2 * H].reshape(H * A).astype(np.float32)
+            r = float(np.dot(gammas, self.rewards[s : s + H]))
+            done = bool(self.dones[s : s + H].any())
+            obs = {k: self.imgs[k][s][None] for k in self.image_keys}
+            obs["state"] = self.proprio[s][None]
+            nobs = {k: self.imgs[k][s + H][None] for k in self.image_keys}
+            nobs["state"] = self.proprio[s + H][None]
+            out.append(
+                dict(
+                    observations=obs,
+                    next_observations=nobs,
+                    actions=chunk,
+                    base_actions=chunk,
+                    next_base_actions=next_chunk,
+                    rewards=r,
+                    masks=0.0 if done else 1.0,
+                    dones=done,
+                    is_intervention=True,
+                )
+            )
+        return out
+
+
+def load_robomimic_pixels(dataset_path, image_keys, proprio_keys, horizon):
+    return RobomimicPixelData(dataset_path, image_keys, proprio_keys, horizon)
