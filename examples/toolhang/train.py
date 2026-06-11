@@ -49,12 +49,21 @@ def main(
     warmstart_max: int = 5_000,
     http_port: int = 5588,
     encoder_type: str = "resnet",
+    wandb_project: str = "",
     seed: int = 0,
     smoke: bool = False,
 ):
     if smoke:
         base, max_steps, training_starts, random_chunks = "zeros", 30, 20, 8
         cta_ratio, max_episode_steps = 1, 60
+
+    if wandb_project:
+        import wandb
+
+        wandb.init(project=wandb_project, config=dict(
+            base=base, horizon=horizon, edit_scale=edit_scale, discount=discount,
+            cta_ratio=cta_ratio, batch_size=batch_size, encoder_type=encoder_type,
+        ))
 
     env = make_robomimic_pixel_env(
         dataset_path, image_size=image_size, max_episode_steps=max_episode_steps
@@ -128,6 +137,14 @@ def main(
                 print(f"[actor] ep_ret={ep_ret:.2f} success={ep_success:.0f} "
                       f"chunks={chunk_step} learner_step={st['learner_step']} "
                       f"utd={st['effective_utd']:.2f} online={st['online_buffer']}")
+                if wandb_project:
+                    import wandb
+
+                    wandb.log({
+                        "episode/return": ep_ret, "episode/success": ep_success,
+                        "learner_step": st["learner_step"], "env_chunks": chunk_step,
+                        "effective_utd": st["effective_utd"],
+                    })
                 if min_utd > 0 and st["learner_step"] > 0:
                     session.wait_for_utd(min_utd)
                 obs, _ = cenv.reset()
