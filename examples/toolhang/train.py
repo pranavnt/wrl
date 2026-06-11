@@ -43,9 +43,10 @@ from wrl.data import residual_extra_fields
 
 def main(
     dataset_path: str,
-    base: str = "dp",               # "dp" | "zeros"
+    base: str = "dp",               # "dp" | "flow" | "zeros"
     dp_host: str = "localhost",
     dp_port: int = 8200,
+    base_obs_history: int = 2,      # frames sent to a flow DP base (must match its training)
     horizon: int = 8,
     edit_scale: float = 0.25,
     discount: float = 0.99,
@@ -85,7 +86,10 @@ def main(
     )
     A = env.action_space.shape[0]
     chunk_dim = A * horizon
-    cenv = ActionChunkWrapper(env, A, horizon, discount=discount)
+    cenv = ActionChunkWrapper(
+        env, A, horizon, discount=discount,
+        frame_history=(base_obs_history if base == "flow" else 1),
+    )
 
     sample_obs = env.observation_space.sample()
     agent = make_residual_sac_pixel_agent(
@@ -103,14 +107,20 @@ def main(
     )
     session = wrl.Session(agent, cenv, cfg, rng_seed=seed)
 
-    if base == "dp":
+    if base == "flow":
+        # flow DP needs the consecutive obs-history at the chunk boundary, which
+        # the chunk wrapper tracks; ignore the single-frame obs passed in.
+        client = BasePolicyClient(host=dp_host, port=dp_port)
+        query_base = lambda _obs: np.asarray(  # noqa: E731
+            client.query(cenv.base_obs(base_obs_history)), np.float32)
+    elif base == "dp":
         client = BasePolicyClient(host=dp_host, port=dp_port)
         query_base = client.query
     elif base == "zeros":
         zeros = np.zeros(chunk_dim, np.float32)
         query_base = lambda _obs: zeros  # noqa: E731
     else:
-        raise ValueError(f"--base must be 'dp' or 'zeros', got {base!r}")
+        raise ValueError(f"--base must be 'flow', 'dp' or 'zeros', got {base!r}")
 
     if warmstart_demos:
         data = load_robomimic_pixels(dataset_path, env.image_keys, env.proprio_keys, horizon)
