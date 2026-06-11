@@ -49,6 +49,8 @@ def main(
     warmstart_max: int = 5_000,
     http_port: int = 5588,
     encoder_type: str = "resnet",
+    eval_every: int = 0,        # chunks between evals (0 = off)
+    eval_episodes: int = 10,
     wandb_project: str = "",
     seed: int = 0,
     smoke: bool = False,
@@ -108,11 +110,29 @@ def main(
     print(f"[actor] base={base} edit_scale={edit_scale} chunk_dim={chunk_dim} "
           f"action_dim={A} horizon={horizon}")
 
+    def evaluate(n):
+        """Deterministic (argmax) rollouts of the current residual policy."""
+        succ, rets = 0, []
+        for _ in range(n):
+            o, _ = cenv.reset()
+            b = np.asarray(query_base(o), np.float32)
+            ret, s, d, t = 0.0, 0.0, False, False
+            while not (d or t):
+                full = session.policy.sample(o, b, argmax=True)
+                o, r, d, t, info = cenv.step(full)
+                b = np.asarray(query_base(o), np.float32)
+                ret += r
+                s = max(s, float(info.get("success", 0.0)))
+            succ += int(s > 0)
+            rets.append(ret)
+        return succ / n, float(np.mean(rets))
+
     obs, _ = cenv.reset(seed=seed)
     a_base = np.asarray(query_base(obs), np.float32)
     assert a_base.shape == (chunk_dim,), (a_base.shape, chunk_dim)
 
     chunk_step = 0
+    last_eval = 0
     ep_ret, ep_success = 0.0, 0.0
     last_log = time.time()
     try:
@@ -147,6 +167,15 @@ def main(
                     })
                 if min_utd > 0 and st["learner_step"] > 0:
                     session.wait_for_utd(min_utd)
+                if eval_every > 0 and chunk_step - last_eval >= eval_every:
+                    last_eval = chunk_step
+                    sr, mret = evaluate(eval_episodes)
+                    print(f"[eval] learner_step={st['learner_step']} "
+                          f"success={sr:.1%} mean_return={mret:.2f}")
+                    if wandb_project:
+                        import wandb
+                        wandb.log({"eval/success": sr, "eval/return": mret,
+                                   "learner_step": st["learner_step"]})
                 obs, _ = cenv.reset()
                 a_base = np.asarray(query_base(obs), np.float32)
                 ep_ret, ep_success = 0.0, 0.0
