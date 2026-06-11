@@ -1,0 +1,25 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+uv.lock
+
+# Reference repos (cloned for design reference, not part of wrl)
+/hil-serl/
+/expo-ft/
+/q-oil/
+
+# Data, checkpoints, logs
+/data/
+/checkpoints/
+wandb/
+*.hdf5
+*.pkl
+*.ckpt
+*.orbax-checkpoint-tmp-*

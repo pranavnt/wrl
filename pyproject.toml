@@ -1,0 +1,55 @@
+[project]
+name = "wrl"
+version = "0.1.0"
+description = "Clean fleet RL codebase: RL-from-scratch + EXPO-FT residual RL (JAX/Flax)"
+readme = "README.md"
+authors = [
+    { name = "Pranav Teegavarapu", email = "pranavnt@uw.edu" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "absl-py",
+    "chex",
+    # distrax>=0.1.6 eagerly touches tfp.substrates.jax.bijectors at import
+    # time, which crashes on JAX>=0.5 because TFP 0.25.0 reads a private JAX
+    # symbol that was removed. Pin the known-working combo.
+    "distrax<0.1.6",
+    "einops",
+    "flax<0.11",
+    "gymnasium",
+    "h5py>=3.16.0",
+    "httpx",
+    "hypercorn",
+    "imageio[ffmpeg]",
+    "jax<0.7",
+    "jaxlib<0.7",
+    "lz4",
+    "ml_collections",
+    "moviepy>=2.0",
+    "msgpack",
+    "msgpack-numpy",
+    "numpy",
+    "opencv-python",
+    "optax",
+    "orbax-checkpoint",
+    "quart-trio",
+    "robomimic>=0.3.0",
+    "robosuite>=1.4.0,<1.5",
+    "tensorflow-probability==0.25.0",
+    "tqdm",
+    "trio",
+    "tyro",
+    "wandb",
+    "websockets",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]
+cuda = ["jax[cuda12]"]
+
+[build-system]
+requires = ["uv_build>=0.11.6,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""
