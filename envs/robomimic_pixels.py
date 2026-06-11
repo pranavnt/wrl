@@ -40,6 +40,14 @@ import robosuite  # noqa: E402
 
 # camera + proprio layout per robosuite env name
 _ENV_SPECS = {
+    "Lift": dict(
+        cameras=("agentview", "robot0_eye_in_hand"),
+        proprio_prefixes=("robot0",),
+    ),
+    "PickPlaceCan": dict(
+        cameras=("agentview", "robot0_eye_in_hand"),
+        proprio_prefixes=("robot0",),
+    ),
     "ToolHang": dict(
         cameras=("agentview", "robot0_eye_in_hand"),
         proprio_prefixes=("robot0",),
@@ -140,9 +148,11 @@ class RoboMimicPixelEnv(gym.Env):
     def _obs(self, raw: dict) -> dict:
         out = {}
         for cam in self.cameras:
-            # Keep robosuite's native orientation so frames match the rendered
-            # demo hdf5 (which the base DP is trained on). Do NOT flip.
-            out[f"{cam}_image"] = raw[f"{cam}_image"][None].astype(np.uint8)
+            # robosuite returns camera images bottom-up; robomimic's
+            # dataset_states_to_obs stores them vertically flipped (top-down).
+            # Flip here so live frames match the rendered demo hdf5 the base DP
+            # is trained on (verified: live[::-1] vs hdf5 MSE ~2.6 vs ~8465).
+            out[f"{cam}_image"] = raw[f"{cam}_image"][::-1][None].astype(np.uint8)
         state = np.concatenate(
             [np.asarray(raw[k], np.float32).reshape(-1) for k in self._proprio_keys]
         )
