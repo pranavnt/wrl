@@ -55,6 +55,35 @@ class RobomimicPixelData:
         same_demo = self.demo_of_step[: self.N - self.H + 1] == self.demo_of_step[self.H - 1:]
         self.valid_starts = np.nonzero(same_demo)[0]
 
+        # per-step demo boundaries (for obs-history clamping / action-window padding)
+        self.demo_start = np.zeros(self.N, np.int64)
+        self.demo_end = np.zeros(self.N, np.int64)
+        uniq, first = np.unique(self.demo_of_step, return_index=True)
+        for di, s0 in zip(uniq, first):
+            idx = np.nonzero(self.demo_of_step == di)[0]
+            self.demo_start[idx] = idx[0]
+            self.demo_end[idx] = idx[-1]
+
+    def action_stats(self):
+        """Per-dim mean/std over all actions (for the flow policy normalizer)."""
+        return self.actions.mean(0), self.actions.std(0)
+
+    def flow_sample(self, batch_size, Tp, obs_history, rng):
+        """Batch for flow-matching DP training:
+        observations[<img>] : (B, obs_history, H, W, C) uint8  (frames clamped to demo start)
+        observations['state']: (B, obs_history, proprio)
+        actions             : (B, Tp, d_a)  (window held at last action past demo end)
+        """
+        s = rng.integers(0, self.N, batch_size)
+        # obs history: frames [s-h+1 .. s] clamped to the demo start
+        offs = np.arange(-obs_history + 1, 1)  # (h,)
+        fidx = np.clip(s[:, None] + offs[None], self.demo_start[s][:, None], s[:, None])
+        obs = {k: self.imgs[k][fidx] for k in self.image_keys}  # (B,h,H,W,C)
+        obs["state"] = self.proprio[fidx]  # (B,h,proprio)
+        # action window [s .. s+Tp-1] clamped to demo end (hold last)
+        aidx = np.clip(s[:, None] + np.arange(Tp)[None], 0, self.demo_end[s][:, None])
+        return {"observations": obs, "actions": self.actions[aidx]}  # (B,Tp,d_a)
+
     def _chunk(self, starts):
         idx = starts[:, None] + np.arange(self.H)[None, :]  # (B, H)
         return self.actions[idx].reshape(len(starts), self.H * self.action_dim)
