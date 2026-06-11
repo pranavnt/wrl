@@ -31,6 +31,7 @@ import optax
 from flax.training.train_state import TrainState
 
 from wrl.common.common import nonpytree_field
+from wrl.vision.data_augmentations import batched_random_crop
 
 
 # ---------------------------------------------------------------------------
@@ -157,6 +158,7 @@ class FlowDenoiser(nn.Module):
 
 class FlowPolicy(flax.struct.PyTreeNode):
     state: TrainState
+    ema_params: any
     a_mean: jnp.ndarray
     a_std: jnp.ndarray
     rng: jax.Array
@@ -188,14 +190,30 @@ class FlowPolicy(flax.struct.PyTreeNode):
         loss = jnp.mean((pred - target) ** 2)
         return loss, {"flow_loss": loss}
 
+    def _augment(self, observations, rng):
+        """Random-crop (pad+crop shift) each image key — the key pixel-DP
+        regularizer. Frames are (B, T, H, W, C); crop with num_batch_dims=2."""
+        obs = dict(observations)
+        for k in self.config["image_keys"]:
+            rng, ck = jax.random.split(rng)
+            obs[k] = batched_random_crop(obs[k], ck, padding=4, num_batch_dims=2)
+        return obs
+
     @jax.jit
     def update(self, batch):
-        rng, step_rng = jax.random.split(self.rng)
+        rng, step_rng, aug_rng = jax.random.split(self.rng, 3)
+        obs = self._augment(batch["observations"], aug_rng)
+        batch = {**batch, "observations": obs}
         (loss, info), grads = jax.value_and_grad(self._loss_fn, has_aux=True)(
             self.state.params, batch, step_rng
         )
         grads = jax.tree_util.tree_map(lambda g: jnp.clip(g, -1.0, 1.0), grads)
-        return self.replace(state=self.state.apply_gradients(grads=grads), rng=rng), info
+        new_state = self.state.apply_gradients(grads=grads)
+        decay = self.config["ema_decay"]
+        new_ema = jax.tree_util.tree_map(
+            lambda e, p: decay * e + (1.0 - decay) * p, self.ema_params, new_state.params
+        )
+        return self.replace(state=new_state, ema_params=new_ema, rng=rng), info
 
     # ---- cold sampling --------------------------------------------------
     @partial(jax.jit, static_argnames=())
@@ -211,7 +229,8 @@ class FlowPolicy(flax.struct.PyTreeNode):
         dt = t0 / n
         for k in range(n):
             t = t0 * (1 - k / n)
-            v = self.state.apply_fn({"params": self.state.params}, x, t, obs, train=False)
+            # sample with the EMA weights (standard for diffusion policies)
+            v = self.state.apply_fn({"params": self.ema_params}, x, t, obs, train=False)
             x = x - v * dt[..., None]
         a = self._denorm(x)[0]  # (Tp, d_a)
         return a[:Ta].reshape(Ta * d_a)
@@ -234,6 +253,7 @@ class FlowPolicy(flax.struct.PyTreeNode):
         n_sample_steps: int = 16,
         learning_rate: float = 1e-4,
         weight_decay: float = 1e-4,
+        ema_decay: float = 0.9999,
     ):
         net = FlowDenoiser(
             d_a=d_a, Tp=Tp, d_model=d_model, n_layers=n_layers, n_heads=n_heads,
@@ -251,13 +271,14 @@ class FlowPolicy(flax.struct.PyTreeNode):
         img0 = np.asarray(sample_obs[image_keys[0]])
         return cls(
             state=state,
+            ema_params=jax.tree_util.tree_map(jnp.array, params),
             a_mean=jnp.zeros(d_a),
             a_std=jnp.ones(d_a),
             rng=state_rng,
             config=dict(
                 d_a=d_a, Tp=Tp, Ta=Ta, image_keys=tuple(image_keys),
                 use_proprio=use_proprio, d_model=d_model, n_layers=n_layers,
-                n_heads=n_heads, n_sample_steps=n_sample_steps,
+                n_heads=n_heads, n_sample_steps=n_sample_steps, ema_decay=ema_decay,
                 image_shape=tuple(int(s) for s in img0.shape),
                 proprio_dim=int(np.asarray(sample_obs["state"]).shape[-1]) if use_proprio else 0,
             ),
@@ -268,6 +289,7 @@ class FlowPolicy(flax.struct.PyTreeNode):
         with open(path, "wb") as f:
             pickle.dump({
                 "params": jax.tree_util.tree_map(np.asarray, self.state.params),
+                "ema_params": jax.tree_util.tree_map(np.asarray, self.ema_params),
                 "a_mean": np.asarray(self.a_mean), "a_std": np.asarray(self.a_std),
                 "config": self.config,
             }, f)
@@ -288,7 +310,8 @@ class FlowPolicy(flax.struct.PyTreeNode):
             n_sample_steps=cfg["n_sample_steps"],
         )
         params = jax.tree_util.tree_map(jnp.asarray, blob["params"])
+        ema = jax.tree_util.tree_map(jnp.asarray, blob.get("ema_params", blob["params"]))
         return fp.replace(
-            state=fp.state.replace(params=params),
+            state=fp.state.replace(params=params), ema_params=ema,
             a_mean=jnp.asarray(blob["a_mean"]), a_std=jnp.asarray(blob["a_std"]),
         )
