@@ -238,6 +238,19 @@ class SACAgent(flax.struct.PyTreeNode):
             "entropy": -log_probs.mean(),
         }
 
+        # BC regularization on demo (is_intervention) actions — bootstraps the
+        # policy onto the demo trajectory on hard-exploration sparse tasks where
+        # pure Q-maximization never reaches the goal (RLPD+BC).
+        bc_weight = self.config.get("bc_weight", 0.0)
+        if bc_weight > 0 and "is_intervention" in batch:
+            demo_logp = action_distributions.log_prob(
+                jnp.clip(batch["actions"], -0.999, 0.999)
+            )
+            mask = batch["is_intervention"].astype(jnp.float32)
+            bc_loss = -(mask * demo_logp).sum() / (mask.sum() + 1e-6)
+            actor_loss = actor_loss + bc_weight * bc_loss
+            info["bc_loss"] = bc_loss
+
         return actor_loss, info
 
     def temperature_loss_fn(self, batch, params: Params, rng: PRNGKey):

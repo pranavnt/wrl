@@ -43,6 +43,7 @@ def main(
     dataset_path: str,
     discount: float = 0.99,
     batch_size: int = 256,
+    bc_weight: float = 0.0,         # BC reg on demo actions (bootstraps hard sparse tasks)
     cta_ratio: int = 20,            # UTD ratio (RLPD uses high UTD)
     training_starts: int = 1000,
     random_steps: int = 1000,
@@ -61,7 +62,8 @@ def main(
     sample_action = env.action_space.sample()
     print(f"[rlpd] obs_dim={sample_obs.shape} action_dim={sample_action.shape}")
 
-    agent = make_sac_state_agent(seed, sample_obs, sample_action, discount=discount)
+    agent = make_sac_state_agent(seed, sample_obs, sample_action, discount=discount,
+                                 bc_weight=bc_weight)
     agent = jax.tree_util.tree_map(jnp.asarray, agent)
 
     cfg = wrl.Config(

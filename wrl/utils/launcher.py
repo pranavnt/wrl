@@ -99,6 +99,7 @@ def make_sac_state_agent(
     init_final: Optional[float] = None,
     critic_ensemble_size: int = 10,     # REDQ ensemble (RLPD needs this at high UTD)
     critic_subsample_size: int = 2,     # min-Q over a random subsample -> pessimism
+    bc_weight: float = 0.0,             # BC reg on demo actions (bootstraps hard-exploration tasks)
 ):
     """State-only SAC agent — no image encoders. Use for low-dim gym envs.
 
@@ -155,6 +156,7 @@ def make_sac_state_agent(
         backup_entropy=False,
         critic_ensemble_size=critic_ensemble_size,
         critic_subsample_size=critic_subsample_size,
+        bc_weight=bc_weight,
         reward_bias=reward_bias,
         target_entropy=target_entropy,
         image_keys=None,
