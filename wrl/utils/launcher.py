@@ -97,8 +97,13 @@ def make_sac_state_agent(
     reward_bias=0.0,
     target_entropy=None,
     init_final: Optional[float] = None,
+    critic_ensemble_size: int = 10,     # REDQ ensemble (RLPD needs this at high UTD)
+    critic_subsample_size: int = 2,     # min-Q over a random subsample -> pessimism
 ):
-    """State-only SAC agent — no image encoders. Use for low-dim gym envs."""
+    """State-only SAC agent — no image encoders. Use for low-dim gym envs.
+
+    Defaults to a REDQ critic (10-member ensemble, min over a random 2-subset)
+    which keeps Q from overestimating under the high UTD that RLPD uses."""
     from wrl.networks.actor_critic_nets import Critic, Policy, ensemblize
     from wrl.networks.lagrange import GeqLagrangeMultiplier
     from wrl.networks.mlp import MLP
@@ -112,7 +117,7 @@ def make_sac_state_agent(
         use_layer_norm=True,
         activate_final=True,
     )
-    critic_backbone = ensemblize(critic_backbone, 2)(name="critic_ensemble")
+    critic_backbone = ensemblize(critic_backbone, critic_ensemble_size)(name="critic_ensemble")
     critic_def = Critic(encoder=None, network=critic_backbone, name="critic")
 
     policy_def = Policy(
@@ -148,8 +153,8 @@ def make_sac_state_agent(
         temperature_def=temperature_def,
         discount=discount,
         backup_entropy=False,
-        critic_ensemble_size=2,
-        critic_subsample_size=None,
+        critic_ensemble_size=critic_ensemble_size,
+        critic_subsample_size=critic_subsample_size,
         reward_bias=reward_bias,
         target_entropy=target_entropy,
         image_keys=None,
