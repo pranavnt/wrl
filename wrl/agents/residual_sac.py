@@ -193,6 +193,23 @@ class ResidualSACAgent(SACAgent):
             "entropy": -log_probs.mean(),
             "residual_abs_mean": jnp.abs(residual).mean(),
         }
+
+        # BC regularization: anchor the residual toward the demo correction
+        # r* = (a_demo - a_base) / edit_scale on demo transitions only. On a
+        # competent base r* is small, so this pins the residual near 0 and
+        # prevents the zero-reward drift that collapses the policy. Masked by
+        # is_intervention so online transitions don't contribute a BC term.
+        bc_weight = self.config.get("bc_weight", 0.0)
+        if bc_weight > 0 and "is_intervention" in batch:
+            scale = self._current_edit_scale() * self._residual_mask()
+            residual_target = jnp.clip(
+                (batch["actions"] - base) / jnp.maximum(scale, 1e-6), -0.999, 0.999
+            )
+            demo_logp = dist.log_prob(residual_target)
+            mask = batch["is_intervention"].astype(jnp.float32)
+            bc_loss = -(mask * demo_logp).sum() / (mask.sum() + 1e-6)
+            actor_loss = actor_loss + bc_weight * bc_loss
+            info["bc_loss"] = bc_loss
         return actor_loss, info
 
     @partial(jax.jit, static_argnames=("argmax",))
@@ -450,6 +467,7 @@ def make_residual_sac_pixel_agent(
     critic_subsample_size=None,
     target_entropy=None,
     reward_bias=0.0,
+    bc_weight=0.0,
 ):
     from wrl.utils.launcher import make_batch_augmentation_func
 
@@ -483,5 +501,6 @@ def make_residual_sac_pixel_agent(
         discount_per_step=discount_per_step,
         target_entropy=target_entropy,
         reward_bias=reward_bias,
+        bc_weight=bc_weight,
         augmentation_function=make_batch_augmentation_func(image_keys),
     )
