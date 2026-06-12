@@ -101,9 +101,26 @@ class RobomimicPixelData:
 
     # ---- residual warm-start transitions --------------------------------
 
-    def residual_transitions(self, discount, max_transitions=None, seed=0):
-        """Chunk-level transitions for the residual demo buffer. base == full
-        (residual 0). Only starts whose next chunk also exists are used."""
+    def obs_history(self, t, obs_history):
+        """Consecutive `obs_history` frames ending at step t, clamped to the
+        demo start — the obs format a base policy (e.g. the flow DP) expects."""
+        offs = np.arange(-obs_history + 1, 1)
+        idx = np.clip(t + offs, self.demo_start[t], t)
+        out = {k: self.imgs[k][idx] for k in self.image_keys}
+        out["state"] = self.proprio[idx]
+        return out
+
+    def residual_transitions(self, discount, max_transitions=None, seed=0,
+                             base_query_fn=None, base_obs_history=2):
+        """Chunk-level transitions for the residual demo buffer.
+
+        Default: base == full (residual 0), so the demo seeds with base = the
+        demo action. If `base_query_fn(obs_history_dict) -> (H*A,)` is given
+        (e.g. the flow-DP base), the seed is made BASE-CONSISTENT: the stored
+        full `actions` stays the demo chunk (so d(s,a)=s' is exact) and we only
+        relabel `base_actions`/`next_base_actions` to the base policy's chunk at
+        s / s+H. The implied residual = demo - base is small because the DP is a
+        BC of these demos. Only starts whose next chunk also exists are used."""
         H, A = self.H, self.action_dim
         ok = self.valid_starts[
             (self.valid_starts + 2 * H - 1 < self.N)
@@ -119,6 +136,11 @@ class RobomimicPixelData:
         for s in ok:
             chunk = self.actions[s : s + H].reshape(H * A).astype(np.float32)
             next_chunk = self.actions[s + H : s + 2 * H].reshape(H * A).astype(np.float32)
+            if base_query_fn is not None:
+                base = np.asarray(base_query_fn(self.obs_history(s, base_obs_history)), np.float32)
+                next_base = np.asarray(base_query_fn(self.obs_history(s + H, base_obs_history)), np.float32)
+            else:
+                base, next_base = chunk, next_chunk
             r = float(np.dot(gammas, self.rewards[s : s + H]))
             done = bool(self.dones[s : s + H].any())
             obs = {k: self.imgs[k][s][None] for k in self.image_keys}
@@ -129,9 +151,9 @@ class RobomimicPixelData:
                 dict(
                     observations=obs,
                     next_observations=nobs,
-                    actions=chunk,
-                    base_actions=chunk,
-                    next_base_actions=next_chunk,
+                    actions=chunk,          # full action = demo chunk -> d(s,a)=s' exact
+                    base_actions=base,
+                    next_base_actions=next_base,
                     rewards=r,
                     masks=0.0 if done else 1.0,
                     dones=done,

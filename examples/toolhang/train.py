@@ -125,7 +125,14 @@ def main(
 
     if warmstart_demos:
         data = load_robomimic_pixels(dataset_path, env.image_keys, env.proprio_keys, horizon)
-        demos = data.residual_transitions(discount, max_transitions=warmstart_max, seed=seed)
+        # base-consistent seeding: relabel demo base_actions to the flow-DP's
+        # chunk at s/s+H (keeps full action = demo, so d(s,a)=s' exact).
+        bqf = (lambda oh: np.asarray(client.query(oh), np.float32)) if base == "flow" else None
+        print(f"[actor] building warmstart demos (base_consistent={bqf is not None})...")
+        demos = data.residual_transitions(
+            discount, max_transitions=warmstart_max, seed=seed,
+            base_query_fn=bqf, base_obs_history=base_obs_history,
+        )
         n = session.preload_demos(demos)
         print(f"[actor] warm-started demo buffer with {n} residual transitions")
 
