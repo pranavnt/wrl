@@ -49,6 +49,9 @@ def main(
     base_obs_history: int = 2,      # frames sent to a flow DP base (must match its training)
     horizon: int = 8,
     edit_scale: float = 0.25,
+    edit_scale_end: float = 0.0,     # >0 enables curriculum: edit_scale ramps edit_scale->end
+    edit_scale_incr: float = 0.0,    # increment per edit_scale_steps grad steps
+    edit_scale_steps: int = 2500,
     discount: float = 0.99,
     image_size: int = 84,
     max_episode_steps: int = 700,
@@ -97,6 +100,8 @@ def main(
         seed, sample_obs, np.zeros(chunk_dim, np.float32), np.zeros(chunk_dim, np.float32),
         action_dim=A, horizon=horizon, image_keys=env.image_keys,
         encoder_type=encoder_type, edit_scale=edit_scale, discount_per_step=discount,
+        edit_scale_end=(edit_scale_end if edit_scale_end > 0 else None),
+        edit_scale_incr=edit_scale_incr, edit_scale_steps=edit_scale_steps,
     )
     agent = jax.tree_util.tree_map(jnp.asarray, agent)
 

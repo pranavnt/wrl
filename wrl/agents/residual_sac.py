@@ -121,8 +121,19 @@ class ResidualSACAgent(SACAgent):
         per_step = jnp.ones(A).at[3:6].set(0.0)
         return jnp.tile(per_step, H)
 
+    def _current_edit_scale(self):
+        """edit_scale ramped from start to end as a curriculum: start tiny so the
+        base keeps succeeding during collection (reward signal flows), then give
+        the residual more authority. Computed from the train step (traced -> no
+        JIT recompiles). Constant when start == end."""
+        c = self.config
+        k = jnp.floor(self.state.step / c["edit_scale_steps"])
+        return jnp.minimum(
+            c["edit_scale_end"], c["edit_scale_start"] + c["edit_scale_incr"] * k
+        )
+
     def _compose_action(self, residual: jnp.ndarray, base: jnp.ndarray) -> jnp.ndarray:
-        scaled = residual * self.config["edit_scale"] * self._residual_mask()
+        scaled = residual * self._current_edit_scale() * self._residual_mask()
         return base + scaled
 
     # ---- base-action-conditioned policy ---------------------------------
@@ -212,11 +223,14 @@ class ResidualSACAgent(SACAgent):
         actor_def: nn.Module,
         critic_def: nn.Module,
         temperature_def: nn.Module,
-        # residual config
+        # residual config (edit_scale may be a curriculum: start -> end)
         edit_scale: float,
         residual_xyzg: bool,
         action_dim: int,
         horizon: int,
+        edit_scale_end: Optional[float] = None,   # None -> fixed edit_scale
+        edit_scale_incr: float = 0.0,
+        edit_scale_steps: int = 2500,
         # algorithm config
         discount_per_step: float = 0.97,
         soft_target_update_rate: float = 0.005,
@@ -277,8 +291,11 @@ class ResidualSACAgent(SACAgent):
                 soft_target_update_rate=soft_target_update_rate,
                 target_entropy=target_entropy,
                 backup_entropy=backup_entropy,
-                # residual
-                edit_scale=edit_scale,
+                # residual (edit_scale curriculum: start -> end)
+                edit_scale_start=float(edit_scale),
+                edit_scale_end=float(edit_scale if edit_scale_end is None else edit_scale_end),
+                edit_scale_incr=float(edit_scale_incr),
+                edit_scale_steps=int(edit_scale_steps),
                 residual_xyzg=residual_xyzg,
                 action_dim=action_dim,
                 horizon=horizon,
@@ -424,6 +441,9 @@ def make_residual_sac_pixel_agent(
     image_keys=("image",),
     encoder_type="resnet",
     edit_scale=1.0,
+    edit_scale_end=None,
+    edit_scale_incr=0.0,
+    edit_scale_steps=2500,
     residual_xyzg=False,
     discount_per_step=0.97,
     critic_ensemble_size=2,
@@ -441,6 +461,9 @@ def make_residual_sac_pixel_agent(
         action_dim=action_dim,
         horizon=horizon,
         edit_scale=edit_scale,
+        edit_scale_end=edit_scale_end,
+        edit_scale_incr=edit_scale_incr,
+        edit_scale_steps=edit_scale_steps,
         residual_xyzg=residual_xyzg,
         encoder_type=encoder_type,
         use_proprio=True,
