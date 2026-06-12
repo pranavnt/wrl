@@ -323,6 +323,11 @@ class Session:
             if cfg.max_steps and self._learner_step >= cfg.max_steps:
                 print(f"[learner] reached max_steps={cfg.max_steps}")
                 return
+            # learner-side UTD cap: don't lap the actor (over-training on a tiny
+            # online buffer corrupts the critic). Wait for more env data.
+            if cfg.max_utd and self.utd() >= cfg.max_utd:
+                time.sleep(0.02)
+                continue
             info = self.train_step()
             if self._learner_step % 200 == 0:
                 self._record_stats({"train": info, "step": self._learner_step})

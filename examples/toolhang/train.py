@@ -58,6 +58,7 @@ def main(
     random_chunks: int = 50,
     max_steps: int = 200_000,
     min_utd: float = 0.0,
+    max_utd: float = 0.0,        # learner-side UTD cap (0=off); prevents over-training on slow tasks
     warmstart_demos: bool = False,
     warmstart_max: int = 5_000,
     http_port: int = 5588,
@@ -102,7 +103,7 @@ def main(
     cfg = wrl.Config(
         batch_size=batch_size, cta_ratio=cta_ratio, training_starts=training_starts,
         replay_buffer_capacity=200_000, demo_buffer_capacity=200_000,
-        max_steps=max_steps, image_keys=env.image_keys,
+        max_steps=max_steps, max_utd=max_utd, image_keys=env.image_keys,
         extra_fields=residual_extra_fields(chunk_dim),
     )
     session = wrl.Session(agent, cenv, cfg, rng_seed=seed)

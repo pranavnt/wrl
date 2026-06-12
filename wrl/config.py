@@ -23,6 +23,10 @@ class Config:
     """Optional pretrain steps on the demo buffer before online updates."""
     max_steps: int = 0
     """Stop the learner after this many gradient updates. 0 means no cap."""
+    max_utd: float = 0.0
+    """Learner-side UTD cap: pause updates while `utd() >= max_utd` so the
+    learner can't lap a slow actor and over-train on a tiny online buffer
+    (0 = no cap). Crucial when env collection is slow (e.g. tool-hang)."""
     image_keys: tuple[str, ...] = ()
     """Image observation keys (selects the MemoryEfficient pixel buffer when non-empty)."""
     extra_fields: tuple = ()
