@@ -57,17 +57,25 @@ def _robot_obs_keys(obs_keys):
 
 
 class RoboMimicStateEnv(gym.Env):
-    def __init__(self, dataset_path: str, *, max_episode_steps: int = 700):
+    def __init__(self, dataset_path: str, *, max_episode_steps: int = 700,
+                 reset_to_demo_prob: float = 0.0):
         self.dataset_path = dataset_path
         self._max_episode_steps = max_episode_steps
+        # fraction of TRAINING resets that start from a demo's initial sim state
+        # (narrows the reset distribution so success is reachable on hard sparse
+        # tasks). Eval resets ignore this (pass options={"normal": True}).
+        self.reset_to_demo_prob = reset_to_demo_prob
 
         env_meta = get_env_metadata_from_dataset(dataset_path)
         _coerce_env_kwargs_for_robosuite_1_4(env_meta.get("env_kwargs", {}))
         self.env = create_env_from_metadata(env_meta, render=False, render_offscreen=False)
 
         with h5py.File(dataset_path, "r") as f:
-            first_demo = sorted(f["data"].keys(), key=lambda d: int(d.split("_")[1]))[0]
-            obs_keys = list(f[f"data/{first_demo}/obs"].keys())
+            demos = sorted(f["data"].keys(), key=lambda d: int(d.split("_")[1]))
+            obs_keys = list(f[f"data/{demos[0]}/obs"].keys())
+            self._demo_init_states = [
+                np.asarray(f["data"][d]["states"][0]) for d in demos
+            ]
         self.robot_obs_keys = _robot_obs_keys(obs_keys)
         self._object_key = "object" if "object" in obs_keys else "object-state"
 
@@ -90,6 +98,12 @@ class RoboMimicStateEnv(gym.Env):
         if seed is not None:
             np.random.seed(seed)
         self.env.env.reset()
+        normal = bool((options or {}).get("normal", False))
+        if (not normal) and self.reset_to_demo_prob > 0 and \
+                np.random.rand() < self.reset_to_demo_prob:
+            st = self._demo_init_states[np.random.randint(len(self._demo_init_states))]
+            self.env.env.sim.set_state_from_flattened(st)
+            self.env.env.sim.forward()
         self._elapsed = 0
         return self._get_obs(), {}
 

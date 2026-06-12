@@ -49,6 +49,7 @@ def main(
     random_steps: int = 1000,
     max_steps: int = 200_000,
     max_episode_steps: int = 700,
+    reset_to_demo_prob: float = 0.5,   # train resets from demo states (eval uses full dist)
     min_utd: float = 0.0,           # actor pacing (0 = off); set ~cta_ratio to keep UTD high
     eval_every: int = 10_000,       # env steps between evals
     eval_episodes: int = 25,
@@ -57,7 +58,8 @@ def main(
     wandb_project: str = "",
     seed: int = 0,
 ):
-    env = RoboMimicStateEnv(dataset_path, max_episode_steps=max_episode_steps)
+    env = RoboMimicStateEnv(dataset_path, max_episode_steps=max_episode_steps,
+                            reset_to_demo_prob=reset_to_demo_prob)
     sample_obs = env.observation_space.sample()
     sample_action = env.action_space.sample()
     print(f"[rlpd] obs_dim={sample_obs.shape} action_dim={sample_action.shape}")
@@ -85,7 +87,7 @@ def main(
     def evaluate(k):
         succ, rets = 0, []
         for ep in range(k):
-            o, _ = env.reset(seed=20000 + ep)
+            o, _ = env.reset(seed=20000 + ep, options={"normal": True})
             ret, s, d, t = 0.0, 0.0, False, False
             while not (d or t):
                 o, r, d, t, info = env.step(session.policy.sample(o, argmax=True))
