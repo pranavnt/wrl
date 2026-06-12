@@ -73,9 +73,14 @@ class RoboMimicStateEnv(gym.Env):
         with h5py.File(dataset_path, "r") as f:
             demos = sorted(f["data"].keys(), key=lambda d: int(d.split("_")[1]))
             obs_keys = list(f[f"data/{demos[0]}/obs"].keys())
-            self._demo_init_states = [
-                np.asarray(f["data"][d]["states"][0]) for d in demos
-            ]
+            # ALL states along the demo trajectories (incl. near-goal states), so
+            # training resets put the agent close to success -> reward propagates
+            # back. Subsample for memory.
+            states = np.concatenate([np.asarray(f["data"][d]["states"][:]) for d in demos], 0)
+        if len(states) > 60000:
+            idx = np.random.RandomState(0).choice(len(states), 60000, replace=False)
+            states = states[idx]
+        self._demo_init_states = states
         self.robot_obs_keys = _robot_obs_keys(obs_keys)
         self._object_key = "object" if "object" in obs_keys else "object-state"
 
