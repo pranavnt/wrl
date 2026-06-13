@@ -239,21 +239,34 @@ class FlowPolicy(flax.struct.PyTreeNode):
         return self.replace(state=new_state, ema_params=new_ema, rng=rng), info
 
     # ---- cold sampling --------------------------------------------------
-    @partial(jax.jit, static_argnames=())
-    def sample_chunk(self, observations, rng):
+    @partial(jax.jit, static_argnames=("use_ema",))
+    def sample_chunk(self, observations, rng, use_ema: bool = True):
         """Cold Euler sampling -> first Ta actions flattened to (Ta*d_a,).
-        observations: unbatched dict (image (T,H,W,C), state (T,proprio))."""
+        observations: unbatched dict (image (T,H,W,C), state (T,proprio)).
+        use_ema=False samples the raw online params (diagnostic: decouples policy
+        quality from EMA warmup, which is slow at high ema_decay)."""
+        cfg = self.config
+        Tp, d_a = cfg["Tp"], cfg["d_a"]
+        noise = jax.random.normal(rng, (Tp, d_a))
+        return self.decode_noise(observations, noise, use_ema=use_ema)
+
+    @partial(jax.jit, static_argnames=("use_ema",))
+    def decode_noise(self, observations, noise, use_ema: bool = True):
+        """Deterministic DSRL decode: latent noise -> executed chunk (Ta*d_a,).
+        `noise` is the initial cold-sample state, shape (Tp, d_a) [= the DSRL
+        latent action]. The cold Euler sampler is deterministic given `noise`,
+        so this is the frozen-DP decoder f_DP(s, w) that DSRL steers."""
         cfg = self.config
         Tp, Ta, d_a = cfg["Tp"], cfg["Ta"], cfg["d_a"]
         obs = jax.tree_util.tree_map(lambda v: v[None], observations)  # add batch
         n = cfg["n_sample_steps"]
-        x = jax.random.normal(rng, (1, Tp, d_a))
+        params = self.ema_params if use_ema else self.state.params
+        x = noise.reshape(1, Tp, d_a)
         t0 = jnp.ones((1, Tp))
         dt = t0 / n
         for k in range(n):
             t = t0 * (1 - k / n)
-            # sample with the EMA weights (standard for diffusion policies)
-            v = self.state.apply_fn({"params": self.ema_params}, x, t, obs, train=False)
+            v = self.state.apply_fn({"params": params}, x, t, obs, train=False)
             x = x - v * dt[..., None]
         a = self._denorm(x)[0]  # (Tp, d_a)
         return a[:Ta].reshape(Ta * d_a)

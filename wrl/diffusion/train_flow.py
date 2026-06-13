@@ -20,7 +20,7 @@ from envs.dataset_loader import load_robomimic_pixels
 from wrl.diffusion.flow_policy import FlowPolicy
 
 
-def _cold_rollout(fp, env, obs_history, rng, seed):
+def _cold_rollout(fp, env, obs_history, rng, seed, use_ema=True):
     obs, _ = env.reset(seed=seed)
     himg = {k: deque([obs[k][0]] * obs_history, maxlen=obs_history) for k in env.image_keys}
     hstate = deque([obs["state"][0]] * obs_history, maxlen=obs_history)
@@ -30,7 +30,8 @@ def _cold_rollout(fp, env, obs_history, rng, seed):
         obs_in = {k: np.stack(himg[k]) for k in env.image_keys}
         obs_in["state"] = np.stack(hstate)
         rng, k = jax.random.split(rng)
-        chunk = np.asarray(jax.device_get(fp.sample_chunk(jax.device_put(obs_in), k)))
+        chunk = np.asarray(jax.device_get(
+            fp.sample_chunk(jax.device_put(obs_in), k, use_ema=use_ema)))
         chunk = chunk.reshape(Ta, d_a)
         for i in range(Ta):
             obs, _r, done, trunc, info = env.step(chunk[i])
@@ -109,15 +110,16 @@ def main(
                 wandb.log({"flow_loss": loss, "ema": ema, "step": step})
         if eval_every and step % eval_every == 0:
             fp.save(out_path)
-            succ = []
+            succ, succ_online = [], []
             for ep in range(eval_episodes):
-                eval_rng, k = jax.random.split(eval_rng)
-                succ.append(_cold_rollout(fp, env, obs_history, k, seed=20000 + ep))
-            sr = float(np.mean(succ))
-            print(f"[flow] step {step} EVAL success={sr:.1%} ({eval_episodes} ep)")
+                eval_rng, k1, k2 = jax.random.split(eval_rng, 3)
+                succ.append(_cold_rollout(fp, env, obs_history, k1, seed=20000 + ep, use_ema=True))
+                succ_online.append(_cold_rollout(fp, env, obs_history, k2, seed=20000 + ep, use_ema=False))
+            sr, sr_online = float(np.mean(succ)), float(np.mean(succ_online))
+            print(f"[flow] step {step} EVAL ema={sr:.1%} online={sr_online:.1%} ({eval_episodes} ep)")
             if wandb_project:
                 import wandb
-                wandb.log({"eval/success": sr, "step": step})
+                wandb.log({"eval/success": sr, "eval/success_online": sr_online, "step": step})
 
     fp.save(out_path)
     print(f"[flow] saved {out_path}")
