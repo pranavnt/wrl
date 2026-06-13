@@ -53,6 +53,7 @@ def main(
     edit_scale_incr: float = 0.0,    # increment per edit_scale_steps grad steps
     edit_scale_steps: int = 2500,
     bc_weight: float = 0.0,          # BC reg anchoring residual->(demo-base) on demo transitions
+    bc_only: bool = False,           # pure BC of the residual: actor loss = BC term only (no RL)
     discount: float = 0.99,
     image_size: int = 84,
     max_episode_steps: int = 700,
@@ -103,7 +104,7 @@ def main(
         encoder_type=encoder_type, edit_scale=edit_scale, discount_per_step=discount,
         edit_scale_end=(edit_scale_end if edit_scale_end > 0 else None),
         edit_scale_incr=edit_scale_incr, edit_scale_steps=edit_scale_steps,
-        bc_weight=bc_weight,
+        bc_weight=bc_weight, bc_only=bc_only,
     )
     agent = jax.tree_util.tree_map(jnp.asarray, agent)
 

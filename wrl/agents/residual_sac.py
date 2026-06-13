@@ -200,6 +200,7 @@ class ResidualSACAgent(SACAgent):
         # prevents the zero-reward drift that collapses the policy. Masked by
         # is_intervention so online transitions don't contribute a BC term.
         bc_weight = self.config.get("bc_weight", 0.0)
+        bc_only = self.config.get("bc_only", False)
         if bc_weight > 0 and "is_intervention" in batch:
             scale = self._current_edit_scale() * self._residual_mask()
             residual_target = jnp.clip(
@@ -208,7 +209,9 @@ class ResidualSACAgent(SACAgent):
             demo_logp = dist.log_prob(residual_target)
             mask = batch["is_intervention"].astype(jnp.float32)
             bc_loss = -(mask * demo_logp).sum() / (mask.sum() + 1e-6)
-            actor_loss = actor_loss + bc_weight * bc_loss
+            # bc_only: drop the Q/entropy term entirely -> pure behavior cloning
+            # of the residual (the critic still trains but the actor ignores it).
+            actor_loss = bc_loss if bc_only else actor_loss + bc_weight * bc_loss
             info["bc_loss"] = bc_loss
         return actor_loss, info
 
@@ -468,6 +471,7 @@ def make_residual_sac_pixel_agent(
     target_entropy=None,
     reward_bias=0.0,
     bc_weight=0.0,
+    bc_only=False,
 ):
     from wrl.utils.launcher import make_batch_augmentation_func
 
@@ -502,5 +506,6 @@ def make_residual_sac_pixel_agent(
         target_entropy=target_entropy,
         reward_bias=reward_bias,
         bc_weight=bc_weight,
+        bc_only=bc_only,
         augmentation_function=make_batch_augmentation_func(image_keys),
     )

@@ -1,0 +1,165 @@
+[robosuite WARNING] No private macro file found! (macros.py:53)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:54)
+[robosuite WARNING] To setup, run: python /home/yam/wrl/.venv/lib/python3.11/site-packages/robosuite/scripts/setup_macros.py (macros.py:55)
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/yam/.netrc.
+wandb: Currently logged in as: pranavnt to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.27.2
+wandb: Run data is saved locally in /home/yam/wrl/wandb/run-20260612_214100-rdp202ez
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run comfy-sea-2
+wandb: ⭐️ View project at https://wandb.ai/pranavnt/wrl-residual-bc
+wandb: 🚀 View run at https://wandb.ai/pranavnt/wrl-residual-bc/runs/rdp202ez
+[actor] building warmstart demos (base_consistent=True)...
+[actor] warm-started demo buffer with 5013 residual transitions
+[learner] warmup ok (online=0, demo=5013) — running updates
+[actor] base=flow edit_scale=0.25 chunk_dim=56 action_dim=7 horizon=8
+[server] listening on http://0.0.0.0:5588
+2026-06-12 21:42:15.152155: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-12 21:42:15.152261: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-12 21:42:15.152297: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-12 21:42:15.152345: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+[actor] ep_ret=0.00 success=0 chunks=88 learner_step=0 utd=0.00 online=89
+[actor] ep_ret=0.00 success=0 chunks=176 learner_step=0 utd=0.00 online=177
+[actor] ep_ret=0.00 success=0 chunks=264 learner_step=0 utd=0.00 online=265
+2026-06-12 21:42:55.396046: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-12 21:42:55.396169: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-12 21:42:55.396176: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-12 21:42:55.396186: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-12 21:42:55.396258: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-12 21:42:55.396274: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+[eval] learner_step=0 success=10.0% mean_return=0.10
+[actor] heartbeat {'learner_step': 119, 'env_steps': 264, 'effective_utd': 1.803030303030303, 'configured_utd': 4, 'online_buffer': 265, 'demo_buffer': 5013, 'params_version': 119, 'max_steps': 80000, 'mean_return_100': 0.0, 'uptime_sec': 146.38209080696106, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.94 success=1 chunks=345 learner_step=167 utd=1.94 online=346
+[actor] ep_ret=0.00 success=0 chunks=433 learner_step=214 utd=1.98 online=435
+[actor] ep_ret=0.00 success=0 chunks=521 learner_step=260 utd=2.00 online=523
+[eval] learner_step=260 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 617, 'env_steps': 521, 'effective_utd': 4.737044145873321, 'configured_utd': 4, 'online_buffer': 523, 'demo_buffer': 5013, 'params_version': 617, 'max_steps': 80000, 'mean_return_100': 0.15691335823349997, 'uptime_sec': 250.30247902870178, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=609 learner_step=662 utd=4.35 online=611
+[actor] ep_ret=0.00 success=0 chunks=697 learner_step=705 utd=4.05 online=699
+[actor] ep_ret=0.00 success=0 chunks=785 learner_step=750 utd=3.82 online=787
+[eval] learner_step=750 success=70.0% mean_return=0.69
+[actor] heartbeat {'learner_step': 1110, 'env_steps': 785, 'effective_utd': 5.656050955414012, 'configured_utd': 4, 'online_buffer': 787, 'demo_buffer': 5013, 'params_version': 1110, 'max_steps': 80000, 'mean_return_100': 0.10460890548899998, 'uptime_sec': 353.52197456359863, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.98 success=1 chunks=832 learner_step=1136 utd=5.46 online=834
+[actor] ep_ret=0.00 success=0 chunks=920 learner_step=1180 utd=5.13 online=923
+[actor] ep_ret=0.98 success=1 chunks=1006 learner_step=1228 utd=4.88 online=1009
+[eval] learner_step=1228 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 1580, 'env_steps': 1006, 'effective_utd': 6.282306163021869, 'configured_utd': 4, 'online_buffer': 1009, 'demo_buffer': 5013, 'params_version': 1580, 'max_steps': 80000, 'mean_return_100': 0.24180667911675, 'uptime_sec': 451.6007182598114, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=1094 learner_step=1627 utd=5.95 online=1098
+[actor] ep_ret=0.00 success=0 chunks=1182 learner_step=1672 utd=5.66 online=1186
+[actor] ep_ret=0.00 success=0 chunks=1270 learner_step=1716 utd=5.40 online=1274
+[eval] learner_step=1716 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 2064, 'env_steps': 1270, 'effective_utd': 6.5007874015748035, 'configured_utd': 4, 'online_buffer': 1274, 'demo_buffer': 5013, 'params_version': 2064, 'max_steps': 80000, 'mean_return_100': 0.1934453432934, 'uptime_sec': 553.015331029892, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=1358 learner_step=2109 utd=6.21 online=1362
+[actor] ep_ret=0.00 success=0 chunks=1446 learner_step=2153 utd=5.96 online=1450
+[actor] ep_ret=0.97 success=1 chunks=1495 learner_step=2181 utd=5.84 online=1499
+[eval] learner_step=2181 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 2533, 'env_steps': 1495, 'effective_utd': 6.777257525083612, 'configured_utd': 4, 'online_buffer': 1499, 'demo_buffer': 5013, 'params_version': 2533, 'max_steps': 80000, 'mean_return_100': 0.21510995274449998, 'uptime_sec': 651.2140135765076, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.95 success=1 chunks=1544 learner_step=2560 utd=6.63 online=1549
+[actor] ep_ret=0.94 success=1 chunks=1613 learner_step=2596 utd=6.44 online=1619
+[actor] ep_ret=0.99 success=1 chunks=1690 learner_step=2637 utd=6.24 online=1697
+[actor] ep_ret=0.96 success=1 chunks=1743 learner_step=2665 utd=6.12 online=1751
+[eval] learner_step=2665 success=90.0% mean_return=0.87
+[actor] heartbeat {'learner_step': 2983, 'env_steps': 1743, 'effective_utd': 6.845668387837063, 'configured_utd': 4, 'online_buffer': 1751, 'demo_buffer': 5013, 'params_version': 2983, 'max_steps': 80000, 'mean_return_100': 0.350683879941, 'uptime_sec': 745.292008638382, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.97 success=1 chunks=1784 learner_step=3006 utd=6.74 online=1793
+[actor] ep_ret=0.95 success=1 chunks=1837 learner_step=3035 utd=6.61 online=1847
+[actor] ep_ret=0.94 success=1 chunks=1901 learner_step=3070 utd=6.46 online=1912
+[actor] ep_ret=0.00 success=0 chunks=1989 learner_step=3114 utd=6.26 online=2001
+[eval] learner_step=3114 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 3502, 'env_steps': 1989, 'effective_utd': 7.042735042735043, 'configured_utd': 4, 'online_buffer': 2001, 'demo_buffer': 5013, 'params_version': 3502, 'max_steps': 80000, 'mean_return_100': 0.40683902146165385, 'uptime_sec': 853.5449621677399, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=2077 learner_step=3548 utd=6.83 online=2089
+[actor] ep_ret=0.93 success=1 chunks=2131 learner_step=3579 utd=6.72 online=2143
+[actor] ep_ret=0.99 success=1 chunks=2197 learner_step=3616 utd=6.58 online=2210
+[eval] learner_step=3616 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 4002, 'env_steps': 2197, 'effective_utd': 7.286299499317251, 'configured_utd': 4, 'online_buffer': 2210, 'demo_buffer': 5013, 'params_version': 4002, 'max_steps': 80000, 'mean_return_100': 0.4310303415831031, 'uptime_sec': 958.3456184864044, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.96 success=1 chunks=2265 learner_step=4037 utd=7.13 online=2279
+[actor] ep_ret=0.95 success=1 chunks=2319 learner_step=4067 utd=7.02 online=2334
+[actor] ep_ret=0.96 success=1 chunks=2375 learner_step=4098 utd=6.90 online=2391
+[actor] ep_ret=0.99 success=1 chunks=2430 learner_step=4127 utd=6.79 online=2447
+[eval] learner_step=4127 success=40.0% mean_return=0.38
+[actor] heartbeat {'learner_step': 4517, 'env_steps': 2430, 'effective_utd': 7.435390946502058, 'configured_utd': 4, 'online_buffer': 2447, 'demo_buffer': 5013, 'params_version': 4517, 'max_steps': 80000, 'mean_return_100': 0.49582005987303, 'uptime_sec': 1066.127653837204, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=2518 learner_step=4572 utd=7.26 online=2536
+[actor] ep_ret=0.00 success=0 chunks=2606 learner_step=4617 utd=7.09 online=2624
+[actor] heartbeat {'learner_step': 4661, 'env_steps': 2693, 'effective_utd': 6.923134051243966, 'configured_utd': 4, 'online_buffer': 2711, 'demo_buffer': 5013, 'params_version': 4661, 'max_steps': 80000, 'mean_return_100': 0.4674874850231426, 'uptime_sec': 1096.16738986969, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=2694 learner_step=4661 utd=6.92 online=2712
+[eval] learner_step=4661 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 5005, 'env_steps': 2694, 'effective_utd': 7.431328878990349, 'configured_utd': 4, 'online_buffer': 2712, 'demo_buffer': 5013, 'params_version': 5005, 'max_steps': 80000, 'mean_return_100': 0.4545017215502775, 'uptime_sec': 1168.580382823944, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.94 success=1 chunks=2756 learner_step=5038 utd=7.31 online=2774
+[actor] ep_ret=0.00 success=0 chunks=2844 learner_step=5086 utd=7.15 online=2863
+[actor] ep_ret=0.00 success=0 chunks=2932 learner_step=5131 utd=7.00 online=2951
+[eval] learner_step=5131 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 5486, 'env_steps': 2932, 'effective_utd': 7.48431105047749, 'configured_utd': 4, 'online_buffer': 2951, 'demo_buffer': 5013, 'params_version': 5486, 'max_steps': 80000, 'mean_return_100': 0.4436805673131023, 'uptime_sec': 1269.3023235797882, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=3020 learner_step=5534 utd=7.33 online=3039
+[actor] ep_ret=0.00 success=0 chunks=3108 learner_step=5579 utd=7.18 online=3127
+[actor] heartbeat {'learner_step': 5631, 'env_steps': 3192, 'effective_utd': 7.056390977443609, 'configured_utd': 4, 'online_buffer': 3211, 'demo_buffer': 5013, 'params_version': 5631, 'max_steps': 80000, 'mean_return_100': 0.4220376128100241, 'uptime_sec': 1299.428326368332, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=3196 learner_step=5633 utd=7.05 online=3215
+[eval] learner_step=5633 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 6019, 'env_steps': 3196, 'effective_utd': 7.533166458072591, 'configured_utd': 4, 'online_buffer': 3215, 'demo_buffer': 5013, 'params_version': 6019, 'max_steps': 80000, 'mean_return_100': 0.41198909821930924, 'uptime_sec': 1380.5665135383606, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=1.00 success=1 chunks=3241 learner_step=6044 utd=7.46 online=3260
+[actor] ep_ret=0.00 success=0 chunks=3329 learner_step=6088 utd=7.32 online=3349
+[actor] ep_ret=1.00 success=1 chunks=3391 learner_step=6121 utd=7.22 online=3411
+[actor] ep_ret=0.98 success=1 chunks=3446 learner_step=6151 utd=7.14 online=3467
+[eval] learner_step=6151 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 6529, 'env_steps': 3446, 'effective_utd': 7.578641903656413, 'configured_utd': 4, 'online_buffer': 3467, 'demo_buffer': 5013, 'params_version': 6529, 'max_steps': 80000, 'mean_return_100': 0.4409487418524128, 'uptime_sec': 1486.9500341415405, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=3534 learner_step=6575 utd=7.44 online=3556
+[actor] ep_ret=0.93 success=1 chunks=3602 learner_step=6614 utd=7.34 online=3624
+[actor] ep_ret=0.00 success=0 chunks=3690 learner_step=6661 utd=7.22 online=3713
+[eval] learner_step=6661 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 6994, 'env_steps': 3690, 'effective_utd': 7.581571815718157, 'configured_utd': 4, 'online_buffer': 3713, 'demo_buffer': 5013, 'params_version': 6994, 'max_steps': 80000, 'mean_return_100': 0.4329736219003669, 'uptime_sec': 1584.5851900577545, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.94 success=1 chunks=3754 learner_step=7030 utd=7.49 online=3777
+[actor] ep_ret=0.00 success=0 chunks=3842 learner_step=7075 utd=7.37 online=3866
+[actor] ep_ret=1.00 success=1 chunks=3907 learner_step=7110 utd=7.28 online=3931
+[eval] learner_step=7110 success=60.0% mean_return=0.59
+[actor] heartbeat {'learner_step': 7492, 'env_steps': 3907, 'effective_utd': 7.67033529562324, 'configured_utd': 4, 'online_buffer': 3931, 'demo_buffer': 5013, 'params_version': 7492, 'max_steps': 80000, 'mean_return_100': 0.44533053120228805, 'uptime_sec': 1688.7462985515594, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=3995 learner_step=7540 utd=7.55 online=4020
+[actor] ep_ret=0.94 success=1 chunks=4055 learner_step=7572 utd=7.47 online=4080
+[actor] ep_ret=0.96 success=1 chunks=4119 learner_step=7610 utd=7.39 online=4145
+[eval] learner_step=7610 success=40.0% mean_return=0.38
+[actor] heartbeat {'learner_step': 8009, 'env_steps': 4119, 'effective_utd': 7.777615926195678, 'configured_utd': 4, 'online_buffer': 4145, 'demo_buffer': 5013, 'params_version': 8009, 'max_steps': 80000, 'mean_return_100': 0.45562297785309047, 'uptime_sec': 1796.929075717926, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=4207 learner_step=8052 utd=7.66 online=4234
+[actor] ep_ret=0.97 success=1 chunks=4287 learner_step=8095 utd=7.55 online=4314
+[actor] ep_ret=0.00 success=0 chunks=4375 learner_step=8146 utd=7.45 online=4403
+[eval] learner_step=8146 success=40.0% mean_return=0.40
+[actor] heartbeat {'learner_step': 8547, 'env_steps': 4375, 'effective_utd': 7.8144, 'configured_utd': 4, 'online_buffer': 4403, 'demo_buffer': 5013, 'params_version': 8547, 'max_steps': 80000, 'mean_return_100': 0.4487855652055169, 'uptime_sec': 1909.6561896800995, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.95 success=1 chunks=4429 learner_step=8576 utd=7.75 online=4457
+[actor] ep_ret=0.97 success=1 chunks=4490 learner_step=8610 utd=7.67 online=4519
+[actor] ep_ret=0.93 success=1 chunks=4553 learner_step=8643 utd=7.59 online=4583
+[actor] ep_ret=0.94 success=1 chunks=4599 learner_step=8668 utd=7.54 online=4630
+[eval] learner_step=8668 success=80.0% mean_return=0.79
+[actor] heartbeat {'learner_step': 9001, 'env_steps': 4599, 'effective_utd': 7.82865840400087, 'configured_utd': 4, 'online_buffer': 4630, 'demo_buffer': 5013, 'params_version': 9001, 'max_steps': 80000, 'mean_return_100': 0.48103866659883815, 'uptime_sec': 2004.3044650554657, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=4687 learner_step=9044 utd=7.72 online=4719
+[actor] ep_ret=0.00 success=0 chunks=4775 learner_step=9093 utd=7.62 online=4807
+[actor] ep_ret=0.98 success=1 chunks=4829 learner_step=9123 utd=7.56 online=4861
+[eval] learner_step=9123 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 9482, 'env_steps': 4829, 'effective_utd': 7.854214123006834, 'configured_utd': 4, 'online_buffer': 4861, 'demo_buffer': 5013, 'params_version': 9482, 'max_steps': 80000, 'mean_return_100': 0.47391534352504566, 'uptime_sec': 2105.520692586899, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=4917 learner_step=9532 utd=7.75 online=4950
+[actor] ep_ret=0.99 success=1 chunks=4982 learner_step=9569 utd=7.68 online=5015
+[actor] ep_ret=0.97 success=1 chunks=5032 learner_step=9595 utd=7.63 online=5066
+[eval] learner_step=9595 success=70.0% mean_return=0.66
+[actor] heartbeat {'learner_step': 9954, 'env_steps': 5032, 'effective_utd': 7.912559618441971, 'configured_utd': 4, 'online_buffer': 5066, 'demo_buffer': 5013, 'params_version': 9954, 'max_steps': 80000, 'mean_return_100': 0.48183524013423484, 'uptime_sec': 2203.8120243549347, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.99 success=1 chunks=5088 learner_step=9985 utd=7.85 online=5123
+[actor] ep_ret=0.98 success=1 chunks=5153 learner_step=10022 utd=7.78 online=5189
+[actor] ep_ret=0.93 success=1 chunks=5210 learner_step=10053 utd=7.72 online=5247
+[actor] heartbeat {'learner_step': 10097, 'env_steps': 5297, 'effective_utd': 7.624693222578818, 'configured_utd': 4, 'online_buffer': 5335, 'demo_buffer': 5013, 'params_version': 10097, 'max_steps': 80000, 'mean_return_100': 0.5023515729159854, 'uptime_sec': 2233.894345521927, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=5298 learner_step=10098 utd=7.62 online=5336
+[eval] learner_step=10098 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 10482, 'env_steps': 5298, 'effective_utd': 7.913929784824462, 'configured_utd': 4, 'online_buffer': 5336, 'demo_buffer': 5013, 'params_version': 10482, 'max_steps': 80000, 'mean_return_100': 0.4953744677365966, 'uptime_sec': 2313.7868931293488, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.99 success=1 chunks=5341 learner_step=10510 utd=7.87 online=5379
+[actor] ep_ret=0.00 success=0 chunks=5429 learner_step=10558 utd=7.78 online=5468
+[actor] ep_ret=0.00 success=0 chunks=5517 learner_step=10603 utd=7.69 online=5556
+[eval] learner_step=10603 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 10942, 'env_steps': 5517, 'effective_utd': 7.933297081747327, 'configured_utd': 4, 'online_buffer': 5556, 'demo_buffer': 5013, 'params_version': 10942, 'max_steps': 80000, 'mean_return_100': 0.48875948902713273, 'uptime_sec': 2410.499700307846, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.96 success=1 chunks=5564 learner_step=10968 utd=7.88 online=5603
+[actor] ep_ret=0.00 success=0 chunks=5652 learner_step=11015 utd=7.80 online=5692
+[actor] ep_ret=0.99 success=1 chunks=5731 learner_step=11057 utd=7.72 online=5771
+[eval] learner_step=11057 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 11466, 'env_steps': 5731, 'effective_utd': 8.002791833885883, 'configured_utd': 4, 'online_buffer': 5771, 'demo_buffer': 5013, 'params_version': 11466, 'max_steps': 80000, 'mean_return_100': 0.49496868829532004, 'uptime_sec': 2519.812475681305, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.96 success=1 chunks=5803 learner_step=11508 utd=7.93 online=5844
+[actor] ep_ret=0.96 success=1 chunks=5856 learner_step=11536 utd=7.88 online=5898
+[actor] ep_ret=1.00 success=1 chunks=5907 learner_step=11564 utd=7.83 online=5950
+[actor] heartbeat {'learner_step': 11610, 'env_steps': 5991, 'effective_utd': 7.751627441161743, 'configured_utd': 4, 'online_buffer': 6035, 'demo_buffer': 5013, 'params_version': 11610, 'max_steps': 80000, 'mean_return_100': 0.5127006136670983, 'uptime_sec': 2549.833260536194, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=5995 learner_step=11612 utd=7.75 online=6039
+[eval] learner_step=11612 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 11999, 'env_steps': 5995, 'effective_utd': 8.006005004170142, 'configured_utd': 4, 'online_buffer': 6039, 'demo_buffer': 5013, 'params_version': 11999, 'max_steps': 80000, 'mean_return_100': 0.5064481671589629, 'uptime_sec': 2631.1205401420593, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.94 success=1 chunks=6051 learner_step=12030 utd=7.95 online=6095
+[actor] ep_ret=0.98 success=1 chunks=6107 learner_step=12060 utd=7.90 online=6152
+[actor] ep_ret=0.00 success=0 chunks=6195 learner_step=12109 utd=7.82 online=6241

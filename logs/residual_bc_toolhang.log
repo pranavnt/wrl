@@ -1,0 +1,1303 @@
+[robosuite WARNING] No private macro file found! (macros.py:53)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:54)
+[robosuite WARNING] To setup, run: python /home/yam/wrl/.venv/lib/python3.11/site-packages/robosuite/scripts/setup_macros.py (macros.py:55)
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/yam/.netrc.
+wandb: Currently logged in as: pranavnt to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.27.2
+wandb: Run data is saved locally in /home/yam/wrl/wandb/run-20260612_141155-q77gxe0m
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run glowing-resonance-1
+wandb: ⭐️ View project at https://wandb.ai/pranavnt/wrl-residual-bc
+wandb: 🚀 View run at https://wandb.ai/pranavnt/wrl-residual-bc/runs/q77gxe0m
+2026-06-12 14:13:22.782009: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-12 14:13:22.782118: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-12 14:13:22.782155: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-12 14:13:22.782202: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-12 14:14:02.597046: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-12 14:14:02.597193: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-12 14:14:02.597251: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-12 14:14:02.597257: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-12 14:14:02.597267: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-12 14:14:02.597286: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+[actor] building warmstart demos (base_consistent=True)...
+[actor] warm-started demo buffer with 5013 residual transitions
+[learner] warmup ok (online=0, demo=5013) — running updates
+[actor] base=flow edit_scale=0.25 chunk_dim=56 action_dim=7 horizon=8
+[server] listening on http://0.0.0.0:5588
+[actor] ep_ret=0.00 success=0 chunks=88 learner_step=0 utd=0.00 online=89
+[actor] ep_ret=0.00 success=0 chunks=176 learner_step=0 utd=0.00 online=177
+[actor] ep_ret=0.00 success=0 chunks=264 learner_step=0 utd=0.00 online=265
+[eval] learner_step=0 success=20.0% mean_return=0.19
+[actor] heartbeat {'learner_step': 92, 'env_steps': 264, 'effective_utd': 1.393939393939394, 'configured_utd': 4, 'online_buffer': 265, 'demo_buffer': 5013, 'params_version': 92, 'max_steps': 200000, 'mean_return_100': 0.0, 'uptime_sec': 154.34932827949524, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=352 learner_step=141 utd=1.60 online=353
+[actor] ep_ret=0.00 success=0 chunks=440 learner_step=190 utd=1.73 online=441
+[actor] ep_ret=0.00 success=0 chunks=528 learner_step=234 utd=1.77 online=529
+[eval] learner_step=234 success=50.0% mean_return=0.49
+[actor] heartbeat {'learner_step': 616, 'env_steps': 528, 'effective_utd': 4.666666666666667, 'configured_utd': 4, 'online_buffer': 529, 'demo_buffer': 5013, 'params_version': 616, 'max_steps': 200000, 'mean_return_100': 0.0, 'uptime_sec': 264.1360139846802, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.93 success=1 chunks=584 learner_step=647 utd=4.43 online=585
+[actor] ep_ret=0.98 success=1 chunks=638 learner_step=676 utd=4.24 online=640
+[actor] ep_ret=0.00 success=0 chunks=726 learner_step=724 utd=3.99 online=729
+[actor] heartbeat {'learner_step': 760, 'env_steps': 792, 'effective_utd': 3.8383838383838382, 'configured_utd': 4, 'online_buffer': 795, 'demo_buffer': 5013, 'params_version': 760, 'max_steps': 200000, 'mean_return_100': 0.21246281643410997, 'uptime_sec': 294.1467833518982, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=814 learner_step=771 utd=3.79 online=817
+[eval] learner_step=771 success=50.0% mean_return=0.49
+[actor] heartbeat {'learner_step': 1146, 'env_steps': 814, 'effective_utd': 5.631449631449631, 'configured_utd': 4, 'online_buffer': 817, 'demo_buffer': 5013, 'params_version': 1146, 'max_steps': 200000, 'mean_return_100': 0.19121653479069897, 'uptime_sec': 375.2238998413086, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=902 learner_step=1191 utd=5.28 online=905
+[actor] ep_ret=0.95 success=1 chunks=952 learner_step=1218 utd=5.12 online=955
+[actor] ep_ret=1.00 success=1 chunks=994 learner_step=1240 utd=4.99 online=998
+[actor] ep_ret=0.95 success=1 chunks=1058 learner_step=1280 utd=4.84 online=1063
+[eval] learner_step=1280 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 1640, 'env_steps': 1058, 'effective_utd': 6.200378071833648, 'configured_utd': 4, 'online_buffer': 1063, 'demo_buffer': 5013, 'params_version': 1640, 'max_steps': 200000, 'mean_return_100': 0.34386753197907066, 'uptime_sec': 478.6471195220947, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=1146 learner_step=1684 utd=5.88 online=1152
+[actor] ep_ret=0.00 success=0 chunks=1234 learner_step=1731 utd=5.61 online=1240
+[actor] ep_ret=0.00 success=0 chunks=1322 learner_step=1776 utd=5.37 online=1328
+[eval] learner_step=1776 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 2150, 'env_steps': 1322, 'effective_utd': 6.505295007564296, 'configured_utd': 4, 'online_buffer': 1328, 'demo_buffer': 5013, 'params_version': 2150, 'max_steps': 200000, 'mean_return_100': 0.28318502633570525, 'uptime_sec': 585.4039535522461, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.95 success=1 chunks=1377 learner_step=2181 utd=6.34 online=1383
+[actor] ep_ret=0.00 success=0 chunks=1465 learner_step=2226 utd=6.08 online=1472
+[actor] ep_ret=0.00 success=0 chunks=1553 learner_step=2271 utd=5.85 online=1560
+[eval] learner_step=2271 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 2619, 'env_steps': 1553, 'effective_utd': 6.7456535737282675, 'configured_utd': 4, 'online_buffer': 1560, 'demo_buffer': 5013, 'params_version': 2619, 'max_steps': 200000, 'mean_return_100': 0.28825677488034945, 'uptime_sec': 683.6474146842957, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.98 success=1 chunks=1625 learner_step=2658 utd=6.54 online=1632
+[actor] ep_ret=0.00 success=0 chunks=1713 learner_step=2708 utd=6.32 online=1721
+[actor] ep_ret=0.93 success=1 chunks=1768 learner_step=2737 utd=6.19 online=1776
+[eval] learner_step=2737 success=20.0% mean_return=0.19
+[actor] heartbeat {'learner_step': 3171, 'env_steps': 1768, 'effective_utd': 7.17420814479638, 'configured_utd': 4, 'online_buffer': 1776, 'demo_buffer': 5013, 'params_version': 3171, 'max_steps': 200000, 'mean_return_100': 0.3337956889353904, 'uptime_sec': 799.5498337745667, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.96 success=1 chunks=1814 learner_step=3197 utd=7.05 online=1823
+[actor] ep_ret=0.97 success=1 chunks=1883 learner_step=3233 utd=6.87 online=1893
+[actor] ep_ret=0.00 success=0 chunks=1971 learner_step=3278 utd=6.65 online=1982
+[eval] learner_step=3278 success=50.0% mean_return=0.49
+[actor] heartbeat {'learner_step': 3695, 'env_steps': 1971, 'effective_utd': 7.498731608320649, 'configured_utd': 4, 'online_buffer': 1982, 'demo_buffer': 5013, 'params_version': 3695, 'max_steps': 200000, 'mean_return_100': 0.36954599444284536, 'uptime_sec': 908.5228025913239, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.95 success=1 chunks=2029 learner_step=3727 utd=7.35 online=2040
+[actor] ep_ret=0.95 success=1 chunks=2076 learner_step=3753 utd=7.23 online=2088
+[actor] ep_ret=0.98 success=1 chunks=2125 learner_step=3779 utd=7.11 online=2138
+[actor] ep_ret=0.00 success=0 chunks=2213 learner_step=3824 utd=6.91 online=2227
+[eval] learner_step=3824 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 4209, 'env_steps': 2213, 'effective_utd': 7.607772254857659, 'configured_utd': 4, 'online_buffer': 2227, 'demo_buffer': 5013, 'params_version': 4209, 'max_steps': 200000, 'mean_return_100': 0.4163425318437993, 'uptime_sec': 1016.3492650985718, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.96 success=1 chunks=2258 learner_step=4234 utd=7.50 online=2272
+[actor] ep_ret=0.00 success=0 chunks=2346 learner_step=4283 utd=7.30 online=2361
+[actor] ep_ret=0.00 success=0 chunks=2434 learner_step=4326 utd=7.11 online=2449
+[eval] learner_step=4326 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 4691, 'env_steps': 2434, 'effective_utd': 7.709120788824979, 'configured_utd': 4, 'online_buffer': 2449, 'demo_buffer': 5013, 'params_version': 4691, 'max_steps': 200000, 'mean_return_100': 0.40760218076709026, 'uptime_sec': 1117.2478241920471, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.98 success=1 chunks=2501 learner_step=4727 utd=7.56 online=2516
+[actor] ep_ret=0.00 success=0 chunks=2589 learner_step=4772 utd=7.37 online=2605
+[actor] ep_ret=0.00 success=0 chunks=2677 learner_step=4816 utd=7.20 online=2693
+[eval] learner_step=4816 success=80.0% mean_return=0.78
+[actor] heartbeat {'learner_step': 5160, 'env_steps': 2677, 'effective_utd': 7.710123272319761, 'configured_utd': 4, 'online_buffer': 2693, 'demo_buffer': 5013, 'params_version': 5160, 'max_steps': 200000, 'mean_return_100': 0.40086033236983276, 'uptime_sec': 1215.3484165668488, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.98 success=1 chunks=2729 learner_step=5187 utd=7.60 online=2745
+[actor] ep_ret=0.00 success=0 chunks=2817 learner_step=5233 utd=7.43 online=2834
+[actor] ep_ret=1.00 success=1 chunks=2866 learner_step=5259 utd=7.34 online=2883
+[actor] heartbeat {'learner_step': 5303, 'env_steps': 2950, 'effective_utd': 7.190508474576271, 'configured_utd': 4, 'online_buffer': 2968, 'demo_buffer': 5013, 'params_version': 5303, 'max_steps': 200000, 'mean_return_100': 0.4207967170593328, 'uptime_sec': 1245.415753364563, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=2954 learner_step=5304 utd=7.18 online=2972
+[eval] learner_step=5304 success=90.0% mean_return=0.87
+[actor] heartbeat {'learner_step': 5585, 'env_steps': 2954, 'effective_utd': 7.562626946513203, 'configured_utd': 4, 'online_buffer': 2972, 'demo_buffer': 5013, 'params_version': 5585, 'max_steps': 200000, 'mean_return_100': 0.4102767991328495, 'uptime_sec': 1304.3052530288696, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.95 success=1 chunks=3008 learner_step=5615 utd=7.47 online=3026
+[actor] ep_ret=0.96 success=1 chunks=3066 learner_step=5644 utd=7.36 online=3085
+[actor] ep_ret=0.94 success=1 chunks=3150 learner_step=5691 utd=7.23 online=3170
+[actor] ep_ret=0.98 success=1 chunks=3207 learner_step=5723 utd=7.14 online=3228
+[eval] learner_step=5723 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 6058, 'env_steps': 3207, 'effective_utd': 7.555971312753352, 'configured_utd': 4, 'online_buffer': 3228, 'demo_buffer': 5013, 'params_version': 6058, 'max_steps': 200000, 'mean_return_100': 0.4600963221503404, 'uptime_sec': 1403.1037409305573, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.93 success=1 chunks=3266 learner_step=6090 utd=7.46 online=3288
+[actor] ep_ret=0.98 success=1 chunks=3317 learner_step=6118 utd=7.38 online=3340
+[actor] ep_ret=0.98 success=1 chunks=3379 learner_step=6151 utd=7.28 online=3403
+[actor] ep_ret=0.96 success=1 chunks=3431 learner_step=6178 utd=7.20 online=3456
+[eval] learner_step=6178 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 6551, 'env_steps': 3431, 'effective_utd': 7.637423491693384, 'configured_utd': 4, 'online_buffer': 3456, 'demo_buffer': 5013, 'params_version': 6551, 'max_steps': 200000, 'mean_return_100': 0.5020229069275409, 'uptime_sec': 1506.3923952579498, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=3519 learner_step=6594 utd=7.50 online=3545
+[actor] ep_ret=0.95 success=1 chunks=3574 learner_step=6624 utd=7.41 online=3600
+[actor] ep_ret=0.93 success=1 chunks=3627 learner_step=6656 utd=7.34 online=3654
+[actor] ep_ret=0.93 success=1 chunks=3676 learner_step=6682 utd=7.27 online=3704
+[eval] learner_step=6682 success=30.0% mean_return=0.29
+[actor] heartbeat {'learner_step': 7095, 'env_steps': 3676, 'effective_utd': 7.720348204570185, 'configured_utd': 4, 'online_buffer': 3704, 'demo_buffer': 5013, 'params_version': 7095, 'max_steps': 200000, 'mean_return_100': 0.5175426976583835, 'uptime_sec': 1620.0457270145416, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.93 success=1 chunks=3731 learner_step=7124 utd=7.64 online=3760
+[actor] ep_ret=0.00 success=0 chunks=3819 learner_step=7167 utd=7.51 online=3849
+[actor] ep_ret=0.00 success=0 chunks=3907 learner_step=7219 utd=7.39 online=3937
+[eval] learner_step=7219 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 7559, 'env_steps': 3907, 'effective_utd': 7.73893012541592, 'configured_utd': 4, 'online_buffer': 3937, 'demo_buffer': 5013, 'params_version': 7559, 'max_steps': 200000, 'mean_return_100': 0.5062597386571442, 'uptime_sec': 1717.0816252231598, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=3995 learner_step=7603 utd=7.61 online=4025
+[actor] ep_ret=0.96 success=1 chunks=4053 learner_step=7634 utd=7.53 online=4083
+[actor] ep_ret=0.00 success=0 chunks=4141 learner_step=7680 utd=7.42 online=4172
+[eval] learner_step=7680 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 8067, 'env_steps': 4141, 'effective_utd': 7.792320695484182, 'configured_utd': 4, 'online_buffer': 4172, 'demo_buffer': 5013, 'params_version': 8067, 'max_steps': 200000, 'mean_return_100': 0.49663589027832655, 'uptime_sec': 1823.3748350143433, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.93 success=1 chunks=4184 learner_step=8091 utd=7.74 online=4215
+[actor] ep_ret=0.00 success=0 chunks=4272 learner_step=8156 utd=7.64 online=4304
+[actor] ep_ret=0.94 success=1 chunks=4330 learner_step=8189 utd=7.56 online=4362
+[actor] heartbeat {'learner_step': 8212, 'env_steps': 4374, 'effective_utd': 7.5098308184727935, 'configured_utd': 4, 'online_buffer': 4407, 'demo_buffer': 5013, 'params_version': 8212, 'max_steps': 200000, 'mean_return_100': 0.5029250349746054, 'uptime_sec': 1853.387065410614, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.98 success=1 chunks=4382 learner_step=8217 utd=7.50 online=4415
+[eval] learner_step=8217 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 8587, 'env_steps': 4382, 'effective_utd': 7.838429940666362, 'configured_utd': 4, 'online_buffer': 4415, 'demo_buffer': 5013, 'params_version': 8587, 'max_steps': 200000, 'mean_return_100': 0.5106214053782407, 'uptime_sec': 1931.7858817577362, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.94 success=1 chunks=4443 learner_step=8621 utd=7.76 online=4477
+[actor] ep_ret=0.93 success=1 chunks=4503 learner_step=8654 utd=7.69 online=4538
+[actor] ep_ret=0.93 success=1 chunks=4553 learner_step=8682 utd=7.63 online=4589
+[actor] ep_ret=0.98 success=1 chunks=4609 learner_step=8712 utd=7.56 online=4646
+[eval] learner_step=8712 success=60.0% mean_return=0.59
+[actor] heartbeat {'learner_step': 9073, 'env_steps': 4609, 'effective_utd': 7.874159253634194, 'configured_utd': 4, 'online_buffer': 4646, 'demo_buffer': 5013, 'params_version': 9073, 'max_steps': 200000, 'mean_return_100': 0.5370339087676653, 'uptime_sec': 2033.348462343216, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.98 success=1 chunks=4668 learner_step=9105 utd=7.80 online=4706
+[actor] ep_ret=0.00 success=0 chunks=4756 learner_step=9150 utd=7.70 online=4795
+[actor] ep_ret=0.99 success=1 chunks=4829 learner_step=9187 utd=7.61 online=4868
+[eval] learner_step=9187 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 9534, 'env_steps': 4829, 'effective_utd': 7.897287223027542, 'configured_utd': 4, 'online_buffer': 4868, 'demo_buffer': 5013, 'params_version': 9534, 'max_steps': 200000, 'mean_return_100': 0.542236782299506, 'uptime_sec': 2129.7276124954224, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=4917 learner_step=9581 utd=7.79 online=4957
+[actor] ep_ret=0.95 success=1 chunks=4966 learner_step=9607 utd=7.74 online=5006
+[actor] ep_ret=0.00 success=0 chunks=5054 learner_step=9657 utd=7.64 online=5095
+[eval] learner_step=9657 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 10010, 'env_steps': 5054, 'effective_utd': 7.922437673130194, 'configured_utd': 4, 'online_buffer': 5095, 'demo_buffer': 5013, 'params_version': 10010, 'max_steps': 200000, 'mean_return_100': 0.5328517781745264, 'uptime_sec': 2229.4862768650055, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=5142 learner_step=10056 utd=7.82 online=5183
+[actor] ep_ret=0.00 success=0 chunks=5230 learner_step=10100 utd=7.72 online=5271
+[actor] ep_ret=0.00 success=0 chunks=5318 learner_step=10144 utd=7.63 online=5359
+[eval] learner_step=10144 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 10533, 'env_steps': 5318, 'effective_utd': 7.922527265889432, 'configured_utd': 4, 'online_buffer': 5359, 'demo_buffer': 5013, 'params_version': 10533, 'max_steps': 200000, 'mean_return_100': 0.5115377070475454, 'uptime_sec': 2338.7066538333893, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=5406 learner_step=10579 utd=7.83 online=5447
+[actor] ep_ret=0.96 success=1 chunks=5487 learner_step=10622 utd=7.74 online=5528
+[actor] ep_ret=0.00 success=0 chunks=5575 learner_step=10667 utd=7.65 online=5617
+[eval] learner_step=10667 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 11012, 'env_steps': 5575, 'effective_utd': 7.900986547085202, 'configured_utd': 4, 'online_buffer': 5617, 'demo_buffer': 5013, 'params_version': 11012, 'max_steps': 200000, 'mean_return_100': 0.5041785133149476, 'uptime_sec': 2438.885982275009, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.96 success=1 chunks=5635 learner_step=11045 utd=7.84 online=5677
+[actor] ep_ret=0.96 success=1 chunks=5680 learner_step=11069 utd=7.80 online=5723
+[actor] ep_ret=0.00 success=0 chunks=5768 learner_step=11120 utd=7.71 online=5812
+[actor] ep_ret=0.98 success=1 chunks=5816 learner_step=11145 utd=7.67 online=5860
+[eval] learner_step=11145 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 11539, 'env_steps': 5816, 'effective_utd': 7.936038514442916, 'configured_utd': 4, 'online_buffer': 5860, 'demo_buffer': 5013, 'params_version': 11539, 'max_steps': 200000, 'mean_return_100': 0.5149660494947061, 'uptime_sec': 2549.4752616882324, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=5904 learner_step=11584 utd=7.85 online=5949
+[actor] ep_ret=0.00 success=0 chunks=5992 learner_step=11631 utd=7.76 online=6037
+[actor] ep_ret=0.00 success=0 chunks=6080 learner_step=11683 utd=7.69 online=6125
+[eval] learner_step=11683 success=80.0% mean_return=0.78
+[actor] heartbeat {'learner_step': 12014, 'env_steps': 6080, 'effective_utd': 7.903947368421052, 'configured_utd': 4, 'online_buffer': 6125, 'demo_buffer': 5013, 'params_version': 12014, 'max_steps': 200000, 'mean_return_100': 0.4967907771595989, 'uptime_sec': 2648.5844905376434, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=6168 learner_step=12060 utd=7.82 online=6213
+[actor] ep_ret=0.00 success=0 chunks=6256 learner_step=12104 utd=7.74 online=6301
+[actor] ep_ret=0.00 success=0 chunks=6344 learner_step=12149 utd=7.66 online=6389
+[eval] learner_step=12149 success=60.0% mean_return=0.59
+[actor] heartbeat {'learner_step': 12543, 'env_steps': 6344, 'effective_utd': 7.908575031525851, 'configured_utd': 4, 'online_buffer': 6389, 'demo_buffer': 5013, 'params_version': 12543, 'max_steps': 200000, 'mean_return_100': 0.47985472793824896, 'uptime_sec': 2759.547104358673, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=6432 learner_step=12587 utd=7.83 online=6477
+[actor] ep_ret=0.00 success=0 chunks=6520 learner_step=12646 utd=7.76 online=6565
+[actor] ep_ret=0.99 success=1 chunks=6588 learner_step=12682 utd=7.70 online=6633
+[eval] learner_step=12682 success=100.0% mean_return=0.95
+[actor] heartbeat {'learner_step': 12979, 'env_steps': 6588, 'effective_utd': 7.880388585306618, 'configured_utd': 4, 'online_buffer': 6633, 'demo_buffer': 5013, 'params_version': 12979, 'max_steps': 200000, 'mean_return_100': 0.474914462182043, 'uptime_sec': 2850.693014383316, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=6676 learner_step=13025 utd=7.80 online=6722
+[actor] ep_ret=0.00 success=0 chunks=6764 learner_step=13069 utd=7.73 online=6810
+[actor] ep_ret=0.93 success=1 chunks=6805 learner_step=13091 utd=7.69 online=6851
+[eval] learner_step=13091 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 13425, 'env_steps': 6805, 'effective_utd': 7.891256429096253, 'configured_utd': 4, 'online_buffer': 6851, 'demo_buffer': 5013, 'params_version': 13425, 'max_steps': 200000, 'mean_return_100': 0.46967320645183935, 'uptime_sec': 2944.3954527378082, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=6893 learner_step=13469 utd=7.82 online=6940
+[actor] ep_ret=0.00 success=0 chunks=6981 learner_step=13515 utd=7.74 online=7028
+[actor] ep_ret=0.99 success=1 chunks=7036 learner_step=13545 utd=7.70 online=7083
+[eval] learner_step=13545 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 13877, 'env_steps': 7036, 'effective_utd': 7.88914155770324, 'configured_utd': 4, 'online_buffer': 7083, 'demo_buffer': 5013, 'params_version': 13877, 'max_steps': 200000, 'mean_return_100': 0.46535341656157625, 'uptime_sec': 3038.7619869709015, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=7124 learner_step=13924 utd=7.82 online=7172
+[actor] ep_ret=0.95 success=1 chunks=7185 learner_step=13956 utd=7.77 online=7233
+[actor] ep_ret=0.98 success=1 chunks=7234 learner_step=13982 utd=7.73 online=7283
+[actor] ep_ret=0.94 success=1 chunks=7281 learner_step=14008 utd=7.70 online=7331
+[eval] learner_step=14008 success=40.0% mean_return=0.38
+[actor] heartbeat {'learner_step': 14426, 'env_steps': 7281, 'effective_utd': 7.925284988325779, 'configured_utd': 4, 'online_buffer': 7331, 'demo_buffer': 5013, 'params_version': 14426, 'max_steps': 200000, 'mean_return_100': 0.48011851605773903, 'uptime_sec': 3152.9803850650787, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=7369 learner_step=14474 utd=7.86 online=7420
+[actor] ep_ret=0.00 success=0 chunks=7457 learner_step=14518 utd=7.79 online=7508
+[actor] ep_ret=1.00 success=1 chunks=7504 learner_step=14544 utd=7.75 online=7555
+[eval] learner_step=14544 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 14919, 'env_steps': 7504, 'effective_utd': 7.952558635394456, 'configured_utd': 4, 'online_buffer': 7555, 'demo_buffer': 5013, 'params_version': 14919, 'max_steps': 200000, 'mean_return_100': 0.490118516057739, 'uptime_sec': 3256.437722682953, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.95 success=1 chunks=7557 learner_step=14947 utd=7.91 online=7609
+[actor] ep_ret=0.00 success=0 chunks=7645 learner_step=14993 utd=7.84 online=7698
+[actor] ep_ret=0.00 success=0 chunks=7733 learner_step=15037 utd=7.78 online=7786
+[eval] learner_step=15037 success=80.0% mean_return=0.78
+[actor] heartbeat {'learner_step': 15371, 'env_steps': 7733, 'effective_utd': 7.950859950859951, 'configured_utd': 4, 'online_buffer': 7786, 'demo_buffer': 5013, 'params_version': 15371, 'max_steps': 200000, 'mean_return_100': 0.49030776307766905, 'uptime_sec': 3350.870567560196, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=7821 learner_step=15415 utd=7.88 online=7874
+[actor] ep_ret=0.99 success=1 chunks=7877 learner_step=15446 utd=7.84 online=7930
+[actor] ep_ret=0.00 success=0 chunks=7965 learner_step=15490 utd=7.78 online=8019
+[eval] learner_step=15490 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 15893, 'env_steps': 7965, 'effective_utd': 7.981418706842436, 'configured_utd': 4, 'online_buffer': 8019, 'demo_buffer': 5013, 'params_version': 15893, 'max_steps': 200000, 'mean_return_100': 0.49040676307766906, 'uptime_sec': 3459.8558151721954, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.97 success=1 chunks=8019 learner_step=15921 utd=7.94 online=8073
+[actor] ep_ret=0.00 success=0 chunks=8107 learner_step=15966 utd=7.88 online=8162
+[actor] ep_ret=0.00 success=0 chunks=8195 learner_step=16013 utd=7.82 online=8250
+[eval] learner_step=16013 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 16369, 'env_steps': 8195, 'effective_utd': 7.9897498474679685, 'configured_utd': 4, 'online_buffer': 8250, 'demo_buffer': 5013, 'params_version': 16369, 'max_steps': 200000, 'mean_return_100': 0.48059985257866905, 'uptime_sec': 3559.192218065262, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.94 success=1 chunks=8253 learner_step=16400 utd=7.95 online=8308
+[actor] ep_ret=0.00 success=0 chunks=8341 learner_step=16445 utd=7.89 online=8397
+[actor] ep_ret=0.00 success=0 chunks=8429 learner_step=16489 utd=7.82 online=8485
+[eval] learner_step=16489 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 16857, 'env_steps': 8429, 'effective_utd': 7.999525447858583, 'configured_utd': 4, 'online_buffer': 8485, 'demo_buffer': 5013, 'params_version': 16857, 'max_steps': 200000, 'mean_return_100': 0.48050475357367917, 'uptime_sec': 3661.3272240161896, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.93 success=1 chunks=8488 learner_step=16891 utd=7.96 online=8544
+[actor] ep_ret=0.00 success=0 chunks=8576 learner_step=16935 utd=7.90 online=8633
+[actor] ep_ret=0.93 success=1 chunks=8628 learner_step=16963 utd=7.86 online=8685
+[actor] heartbeat {'learner_step': 17001, 'env_steps': 8703, 'effective_utd': 7.813857290589452, 'configured_utd': 4, 'online_buffer': 8761, 'demo_buffer': 5013, 'params_version': 17001, 'max_steps': 200000, 'mean_return_100': 0.4896361600328189, 'uptime_sec': 3691.361576795578, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=8716 learner_step=17008 utd=7.81 online=8774
+[eval] learner_step=17008 success=90.0% mean_return=0.87
+[actor] heartbeat {'learner_step': 17334, 'env_steps': 8716, 'effective_utd': 7.95502524093621, 'configured_utd': 4, 'online_buffer': 8774, 'demo_buffer': 5013, 'params_version': 17334, 'max_steps': 200000, 'mean_return_100': 0.4896361600328189, 'uptime_sec': 3761.058035135269, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=8804 learner_step=17378 utd=7.90 online=8862
+[actor] ep_ret=0.93 success=1 chunks=8862 learner_step=17410 utd=7.86 online=8920
+[actor] ep_ret=0.00 success=0 chunks=8950 learner_step=17456 utd=7.80 online=9009
+[eval] learner_step=17456 success=50.0% mean_return=0.49
+[actor] heartbeat {'learner_step': 17839, 'env_steps': 8950, 'effective_utd': 7.972737430167598, 'configured_utd': 4, 'online_buffer': 9009, 'demo_buffer': 5013, 'params_version': 17839, 'max_steps': 200000, 'mean_return_100': 0.4798351600328189, 'uptime_sec': 3867.042886018753, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=9038 learner_step=17883 utd=7.91 online=9097
+[actor] ep_ret=0.00 success=0 chunks=9126 learner_step=17928 utd=7.86 online=9185
+[actor] ep_ret=0.00 success=0 chunks=9214 learner_step=17976 utd=7.80 online=9273
+[eval] learner_step=17976 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 18333, 'env_steps': 9214, 'effective_utd': 7.958758411113523, 'configured_utd': 4, 'online_buffer': 9273, 'demo_buffer': 5013, 'params_version': 18333, 'max_steps': 200000, 'mean_return_100': 0.4605262099328189, 'uptime_sec': 3970.3374724388123, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=9302 learner_step=18378 utd=7.90 online=9361
+[actor] ep_ret=0.93 success=1 chunks=9360 learner_step=18410 utd=7.87 online=9419
+[actor] ep_ret=0.00 success=0 chunks=9448 learner_step=18454 utd=7.81 online=9508
+[eval] learner_step=18454 success=80.0% mean_return=0.76
+[actor] heartbeat {'learner_step': 18771, 'env_steps': 9448, 'effective_utd': 7.947078746824725, 'configured_utd': 4, 'online_buffer': 9508, 'demo_buffer': 5013, 'params_version': 18771, 'max_steps': 200000, 'mean_return_100': 0.44102606241388875, 'uptime_sec': 4062.230705976486, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=9536 learner_step=18815 utd=7.89 online=9596
+[actor] ep_ret=0.00 success=0 chunks=9624 learner_step=18862 utd=7.84 online=9684
+[actor] ep_ret=0.94 success=1 chunks=9681 learner_step=18892 utd=7.81 online=9741
+[eval] learner_step=18892 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 19296, 'env_steps': 9681, 'effective_utd': 7.972730089866749, 'configured_utd': 4, 'online_buffer': 9741, 'demo_buffer': 5013, 'params_version': 19296, 'max_steps': 200000, 'mean_return_100': 0.4408349038078988, 'uptime_sec': 4171.49085521698, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.99 success=1 chunks=9736 learner_step=19325 utd=7.94 online=9797
+[actor] ep_ret=0.00 success=0 chunks=9824 learner_step=19372 utd=7.89 online=9886
+[actor] ep_ret=0.97 success=1 chunks=9881 learner_step=19402 utd=7.85 online=9943
+[eval] learner_step=19402 success=60.0% mean_return=0.59
+[actor] heartbeat {'learner_step': 19758, 'env_steps': 9881, 'effective_utd': 7.998380730695274, 'configured_utd': 4, 'online_buffer': 9943, 'demo_buffer': 5013, 'params_version': 19758, 'max_steps': 200000, 'mean_return_100': 0.45063689380789873, 'uptime_sec': 4268.271849155426, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.99 success=1 chunks=9940 learner_step=19790 utd=7.96 online=10003
+[actor] ep_ret=0.98 success=1 chunks=10002 learner_step=19823 utd=7.93 online=10066
+[actor] ep_ret=0.95 success=1 chunks=10049 learner_step=19849 utd=7.90 online=10114
+[actor] ep_ret=0.00 success=0 chunks=10137 learner_step=19894 utd=7.85 online=10203
+[eval] learner_step=19894 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 20250, 'env_steps': 10137, 'effective_utd': 7.990529742527375, 'configured_utd': 4, 'online_buffer': 10203, 'demo_buffer': 5013, 'params_version': 20250, 'max_steps': 200000, 'mean_return_100': 0.46004679430689877, 'uptime_sec': 4371.4272446632385, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.96 success=1 chunks=10202 learner_step=20285 utd=7.95 online=10268
+[actor] ep_ret=0.94 success=1 chunks=10248 learner_step=20309 utd=7.93 online=10315
+[actor] ep_ret=0.00 success=0 chunks=10336 learner_step=20354 utd=7.88 online=10404
+[actor] heartbeat {'learner_step': 20394, 'env_steps': 10415, 'effective_utd': 7.83254920787326, 'configured_utd': 4, 'online_buffer': 10483, 'demo_buffer': 5013, 'params_version': 20394, 'max_steps': 200000, 'mean_return_100': 0.45995169530190877, 'uptime_sec': 4401.44970202446, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=10424 learner_step=20398 utd=7.83 online=10492
+[eval] learner_step=20398 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 20755, 'env_steps': 10424, 'effective_utd': 7.964313123561013, 'configured_utd': 4, 'online_buffer': 10492, 'demo_buffer': 5013, 'params_version': 20755, 'max_steps': 200000, 'mean_return_100': 0.45053689380789885, 'uptime_sec': 4476.540034770966, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=10512 learner_step=20799 utd=7.91 online=10580
+[actor] ep_ret=0.00 success=0 chunks=10600 learner_step=20843 utd=7.87 online=10668
+[actor] ep_ret=0.00 success=0 chunks=10688 learner_step=20893 utd=7.82 online=10756
+[eval] learner_step=20893 success=50.0% mean_return=0.49
+[actor] heartbeat {'learner_step': 21295, 'env_steps': 10688, 'effective_utd': 7.969685628742515, 'configured_utd': 4, 'online_buffer': 10756, 'demo_buffer': 5013, 'params_version': 21295, 'max_steps': 200000, 'mean_return_100': 0.42161424032882894, 'uptime_sec': 4589.210689544678, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.93 success=1 chunks=10756 learner_step=21333 utd=7.93 online=10824
+[actor] ep_ret=0.94 success=1 chunks=10809 learner_step=21362 utd=7.91 online=10878
+[actor] ep_ret=0.99 success=1 chunks=10883 learner_step=21400 utd=7.87 online=10953
+[actor] heartbeat {'learner_step': 21438, 'env_steps': 10955, 'effective_utd': 7.827658603377453, 'configured_utd': 4, 'online_buffer': 11026, 'demo_buffer': 5013, 'params_version': 21438, 'max_steps': 200000, 'mean_return_100': 0.43084273520190874, 'uptime_sec': 4619.231313467026, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=10971 learner_step=21446 utd=7.82 online=11042
+[eval] learner_step=21446 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 21853, 'env_steps': 10971, 'effective_utd': 7.967550815787075, 'configured_utd': 4, 'online_buffer': 11042, 'demo_buffer': 5013, 'params_version': 21853, 'max_steps': 200000, 'mean_return_100': 0.42133283470290883, 'uptime_sec': 4706.103052616119, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=11059 learner_step=21897 utd=7.92 online=11130
+[actor] ep_ret=0.95 success=1 chunks=11120 learner_step=21932 utd=7.89 online=11191
+[actor] ep_ret=0.00 success=0 chunks=11208 learner_step=21981 utd=7.84 online=11280
+[eval] learner_step=21981 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 22316, 'env_steps': 11208, 'effective_utd': 7.964311206281228, 'configured_utd': 4, 'online_buffer': 11280, 'demo_buffer': 5013, 'params_version': 22316, 'max_steps': 200000, 'mean_return_100': 0.4028807747646991, 'uptime_sec': 4802.916221857071, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=11296 learner_step=22360 utd=7.92 online=11368
+[actor] ep_ret=0.00 success=0 chunks=11384 learner_step=22408 utd=7.87 online=11456
+[actor] ep_ret=0.00 success=0 chunks=11472 learner_step=22452 utd=7.83 online=11544
+[eval] learner_step=22452 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 22789, 'env_steps': 11472, 'effective_utd': 7.945955369595537, 'configured_utd': 4, 'online_buffer': 11544, 'demo_buffer': 5013, 'params_version': 22789, 'max_steps': 200000, 'mean_return_100': 0.4028807747646991, 'uptime_sec': 4901.951434135437, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=11560 learner_step=22834 utd=7.90 online=11632
+[actor] ep_ret=0.00 success=0 chunks=11648 learner_step=22879 utd=7.86 online=11720
+[actor] ep_ret=0.00 success=0 chunks=11736 learner_step=22923 utd=7.81 online=11808
+[eval] learner_step=22923 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 23264, 'env_steps': 11736, 'effective_utd': 7.929107021131561, 'configured_utd': 4, 'online_buffer': 11808, 'demo_buffer': 5013, 'params_version': 23264, 'max_steps': 200000, 'mean_return_100': 0.3839541611856292, 'uptime_sec': 5001.698036670685, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=11824 learner_step=23310 utd=7.89 online=11896
+[actor] ep_ret=0.00 success=0 chunks=11912 learner_step=23354 utd=7.84 online=11984
+[actor] ep_ret=0.98 success=1 chunks=11972 learner_step=23387 utd=7.81 online=12044
+[eval] learner_step=23387 success=30.0% mean_return=0.29
+[actor] heartbeat {'learner_step': 23810, 'env_steps': 11972, 'effective_utd': 7.9552288673571665, 'configured_utd': 4, 'online_buffer': 12044, 'demo_buffer': 5013, 'params_version': 23810, 'max_steps': 200000, 'mean_return_100': 0.37453935969161917, 'uptime_sec': 5115.759436607361, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.98 success=1 chunks=12028 learner_step=23840 utd=7.93 online=12101
+[actor] ep_ret=0.96 success=1 chunks=12092 learner_step=23877 utd=7.90 online=12166
+[actor] ep_ret=0.99 success=1 chunks=12152 learner_step=23908 utd=7.87 online=12227
+[actor] ep_ret=0.97 success=1 chunks=12203 learner_step=23936 utd=7.85 online=12279
+[eval] learner_step=23936 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 24344, 'env_steps': 12203, 'effective_utd': 7.979677128574941, 'configured_utd': 4, 'online_buffer': 12279, 'demo_buffer': 5013, 'params_version': 24344, 'max_steps': 200000, 'mean_return_100': 0.3756922013394694, 'uptime_sec': 5227.4592072963715, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.95 success=1 chunks=12255 learner_step=24372 utd=7.95 online=12332
+[actor] ep_ret=0.00 success=0 chunks=12343 learner_step=24417 utd=7.91 online=12421
+[actor] ep_ret=0.00 success=0 chunks=12431 learner_step=24462 utd=7.87 online=12509
+[eval] learner_step=24462 success=80.0% mean_return=0.78
+[actor] heartbeat {'learner_step': 24809, 'env_steps': 12431, 'effective_utd': 7.982945861153568, 'configured_utd': 4, 'online_buffer': 12509, 'demo_buffer': 5013, 'params_version': 24809, 'max_steps': 200000, 'mean_return_100': 0.3655011018384694, 'uptime_sec': 5324.479359865189, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.96 success=1 chunks=12483 learner_step=24838 utd=7.96 online=12561
+[actor] ep_ret=0.00 success=0 chunks=12571 learner_step=24882 utd=7.92 online=12650
+[actor] ep_ret=1.00 success=1 chunks=12633 learner_step=24916 utd=7.89 online=12712
+[eval] learner_step=24916 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 25286, 'env_steps': 12633, 'effective_utd': 8.006332620913481, 'configured_utd': 4, 'online_buffer': 12712, 'demo_buffer': 5013, 'params_version': 25286, 'max_steps': 200000, 'mean_return_100': 0.3755971614394694, 'uptime_sec': 5424.4939205646515, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=1.00 success=1 chunks=12678 learner_step=25311 utd=7.99 online=12758
+[actor] ep_ret=0.00 success=0 chunks=12766 learner_step=25354 utd=7.94 online=12847
+[actor] ep_ret=0.99 success=1 chunks=12818 learner_step=25383 utd=7.92 online=12899
+[actor] ep_ret=1.00 success=1 chunks=12874 learner_step=25413 utd=7.90 online=12956
+[eval] learner_step=25413 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 25772, 'env_steps': 12874, 'effective_utd': 8.007456889855522, 'configured_utd': 4, 'online_buffer': 12956, 'demo_buffer': 5013, 'params_version': 25772, 'max_steps': 200000, 'mean_return_100': 0.4054971614394694, 'uptime_sec': 5526.436255931854, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=12962 learner_step=25817 utd=7.97 online=13045
+[actor] ep_ret=0.00 success=0 chunks=13050 learner_step=25861 utd=7.93 online=13133
+[actor] ep_ret=0.00 success=0 chunks=13138 learner_step=25906 utd=7.89 online=13221
+[eval] learner_step=25906 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 26271, 'env_steps': 13138, 'effective_utd': 7.998477698279799, 'configured_utd': 4, 'online_buffer': 13221, 'demo_buffer': 5013, 'params_version': 26271, 'max_steps': 200000, 'mean_return_100': 0.3862852412394694, 'uptime_sec': 5631.1193833351135, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.95 success=1 chunks=13197 learner_step=26304 utd=7.97 online=13280
+[actor] ep_ret=0.00 success=0 chunks=13285 learner_step=26348 utd=7.93 online=13369
+[actor] ep_ret=0.93 success=1 chunks=13358 learner_step=26388 utd=7.90 online=13442
+[eval] learner_step=26388 success=90.0% mean_return=0.87
+[actor] heartbeat {'learner_step': 26710, 'env_steps': 13358, 'effective_utd': 7.998203323850876, 'configured_utd': 4, 'online_buffer': 13442, 'demo_buffer': 5013, 'params_version': 26710, 'max_steps': 200000, 'mean_return_100': 0.3857088351175393, 'uptime_sec': 5722.454060554504, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.96 success=1 chunks=13414 learner_step=26740 utd=7.97 online=13499
+[actor] ep_ret=1.00 success=1 chunks=13486 learner_step=26778 utd=7.94 online=13572
+[actor] ep_ret=0.95 success=1 chunks=13534 learner_step=26803 utd=7.92 online=13621
+[actor] ep_ret=0.00 success=0 chunks=13622 learner_step=26847 utd=7.88 online=13710
+[eval] learner_step=26847 success=20.0% mean_return=0.20
+[actor] heartbeat {'learner_step': 27270, 'env_steps': 13622, 'effective_utd': 8.007634708559683, 'configured_utd': 4, 'online_buffer': 13710, 'demo_buffer': 5013, 'params_version': 27270, 'max_steps': 200000, 'mean_return_100': 0.41482469571653935, 'uptime_sec': 5840.132480144501, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.94 success=1 chunks=13672 learner_step=27296 utd=7.99 online=13760
+[actor] ep_ret=0.00 success=0 chunks=13760 learner_step=27342 utd=7.95 online=13849
+[actor] ep_ret=0.00 success=0 chunks=13848 learner_step=27392 utd=7.91 online=13937
+[eval] learner_step=27392 success=90.0% mean_return=0.86
+[actor] heartbeat {'learner_step': 27710, 'env_steps': 13848, 'effective_utd': 8.004043905257078, 'configured_utd': 4, 'online_buffer': 13937, 'demo_buffer': 5013, 'params_version': 27710, 'max_steps': 200000, 'mean_return_100': 0.4242394972105493, 'uptime_sec': 5932.1986446380615, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=13936 learner_step=27756 utd=7.97 online=14025
+[actor] ep_ret=0.00 success=0 chunks=14024 learner_step=27800 utd=7.93 online=14113
+[actor] ep_ret=0.00 success=0 chunks=14112 learner_step=27847 utd=7.89 online=14201
+[eval] learner_step=27847 success=40.0% mean_return=0.38
+[actor] heartbeat {'learner_step': 28256, 'env_steps': 14112, 'effective_utd': 8.00907029478458, 'configured_utd': 4, 'online_buffer': 14201, 'demo_buffer': 5013, 'params_version': 28256, 'max_steps': 200000, 'mean_return_100': 0.4143394972105493, 'uptime_sec': 6046.4370629787445, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.97 success=1 chunks=14171 learner_step=28287 utd=7.98 online=14260
+[actor] ep_ret=0.00 success=0 chunks=14259 learner_step=28331 utd=7.95 online=14349
+[actor] ep_ret=0.94 success=1 chunks=14308 learner_step=28359 utd=7.93 online=14398
+[actor] ep_ret=0.93 success=1 chunks=14360 learner_step=28391 utd=7.91 online=14451
+[eval] learner_step=28391 success=50.0% mean_return=0.49
+[actor] heartbeat {'learner_step': 28765, 'env_steps': 14360, 'effective_utd': 8.012534818941504, 'configured_utd': 4, 'online_buffer': 14451, 'demo_buffer': 5013, 'params_version': 28765, 'max_steps': 200000, 'mean_return_100': 0.43345728870455924, 'uptime_sec': 6152.668565273285, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=14448 learner_step=28809 utd=7.98 online=14540
+[actor] ep_ret=0.00 success=0 chunks=14536 learner_step=28854 utd=7.94 online=14628
+[actor] ep_ret=0.93 success=1 chunks=14589 learner_step=28886 utd=7.92 online=14681
+[eval] learner_step=28886 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 29261, 'env_steps': 14589, 'effective_utd': 8.0227568716156, 'configured_utd': 4, 'online_buffer': 14681, 'demo_buffer': 5013, 'params_version': 29261, 'max_steps': 200000, 'mean_return_100': 0.4233680416846292, 'uptime_sec': 6256.648448944092, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=1.00 success=1 chunks=14637 learner_step=29287 utd=8.00 online=14730
+[actor] ep_ret=0.00 success=0 chunks=14725 learner_step=29331 utd=7.97 online=14819
+[actor] ep_ret=0.00 success=0 chunks=14813 learner_step=29377 utd=7.93 online=14907
+[eval] learner_step=29377 success=50.0% mean_return=0.49
+[actor] heartbeat {'learner_step': 29790, 'env_steps': 14813, 'effective_utd': 8.044285424964558, 'configured_utd': 4, 'online_buffer': 14907, 'demo_buffer': 5013, 'params_version': 29790, 'max_steps': 200000, 'mean_return_100': 0.41415224019061925, 'uptime_sec': 6367.151238918304, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=14901 learner_step=29842 utd=8.01 online=14995
+[actor] ep_ret=0.00 success=0 chunks=14989 learner_step=29892 utd=7.98 online=15083
+[actor] ep_ret=1.00 success=1 chunks=15049 learner_step=29925 utd=7.95 online=15143
+[eval] learner_step=29925 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 30283, 'env_steps': 15049, 'effective_utd': 8.04917270250515, 'configured_utd': 4, 'online_buffer': 15143, 'demo_buffer': 5013, 'params_version': 30283, 'max_steps': 200000, 'mean_return_100': 0.40464233969161917, 'uptime_sec': 6469.983704090118, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.94 success=1 chunks=15106 learner_step=30315 utd=8.03 online=15201
+[actor] ep_ret=0.94 success=1 chunks=15166 learner_step=30348 utd=8.00 online=15262
+[actor] ep_ret=0.00 success=0 chunks=15254 learner_step=30392 utd=7.97 online=15351
+[eval] learner_step=30392 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 30745, 'env_steps': 15254, 'effective_utd': 8.062147633407632, 'configured_utd': 4, 'online_buffer': 15351, 'demo_buffer': 5013, 'params_version': 30745, 'max_steps': 200000, 'mean_return_100': 0.4234719426796392, 'uptime_sec': 6566.727094888687, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.94 success=1 chunks=15300 learner_step=30769 utd=8.04 online=15397
+[actor] ep_ret=0.93 success=1 chunks=15356 learner_step=30799 utd=8.02 online=15454
+[actor] ep_ret=0.95 success=1 chunks=15423 learner_step=30835 utd=8.00 online=15522
+[actor] heartbeat {'learner_step': 30889, 'env_steps': 15510, 'effective_utd': 7.96621534493875, 'configured_utd': 4, 'online_buffer': 15610, 'demo_buffer': 5013, 'params_version': 30889, 'max_steps': 200000, 'mean_return_100': 0.4321143081517191, 'uptime_sec': 6596.758810520172, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=15511 learner_step=30889 utd=7.97 online=15611
+[eval] learner_step=30889 success=50.0% mean_return=0.49
+[actor] heartbeat {'learner_step': 31258, 'env_steps': 15511, 'effective_utd': 8.060860034814002, 'configured_utd': 4, 'online_buffer': 15611, 'demo_buffer': 5013, 'params_version': 31258, 'max_steps': 200000, 'mean_return_100': 0.43211430815171914, 'uptime_sec': 6674.144914388657, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.97 success=1 chunks=15557 learner_step=31283 utd=8.04 online=15657
+[actor] ep_ret=0.00 success=0 chunks=15645 learner_step=31332 utd=8.01 online=15746
+[actor] ep_ret=0.00 success=0 chunks=15733 learner_step=31376 utd=7.98 online=15834
+[eval] learner_step=31376 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 31779, 'env_steps': 15733, 'effective_utd': 8.07957795716011, 'configured_utd': 4, 'online_buffer': 15834, 'demo_buffer': 5013, 'params_version': 31779, 'max_steps': 200000, 'mean_return_100': 0.432402496657709, 'uptime_sec': 6783.099329948425, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=15821 learner_step=31828 utd=8.05 online=15922
+[actor] ep_ret=0.96 success=1 chunks=15889 learner_step=31867 utd=8.02 online=15990
+[actor] ep_ret=0.95 success=1 chunks=15963 learner_step=31907 utd=8.00 online=16065
+[eval] learner_step=31907 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 32283, 'env_steps': 15963, 'effective_utd': 8.089456869009584, 'configured_utd': 4, 'online_buffer': 16065, 'demo_buffer': 5013, 'params_version': 32283, 'max_steps': 200000, 'mean_return_100': 0.4421977037776392, 'uptime_sec': 6888.036448001862, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.94 success=1 chunks=16020 learner_step=32313 utd=8.07 online=16123
+[actor] ep_ret=1.00 success=1 chunks=16082 learner_step=32349 utd=8.05 online=16186
+[actor] ep_ret=0.00 success=0 chunks=16170 learner_step=32393 utd=8.01 online=16275
+[eval] learner_step=32393 success=90.0% mean_return=0.86
+[actor] heartbeat {'learner_step': 32725, 'env_steps': 16170, 'effective_utd': 8.095238095238095, 'configured_utd': 4, 'online_buffer': 16275, 'demo_buffer': 5013, 'params_version': 32725, 'max_steps': 200000, 'mean_return_100': 0.45229185179257925, 'uptime_sec': 6980.322981119156, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=16258 learner_step=32769 utd=8.06 online=16363
+[actor] ep_ret=0.00 success=0 chunks=16346 learner_step=32814 utd=8.03 online=16451
+[actor] ep_ret=0.00 success=0 chunks=16434 learner_step=32858 utd=8.00 online=16539
+[eval] learner_step=32858 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 33188, 'env_steps': 16434, 'effective_utd': 8.07788730680297, 'configured_utd': 4, 'online_buffer': 16539, 'demo_buffer': 5013, 'params_version': 33188, 'max_steps': 200000, 'mean_return_100': 0.4429711983135094, 'uptime_sec': 7077.508741378784, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=16522 learner_step=33233 utd=8.05 online=16627
+[actor] ep_ret=0.00 success=0 chunks=16610 learner_step=33277 utd=8.01 online=16715
+[actor] ep_ret=0.00 success=0 chunks=16698 learner_step=33323 utd=7.98 online=16803
+[eval] learner_step=33323 success=40.0% mean_return=0.38
+[actor] heartbeat {'learner_step': 33738, 'env_steps': 16698, 'effective_utd': 8.08192597915918, 'configured_utd': 4, 'online_buffer': 16803, 'demo_buffer': 5013, 'params_version': 33738, 'max_steps': 200000, 'mean_return_100': 0.44297119831350934, 'uptime_sec': 7193.053624868393, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.99 success=1 chunks=16760 learner_step=33772 utd=8.06 online=16865
+[actor] ep_ret=0.97 success=1 chunks=16814 learner_step=33803 utd=8.04 online=16920
+[actor] ep_ret=0.00 success=0 chunks=16902 learner_step=33847 utd=8.01 online=17009
+[eval] learner_step=33847 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 34161, 'env_steps': 16902, 'effective_utd': 8.084487042953496, 'configured_utd': 4, 'online_buffer': 17009, 'demo_buffer': 5013, 'params_version': 34161, 'max_steps': 200000, 'mean_return_100': 0.4532535348344395, 'uptime_sec': 7281.587093830109, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.97 success=1 chunks=16968 learner_step=34197 utd=8.06 online=17075
+[actor] ep_ret=0.00 success=0 chunks=17056 learner_step=34241 utd=8.03 online=17164
+[actor] ep_ret=0.98 success=1 chunks=17104 learner_step=34266 utd=8.01 online=17212
+[eval] learner_step=34266 success=60.0% mean_return=0.59
+[actor] heartbeat {'learner_step': 34647, 'env_steps': 17104, 'effective_utd': 8.10266604303087, 'configured_utd': 4, 'online_buffer': 17212, 'demo_buffer': 5013, 'params_version': 34647, 'max_steps': 200000, 'mean_return_100': 0.4534427233404294, 'uptime_sec': 7383.56027007103, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.95 success=1 chunks=17163 learner_step=34678 utd=8.08 online=17272
+[actor] ep_ret=0.00 success=0 chunks=17251 learner_step=34731 utd=8.05 online=17361
+[actor] ep_ret=0.94 success=1 chunks=17319 learner_step=34769 utd=8.03 online=17429
+[eval] learner_step=34769 success=50.0% mean_return=0.47
+[actor] heartbeat {'learner_step': 35152, 'env_steps': 17319, 'effective_utd': 8.118713551590739, 'configured_utd': 4, 'online_buffer': 17429, 'demo_buffer': 5013, 'params_version': 35152, 'max_steps': 200000, 'mean_return_100': 0.4527644353334395, 'uptime_sec': 7489.034085035324, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=17407 learner_step=35203 utd=8.09 online=17518
+[actor] ep_ret=0.93 success=1 chunks=17459 learner_step=35231 utd=8.07 online=17570
+[actor] ep_ret=0.93 success=1 chunks=17509 learner_step=35258 utd=8.05 online=17621
+[actor] heartbeat {'learner_step': 35296, 'env_steps': 17581, 'effective_utd': 8.030487458051306, 'configured_utd': 4, 'online_buffer': 17694, 'demo_buffer': 5013, 'params_version': 35296, 'max_steps': 200000, 'mean_return_100': 0.45209484179257925, 'uptime_sec': 7519.119557142258, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=17597 learner_step=35304 utd=8.03 online=17710
+[eval] learner_step=35304 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 35647, 'env_steps': 17597, 'effective_utd': 8.102972097516622, 'configured_utd': 4, 'online_buffer': 17710, 'demo_buffer': 5013, 'params_version': 35647, 'max_steps': 200000, 'mean_return_100': 0.44248888169257933, 'uptime_sec': 7592.888397693634, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.98 success=1 chunks=17670 learner_step=35686 utd=8.08 online=17783
+[actor] ep_ret=0.00 success=0 chunks=17758 learner_step=35731 utd=8.05 online=17872
+[actor] ep_ret=0.00 success=0 chunks=17846 learner_step=35777 utd=8.02 online=17960
+[eval] learner_step=35777 success=30.0% mean_return=0.29
+[actor] heartbeat {'learner_step': 36204, 'env_steps': 17846, 'effective_utd': 8.114759609996637, 'configured_utd': 4, 'online_buffer': 17960, 'demo_buffer': 5013, 'params_version': 36204, 'max_steps': 200000, 'mean_return_100': 0.44287508019856925, 'uptime_sec': 7709.625583410263, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=17934 learner_step=36248 utd=8.08 online=18048
+[actor] ep_ret=0.96 success=1 chunks=18000 learner_step=36284 utd=8.06 online=18114
+[actor] ep_ret=0.00 success=0 chunks=18088 learner_step=36331 utd=8.03 online=18203
+[eval] learner_step=36331 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 36722, 'env_steps': 18088, 'effective_utd': 8.120743034055728, 'configured_utd': 4, 'online_buffer': 18203, 'demo_buffer': 5013, 'params_version': 36722, 'max_steps': 200000, 'mean_return_100': 0.45248104029856934, 'uptime_sec': 7817.647047519684, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=18176 learner_step=36766 utd=8.09 online=18291
+[actor] ep_ret=0.00 success=0 chunks=18264 learner_step=36811 utd=8.06 online=18379
+[actor] ep_ret=0.98 success=1 chunks=18324 learner_step=36843 utd=8.04 online=18439
+[eval] learner_step=36843 success=90.0% mean_return=0.87
+[actor] heartbeat {'learner_step': 37151, 'env_steps': 18324, 'effective_utd': 8.109801353416284, 'configured_utd': 4, 'online_buffer': 18439, 'demo_buffer': 5013, 'params_version': 37151, 'max_steps': 200000, 'mean_return_100': 0.4336465853254894, 'uptime_sec': 7907.578281164169, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.98 success=1 chunks=18393 learner_step=37188 utd=8.09 online=18509
+[actor] ep_ret=0.98 success=1 chunks=18453 learner_step=37221 utd=8.07 online=18570
+[actor] ep_ret=0.00 success=0 chunks=18541 learner_step=37266 utd=8.04 online=18659
+[eval] learner_step=37266 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 37634, 'env_steps': 18541, 'effective_utd': 8.119087427862574, 'configured_utd': 4, 'online_buffer': 18659, 'demo_buffer': 5013, 'params_version': 37634, 'max_steps': 200000, 'mean_return_100': 0.44373868482648937, 'uptime_sec': 8008.605452537537, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.95 success=1 chunks=18616 learner_step=37679 utd=8.10 online=18734
+[actor] ep_ret=0.94 success=1 chunks=18672 learner_step=37710 utd=8.08 online=18791
+[actor] ep_ret=0.93 success=1 chunks=18720 learner_step=37737 utd=8.06 online=18840
+[actor] heartbeat {'learner_step': 37779, 'env_steps': 18805, 'effective_utd': 8.035947886200479, 'configured_utd': 4, 'online_buffer': 18926, 'demo_buffer': 5013, 'params_version': 37779, 'max_steps': 200000, 'mean_return_100': 0.47198404029856933, 'uptime_sec': 8038.7121250629425, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=18808 learner_step=37781 utd=8.04 online=18929
+[eval] learner_step=37781 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 38150, 'env_steps': 18808, 'effective_utd': 8.113568694172692, 'configured_utd': 4, 'online_buffer': 18929, 'demo_buffer': 5013, 'params_version': 38150, 'max_steps': 200000, 'mean_return_100': 0.4719840402985694, 'uptime_sec': 8115.939666748047, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=1.00 success=1 chunks=18861 learner_step=38180 utd=8.10 online=18982
+[actor] ep_ret=0.00 success=0 chunks=18949 learner_step=38224 utd=8.07 online=19071
+[actor] ep_ret=0.00 success=0 chunks=19037 learner_step=38267 utd=8.04 online=19159
+[eval] learner_step=38267 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 38680, 'env_steps': 19037, 'effective_utd': 8.127330987025267, 'configured_utd': 4, 'online_buffer': 19159, 'demo_buffer': 5013, 'params_version': 38680, 'max_steps': 200000, 'mean_return_100': 0.48198404029856934, 'uptime_sec': 8226.69727230072, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=19125 learner_step=38726 utd=8.10 online=19247
+[actor] ep_ret=0.00 success=0 chunks=19213 learner_step=38772 utd=8.07 online=19335
+[actor] ep_ret=0.97 success=1 chunks=19264 learner_step=38801 utd=8.06 online=19386
+[eval] learner_step=38801 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 39162, 'env_steps': 19264, 'effective_utd': 8.131644518272426, 'configured_utd': 4, 'online_buffer': 19386, 'demo_buffer': 5013, 'params_version': 39162, 'max_steps': 200000, 'mean_return_100': 0.4818860302985692, 'uptime_sec': 8327.429793596268, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=19352 learner_step=39208 utd=8.10 online=19475
+[actor] ep_ret=0.99 success=1 chunks=19410 learner_step=39239 utd=8.09 online=19533
+[actor] ep_ret=1.00 success=1 chunks=19471 learner_step=39270 utd=8.07 online=19595
+[eval] learner_step=39270 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 39660, 'env_steps': 19471, 'effective_utd': 8.147501412356839, 'configured_utd': 4, 'online_buffer': 19595, 'demo_buffer': 5013, 'params_version': 39660, 'max_steps': 200000, 'mean_return_100': 0.47247907019856933, 'uptime_sec': 8431.229407310486, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.93 success=1 chunks=19527 learner_step=39691 utd=8.13 online=19652
+[actor] ep_ret=0.00 success=0 chunks=19615 learner_step=39736 utd=8.10 online=19741
+[actor] ep_ret=0.00 success=0 chunks=19703 learner_step=39781 utd=8.08 online=19829
+[eval] learner_step=39781 success=90.0% mean_return=0.86
+[actor] heartbeat {'learner_step': 40136, 'env_steps': 19703, 'effective_utd': 8.148200781606862, 'configured_utd': 4, 'online_buffer': 19829, 'demo_buffer': 5013, 'params_version': 40136, 'max_steps': 200000, 'mean_return_100': 0.4625868331786392, 'uptime_sec': 8530.932838916779, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=19791 learner_step=40184 utd=8.12 online=19917
+[actor] ep_ret=0.00 success=0 chunks=19879 learner_step=40228 utd=8.09 online=20005
+[actor] ep_ret=0.93 success=1 chunks=19925 learner_step=40254 utd=8.08 online=20051
+[eval] learner_step=40254 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 40637, 'env_steps': 19925, 'effective_utd': 8.157992471769134, 'configured_utd': 4, 'online_buffer': 20051, 'demo_buffer': 5013, 'params_version': 40637, 'max_steps': 200000, 'mean_return_100': 0.4623015265577092, 'uptime_sec': 8636.01781463623, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=20013 learner_step=40684 utd=8.13 online=20140
+[actor] ep_ret=0.00 success=0 chunks=20101 learner_step=40728 utd=8.10 online=20228
+[actor] ep_ret=0.00 success=0 chunks=20189 learner_step=40772 utd=8.08 online=20316
+[eval] learner_step=40772 success=40.0% mean_return=0.38
+[actor] heartbeat {'learner_step': 41157, 'env_steps': 20189, 'effective_utd': 8.1543414730794, 'configured_utd': 4, 'online_buffer': 20316, 'demo_buffer': 5013, 'params_version': 41157, 'max_steps': 200000, 'mean_return_100': 0.44230152655770916, 'uptime_sec': 8745.493945598602, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=20277 learner_step=41202 utd=8.13 online=20404
+[actor] ep_ret=0.93 success=1 chunks=20361 learner_step=41246 utd=8.10 online=20488
+[actor] ep_ret=0.93 success=1 chunks=20448 learner_step=41293 utd=8.08 online=20576
+[eval] learner_step=41293 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 41664, 'env_steps': 20448, 'effective_utd': 8.150234741784038, 'configured_utd': 4, 'online_buffer': 20576, 'demo_buffer': 5013, 'params_version': 41664, 'max_steps': 200000, 'mean_return_100': 0.4410428335158489, 'uptime_sec': 8851.594023704529, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=20536 learner_step=41707 utd=8.12 online=20665
+[actor] ep_ret=0.00 success=0 chunks=20624 learner_step=41753 utd=8.10 online=20753
+[actor] ep_ret=0.00 success=0 chunks=20712 learner_step=41798 utd=8.07 online=20841
+[eval] learner_step=41798 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 42180, 'env_steps': 20712, 'effective_utd': 8.146002317497103, 'configured_utd': 4, 'online_buffer': 20841, 'demo_buffer': 5013, 'params_version': 42180, 'max_steps': 200000, 'mean_return_100': 0.4315329330168489, 'uptime_sec': 8960.110527276993, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.99 success=1 chunks=20769 learner_step=42209 utd=8.13 online=20898
+[actor] ep_ret=0.98 success=1 chunks=20836 learner_step=42250 utd=8.11 online=20966
+[actor] ep_ret=0.95 success=1 chunks=20887 learner_step=42277 utd=8.10 online=21018
+[actor] ep_ret=0.93 success=1 chunks=20943 learner_step=42310 utd=8.08 online=21075
+[eval] learner_step=42310 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 42693, 'env_steps': 20943, 'effective_utd': 8.154132645752757, 'configured_utd': 4, 'online_buffer': 21075, 'demo_buffer': 5013, 'params_version': 42693, 'max_steps': 200000, 'mean_return_100': 0.44113787341584887, 'uptime_sec': 9067.456584453583, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=21031 learner_step=42737 utd=8.13 online=21164
+[actor] ep_ret=0.00 success=0 chunks=21119 learner_step=42781 utd=8.10 online=21252
+[actor] ep_ret=0.00 success=0 chunks=21207 learner_step=42825 utd=8.08 online=21340
+[eval] learner_step=42825 success=70.0% mean_return=0.66
+[actor] heartbeat {'learner_step': 43166, 'env_steps': 21207, 'effective_utd': 8.141839958504267, 'configured_utd': 4, 'online_buffer': 21340, 'demo_buffer': 5013, 'params_version': 43166, 'max_steps': 200000, 'mean_return_100': 0.4222131714228389, 'uptime_sec': 9166.558658838272, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=21295 learner_step=43211 utd=8.12 online=21428
+[actor] ep_ret=0.00 success=0 chunks=21383 learner_step=43257 utd=8.09 online=21516
+[actor] ep_ret=0.00 success=0 chunks=21471 learner_step=43303 utd=8.07 online=21604
+[eval] learner_step=43303 success=40.0% mean_return=0.38
+[actor] heartbeat {'learner_step': 43707, 'env_steps': 21471, 'effective_utd': 8.14251781472684, 'configured_utd': 4, 'online_buffer': 21604, 'demo_buffer': 5013, 'params_version': 43707, 'max_steps': 200000, 'mean_return_100': 0.4222131714228389, 'uptime_sec': 9279.466046571732, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=21559 learner_step=43755 utd=8.12 online=21692
+[actor] ep_ret=0.96 success=1 chunks=21612 learner_step=43784 utd=8.10 online=21745
+[actor] ep_ret=0.00 success=0 chunks=21700 learner_step=43828 utd=8.08 online=21834
+[eval] learner_step=43828 success=50.0% mean_return=0.49
+[actor] heartbeat {'learner_step': 44203, 'env_steps': 21700, 'effective_utd': 8.148018433179724, 'configured_utd': 4, 'online_buffer': 21834, 'demo_buffer': 5013, 'params_version': 44203, 'max_steps': 200000, 'mean_return_100': 0.4221161415228389, 'uptime_sec': 9383.11950469017, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=21788 learner_step=44247 utd=8.12 online=21922
+[actor] ep_ret=0.00 success=0 chunks=21876 learner_step=44291 utd=8.10 online=22010
+[actor] ep_ret=0.94 success=1 chunks=21935 learner_step=44323 utd=8.08 online=22069
+[eval] learner_step=44323 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 44715, 'env_steps': 21935, 'effective_utd': 8.154091634374288, 'configured_utd': 4, 'online_buffer': 22069, 'demo_buffer': 5013, 'params_version': 44715, 'max_steps': 200000, 'mean_return_100': 0.41279548804376903, 'uptime_sec': 9490.838317394257, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=22023 learner_step=44761 utd=8.13 online=22158
+[actor] ep_ret=0.00 success=0 chunks=22111 learner_step=44806 utd=8.11 online=22246
+[actor] ep_ret=0.00 success=0 chunks=22199 learner_step=44852 utd=8.08 online=22334
+[eval] learner_step=44852 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 45201, 'env_steps': 22199, 'effective_utd': 8.14469120230641, 'configured_utd': 4, 'online_buffer': 22334, 'demo_buffer': 5013, 'params_version': 45201, 'max_steps': 200000, 'mean_return_100': 0.40347483456469907, 'uptime_sec': 9592.717482805252, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=22287 learner_step=45247 utd=8.12 online=22422
+[actor] ep_ret=0.93 success=1 chunks=22352 learner_step=45284 utd=8.10 online=22487
+[actor] ep_ret=0.00 success=0 chunks=22440 learner_step=45328 utd=8.08 online=22576
+[eval] learner_step=45328 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 45676, 'env_steps': 22440, 'effective_utd': 8.141889483065954, 'configured_utd': 4, 'online_buffer': 22576, 'demo_buffer': 5013, 'params_version': 45676, 'max_steps': 200000, 'mean_return_100': 0.40279548804376897, 'uptime_sec': 9692.003724098206, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=22528 learner_step=45720 utd=8.12 online=22664
+[actor] ep_ret=0.97 success=1 chunks=22591 learner_step=45754 utd=8.10 online=22727
+[actor] ep_ret=0.00 success=0 chunks=22679 learner_step=45798 utd=8.08 online=22816
+[eval] learner_step=45798 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 46158, 'env_steps': 22679, 'effective_utd': 8.14109969575378, 'configured_utd': 4, 'online_buffer': 22816, 'demo_buffer': 5013, 'params_version': 46158, 'max_steps': 200000, 'mean_return_100': 0.402498478043769, 'uptime_sec': 9793.07477426529, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=22767 learner_step=46202 utd=8.12 online=22904
+[actor] ep_ret=0.96 success=1 chunks=22834 learner_step=46240 utd=8.10 online=22971
+[actor] ep_ret=0.00 success=0 chunks=22922 learner_step=46284 utd=8.08 online=23060
+[eval] learner_step=46284 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 46670, 'env_steps': 22922, 'effective_utd': 8.144140999912748, 'configured_utd': 4, 'online_buffer': 23060, 'demo_buffer': 5013, 'params_version': 46670, 'max_steps': 200000, 'mean_return_100': 0.39327483515574907, 'uptime_sec': 9900.62188744545, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=23010 learner_step=46718 utd=8.12 online=23148
+[actor] ep_ret=0.00 success=0 chunks=23098 learner_step=46762 utd=8.10 online=23236
+[actor] ep_ret=0.00 success=0 chunks=23186 learner_step=46808 utd=8.08 online=23324
+[eval] learner_step=46808 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 47156, 'env_steps': 23186, 'effective_utd': 8.135254032605882, 'configured_utd': 4, 'online_buffer': 23324, 'demo_buffer': 5013, 'params_version': 47156, 'max_steps': 200000, 'mean_return_100': 0.3650294796836691, 'uptime_sec': 10002.074082136154, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=23274 learner_step=47201 utd=8.11 online=23412
+[actor] ep_ret=0.00 success=0 chunks=23362 learner_step=47245 utd=8.09 online=23500
+[actor] ep_ret=0.98 success=1 chunks=23410 learner_step=47271 utd=8.08 online=23548
+[eval] learner_step=47271 success=30.0% mean_return=0.28
+[actor] heartbeat {'learner_step': 47702, 'env_steps': 23410, 'effective_utd': 8.15070482699701, 'configured_utd': 4, 'online_buffer': 23548, 'demo_buffer': 5013, 'params_version': 47702, 'max_steps': 200000, 'mean_return_100': 0.36512748968366915, 'uptime_sec': 10116.296073198318, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=23498 learner_step=47747 utd=8.13 online=23637
+[actor] ep_ret=0.00 success=0 chunks=23586 learner_step=47793 utd=8.11 online=23725
+[actor] ep_ret=0.00 success=0 chunks=23674 learner_step=47843 utd=8.08 online=23813
+[eval] learner_step=47843 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 48206, 'env_steps': 23674, 'effective_utd': 8.144969164484245, 'configured_utd': 4, 'online_buffer': 23813, 'demo_buffer': 5013, 'params_version': 48206, 'max_steps': 200000, 'mean_return_100': 0.3555215295836691, 'uptime_sec': 10221.768811941147, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=23762 learner_step=48251 utd=8.12 online=23901
+[actor] ep_ret=0.00 success=0 chunks=23850 learner_step=48295 utd=8.10 online=23989
+[actor] ep_ret=0.00 success=0 chunks=23938 learner_step=48340 utd=8.08 online=24077
+[eval] learner_step=48340 success=80.0% mean_return=0.78
+[actor] heartbeat {'learner_step': 48679, 'env_steps': 23938, 'effective_utd': 8.134179964909348, 'configured_utd': 4, 'online_buffer': 24077, 'demo_buffer': 5013, 'params_version': 48679, 'max_steps': 200000, 'mean_return_100': 0.3265968275906591, 'uptime_sec': 10320.570699214935, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=24026 learner_step=48723 utd=8.11 online=24165
+[actor] ep_ret=0.00 success=0 chunks=24114 learner_step=48768 utd=8.09 online=24253
+[actor] ep_ret=0.93 success=1 chunks=24195 learner_step=48813 utd=8.07 online=24334
+[eval] learner_step=48813 success=80.0% mean_return=0.78
+[actor] heartbeat {'learner_step': 49173, 'env_steps': 24195, 'effective_utd': 8.129448233106014, 'configured_utd': 4, 'online_buffer': 24334, 'demo_buffer': 5013, 'params_version': 49173, 'max_steps': 200000, 'mean_return_100': 0.3359174810697291, 'uptime_sec': 10423.636996507645, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.94 success=1 chunks=24245 learner_step=49199 utd=8.12 online=24385
+[actor] ep_ret=0.99 success=1 chunks=24326 learner_step=49243 utd=8.10 online=24467
+[actor] ep_ret=0.00 success=0 chunks=24414 learner_step=49287 utd=8.08 online=24556
+[eval] learner_step=49287 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 49647, 'env_steps': 24414, 'effective_utd': 8.134185303514377, 'configured_utd': 4, 'online_buffer': 24556, 'demo_buffer': 5013, 'params_version': 49647, 'max_steps': 200000, 'mean_return_100': 0.35523228256373907, 'uptime_sec': 10522.564120054245, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=24502 learner_step=49691 utd=8.11 online=24644
+[actor] ep_ret=0.00 success=0 chunks=24590 learner_step=49742 utd=8.09 online=24732
+[actor] ep_ret=0.95 success=1 chunks=24639 learner_step=49769 utd=8.08 online=24781
+[eval] learner_step=49769 success=80.0% mean_return=0.78
+[actor] heartbeat {'learner_step': 50115, 'env_steps': 24639, 'effective_utd': 8.135882138073786, 'configured_utd': 4, 'online_buffer': 24781, 'demo_buffer': 5013, 'params_version': 50115, 'max_steps': 200000, 'mean_return_100': 0.345139193062739, 'uptime_sec': 10620.332746744156, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=24727 learner_step=50159 utd=8.11 online=24870
+[actor] ep_ret=0.97 success=1 chunks=24806 learner_step=50201 utd=8.09 online=24949
+[actor] ep_ret=0.00 success=0 chunks=24894 learner_step=50246 utd=8.07 online=25038
+[eval] learner_step=50246 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 50633, 'env_steps': 24894, 'effective_utd': 8.135775688921026, 'configured_utd': 4, 'online_buffer': 25038, 'demo_buffer': 5013, 'params_version': 50633, 'max_steps': 200000, 'mean_return_100': 0.34513919306273894, 'uptime_sec': 10728.8911383152, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.94 success=1 chunks=24937 learner_step=50656 utd=8.13 online=25081
+[actor] ep_ret=0.00 success=0 chunks=25025 learner_step=50701 utd=8.10 online=25170
+[actor] ep_ret=0.00 success=0 chunks=25113 learner_step=50746 utd=8.08 online=25258
+[eval] learner_step=50746 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 51081, 'env_steps': 25113, 'effective_utd': 8.136184446302712, 'configured_utd': 4, 'online_buffer': 25258, 'demo_buffer': 5013, 'params_version': 51081, 'max_steps': 200000, 'mean_return_100': 0.335243094057749, 'uptime_sec': 10822.578136444092, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=25201 learner_step=51131 utd=8.12 online=25346
+[actor] ep_ret=0.00 success=0 chunks=25289 learner_step=51175 utd=8.09 online=25434
+[actor] ep_ret=0.00 success=0 chunks=25377 learner_step=51222 utd=8.07 online=25522
+[eval] learner_step=51222 success=90.0% mean_return=0.86
+[actor] heartbeat {'learner_step': 51579, 'env_steps': 25377, 'effective_utd': 8.130039011703511, 'configured_utd': 4, 'online_buffer': 25522, 'demo_buffer': 5013, 'params_version': 51579, 'max_steps': 200000, 'mean_return_100': 0.31650763908466906, 'uptime_sec': 10926.705647945404, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=1.00 success=1 chunks=25432 learner_step=51609 utd=8.12 online=25577
+[actor] ep_ret=0.00 success=0 chunks=25520 learner_step=51655 utd=8.10 online=25666
+[actor] ep_ret=0.00 success=0 chunks=25608 learner_step=51701 utd=8.08 online=25754
+[eval] learner_step=51701 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 52054, 'env_steps': 25608, 'effective_utd': 8.130896594814121, 'configured_utd': 4, 'online_buffer': 25754, 'demo_buffer': 5013, 'params_version': 52054, 'max_steps': 200000, 'mean_return_100': 0.30738598560559915, 'uptime_sec': 11026.292411088943, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=25696 learner_step=52098 utd=8.11 online=25842
+[actor] ep_ret=0.00 success=0 chunks=25784 learner_step=52142 utd=8.09 online=25930
+[actor] ep_ret=0.00 success=0 chunks=25872 learner_step=52186 utd=8.07 online=26018
+[eval] learner_step=52186 success=40.0% mean_return=0.38
+[actor] heartbeat {'learner_step': 52608, 'env_steps': 25872, 'effective_utd': 8.133580705009276, 'configured_utd': 4, 'online_buffer': 26018, 'demo_buffer': 5013, 'params_version': 52608, 'max_steps': 200000, 'mean_return_100': 0.3073859856055992, 'uptime_sec': 11142.18640089035, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=25960 learner_step=52655 utd=8.11 online=26106
+[actor] ep_ret=0.00 success=0 chunks=26048 learner_step=52699 utd=8.09 online=26194
+[actor] ep_ret=0.00 success=0 chunks=26136 learner_step=52743 utd=8.07 online=26282
+[eval] learner_step=52743 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 53143, 'env_steps': 26136, 'effective_utd': 8.133302724211815, 'configured_utd': 4, 'online_buffer': 26282, 'demo_buffer': 5013, 'params_version': 53143, 'max_steps': 200000, 'mean_return_100': 0.2977800255055992, 'uptime_sec': 11254.314100980759, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=26224 learner_step=53186 utd=8.11 online=26370
+[actor] ep_ret=0.93 success=1 chunks=26275 learner_step=53214 utd=8.10 online=26421
+[actor] ep_ret=0.00 success=0 chunks=26363 learner_step=53258 utd=8.08 online=26510
+[eval] learner_step=53258 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 53639, 'env_steps': 26363, 'effective_utd': 8.138527481697833, 'configured_utd': 4, 'online_buffer': 26510, 'demo_buffer': 5013, 'params_version': 53639, 'max_steps': 200000, 'mean_return_100': 0.287498678984669, 'uptime_sec': 11358.399239301682, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.97 success=1 chunks=26422 learner_step=53671 utd=8.13 online=26569
+[actor] ep_ret=0.00 success=0 chunks=26510 learner_step=53717 utd=8.11 online=26658
+[actor] ep_ret=0.00 success=0 chunks=26598 learner_step=53762 utd=8.09 online=26746
+[eval] learner_step=53762 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 54135, 'env_steps': 26598, 'effective_utd': 8.141213625084593, 'configured_utd': 4, 'online_buffer': 26746, 'demo_buffer': 5013, 'params_version': 54135, 'max_steps': 200000, 'mean_return_100': 0.27789076848566907, 'uptime_sec': 11461.6454808712, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.98 success=1 chunks=26659 learner_step=54168 utd=8.13 online=26807
+[actor] ep_ret=1.00 success=1 chunks=26738 learner_step=54210 utd=8.11 online=26887
+[actor] ep_ret=1.00 success=1 chunks=26818 learner_step=54253 utd=8.09 online=26968
+[eval] learner_step=54253 success=80.0% mean_return=0.78
+[actor] heartbeat {'learner_step': 54620, 'env_steps': 26818, 'effective_utd': 8.14676709672608, 'configured_utd': 4, 'online_buffer': 26968, 'demo_buffer': 5013, 'params_version': 54620, 'max_steps': 200000, 'mean_return_100': 0.2889563135125892, 'uptime_sec': 11562.829419851303, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=26906 learner_step=54664 utd=8.13 online=27057
+[actor] ep_ret=0.98 success=1 chunks=26961 learner_step=54694 utd=8.11 online=27112
+[actor] ep_ret=0.93 success=1 chunks=27022 learner_step=54728 utd=8.10 online=27174
+[eval] learner_step=54728 success=80.0% mean_return=0.78
+[actor] heartbeat {'learner_step': 55059, 'env_steps': 27022, 'effective_utd': 8.150247946117977, 'configured_utd': 4, 'online_buffer': 27174, 'demo_buffer': 5013, 'params_version': 55059, 'max_steps': 200000, 'mean_return_100': 0.2980779669916591, 'uptime_sec': 11654.434857845306, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.97 success=1 chunks=27082 learner_step=55090 utd=8.14 online=27235
+[actor] ep_ret=0.00 success=0 chunks=27170 learner_step=55135 utd=8.12 online=27324
+[actor] ep_ret=0.00 success=0 chunks=27258 learner_step=55179 utd=8.10 online=27412
+[eval] learner_step=55179 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 55568, 'env_steps': 27258, 'effective_utd': 8.154376696749578, 'configured_utd': 4, 'online_buffer': 27412, 'demo_buffer': 5013, 'params_version': 55568, 'max_steps': 200000, 'mean_return_100': 0.2980779669916591, 'uptime_sec': 11761.204665184021, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=1.00 success=1 chunks=27320 learner_step=55603 utd=8.14 online=27474
+[actor] ep_ret=0.00 success=0 chunks=27408 learner_step=55648 utd=8.12 online=27563
+[actor] ep_ret=0.98 success=1 chunks=27469 learner_step=55681 utd=8.11 online=27624
+[eval] learner_step=55681 success=80.0% mean_return=0.78
+[actor] heartbeat {'learner_step': 56029, 'env_steps': 27469, 'effective_utd': 8.15886999890786, 'configured_utd': 4, 'online_buffer': 27624, 'demo_buffer': 5013, 'params_version': 56029, 'max_steps': 200000, 'mean_return_100': 0.2979789669916591, 'uptime_sec': 11857.19528913498, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=27557 learner_step=56074 utd=8.14 online=27713
+[actor] ep_ret=0.00 success=0 chunks=27645 learner_step=56119 utd=8.12 online=27801
+[actor] ep_ret=0.00 success=0 chunks=27733 learner_step=56163 utd=8.10 online=27889
+[eval] learner_step=56163 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 56513, 'env_steps': 27733, 'effective_utd': 8.151011430425847, 'configured_utd': 4, 'online_buffer': 27889, 'demo_buffer': 5013, 'params_version': 56513, 'max_steps': 200000, 'mean_return_100': 0.2886583135125892, 'uptime_sec': 11958.677438497543, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=27821 learner_step=56557 utd=8.13 online=27977
+[actor] ep_ret=0.98 success=1 chunks=27878 learner_step=56590 utd=8.12 online=28034
+[actor] ep_ret=0.93 success=1 chunks=27936 learner_step=56621 utd=8.11 online=28093
+[eval] learner_step=56621 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 57043, 'env_steps': 27936, 'effective_utd': 8.167668957617412, 'configured_utd': 4, 'online_buffer': 28093, 'demo_buffer': 5013, 'params_version': 57043, 'max_steps': 200000, 'mean_return_100': 0.29845931351258914, 'uptime_sec': 12069.467946767807, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.96 success=1 chunks=27994 learner_step=57075 utd=8.16 online=28152
+[actor] ep_ret=0.00 success=0 chunks=28082 learner_step=57120 utd=8.14 online=28241
+[actor] ep_ret=0.00 success=0 chunks=28170 learner_step=57165 utd=8.12 online=28329
+[eval] learner_step=57165 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 57508, 'env_steps': 28170, 'effective_utd': 8.165850195243166, 'configured_utd': 4, 'online_buffer': 28329, 'demo_buffer': 5013, 'params_version': 57508, 'max_steps': 200000, 'mean_return_100': 0.3080652736125892, 'uptime_sec': 12167.238333702087, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.97 success=1 chunks=28224 learner_step=57538 utd=8.15 online=28383
+[actor] ep_ret=0.00 success=0 chunks=28312 learner_step=57584 utd=8.14 online=28472
+[actor] ep_ret=0.00 success=0 chunks=28400 learner_step=57629 utd=8.12 online=28560
+[eval] learner_step=57629 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 57971, 'env_steps': 28400, 'effective_utd': 8.164929577464788, 'configured_utd': 4, 'online_buffer': 28560, 'demo_buffer': 5013, 'params_version': 57971, 'max_steps': 200000, 'mean_return_100': 0.29912695665444944, 'uptime_sec': 12264.285786390305, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=28488 learner_step=58015 utd=8.15 online=28648
+[actor] ep_ret=0.00 success=0 chunks=28576 learner_step=58061 utd=8.13 online=28736
+[actor] ep_ret=0.00 success=0 chunks=28664 learner_step=58105 utd=8.11 online=28824
+[eval] learner_step=58105 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 58491, 'env_steps': 28664, 'effective_utd': 8.162294166899246, 'configured_utd': 4, 'online_buffer': 28824, 'demo_buffer': 5013, 'params_version': 58491, 'max_steps': 200000, 'mean_return_100': 0.2991269566544494, 'uptime_sec': 12372.844027519226, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=28752 learner_step=58540 utd=8.14 online=28912
+[actor] ep_ret=0.00 success=0 chunks=28840 learner_step=58585 utd=8.13 online=29000
+[actor] ep_ret=0.00 success=0 chunks=28928 learner_step=58630 utd=8.11 online=29088
+[eval] learner_step=58630 success=80.0% mean_return=0.78
+[actor] heartbeat {'learner_step': 59005, 'env_steps': 28928, 'effective_utd': 8.158877212389381, 'configured_utd': 4, 'online_buffer': 29088, 'demo_buffer': 5013, 'params_version': 59005, 'max_steps': 200000, 'mean_return_100': 0.2699160561554494, 'uptime_sec': 12480.295011758804, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=29016 learner_step=59052 utd=8.14 online=29176
+[actor] ep_ret=1.00 success=1 chunks=29079 learner_step=59086 utd=8.13 online=29239
+[actor] ep_ret=0.99 success=1 chunks=29159 learner_step=59129 utd=8.11 online=29320
+[eval] learner_step=59129 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 59500, 'env_steps': 29159, 'effective_utd': 8.162145478239994, 'configured_utd': 4, 'online_buffer': 29320, 'demo_buffer': 5013, 'params_version': 59500, 'max_steps': 200000, 'mean_return_100': 0.28049540267637946, 'uptime_sec': 12583.800777673721, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=29247 learner_step=59544 utd=8.14 online=29409
+[actor] ep_ret=0.93 success=1 chunks=29316 learner_step=59581 utd=8.13 online=29478
+[actor] ep_ret=0.00 success=0 chunks=29404 learner_step=59625 utd=8.11 online=29567
+[eval] learner_step=59625 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 60043, 'env_steps': 29404, 'effective_utd': 8.16800435314923, 'configured_utd': 4, 'online_buffer': 29567, 'demo_buffer': 5013, 'params_version': 60043, 'max_steps': 200000, 'mean_return_100': 0.28981605615544936, 'uptime_sec': 12697.468027114868, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.97 success=1 chunks=29487 learner_step=60095 utd=8.15 online=29650
+[actor] ep_ret=0.00 success=0 chunks=29575 learner_step=60147 utd=8.13 online=29739
+[actor] heartbeat {'learner_step': 60189, 'env_steps': 29657, 'effective_utd': 8.118015982735947, 'configured_utd': 4, 'online_buffer': 29821, 'demo_buffer': 5013, 'params_version': 60189, 'max_steps': 200000, 'mean_return_100': 0.2995190461554494, 'uptime_sec': 12727.477066040039, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=29663 learner_step=60192 utd=8.12 online=29827
+[eval] learner_step=60192 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 60544, 'env_steps': 29663, 'effective_utd': 8.164245019047298, 'configured_utd': 4, 'online_buffer': 29827, 'demo_buffer': 5013, 'params_version': 60544, 'max_steps': 200000, 'mean_return_100': 0.2899130860554494, 'uptime_sec': 12801.842766284943, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=29751 learner_step=60588 utd=8.15 online=29915
+[actor] ep_ret=0.00 success=0 chunks=29839 learner_step=60632 utd=8.13 online=30003
+[actor] ep_ret=0.00 success=0 chunks=29927 learner_step=60676 utd=8.11 online=30091
+[eval] learner_step=60676 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 61034, 'env_steps': 29927, 'effective_utd': 8.15771711163832, 'configured_utd': 4, 'online_buffer': 30091, 'demo_buffer': 5013, 'params_version': 61034, 'max_steps': 200000, 'mean_return_100': 0.2899130860554494, 'uptime_sec': 12904.435552597046, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.93 success=1 chunks=29982 learner_step=61064 utd=8.15 online=30146
+[actor] ep_ret=0.00 success=0 chunks=30070 learner_step=61108 utd=8.13 online=30235
+[actor] ep_ret=0.00 success=0 chunks=30158 learner_step=61159 utd=8.11 online=30323
+[eval] learner_step=61159 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 61532, 'env_steps': 30158, 'effective_utd': 8.16128390476822, 'configured_utd': 4, 'online_buffer': 30323, 'demo_buffer': 5013, 'params_version': 61532, 'max_steps': 200000, 'mean_return_100': 0.2898189380405093, 'uptime_sec': 13008.653489589691, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=30246 learner_step=61579 utd=8.14 online=30411
+[actor] ep_ret=0.00 success=0 chunks=30334 learner_step=61625 utd=8.13 online=30499
+[actor] ep_ret=0.00 success=0 chunks=30422 learner_step=61670 utd=8.11 online=30587
+[eval] learner_step=61670 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 62016, 'env_steps': 30422, 'effective_utd': 8.15409900729735, 'configured_utd': 4, 'online_buffer': 30587, 'demo_buffer': 5013, 'params_version': 62016, 'max_steps': 200000, 'mean_return_100': 0.28049828456143944, 'uptime_sec': 13110.011328458786, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=30510 learner_step=62062 utd=8.14 online=30675
+[actor] ep_ret=1.00 success=1 chunks=30556 learner_step=62086 utd=8.13 online=30721
+[actor] ep_ret=0.00 success=0 chunks=30644 learner_step=62130 utd=8.11 online=30810
+[eval] learner_step=62130 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 62491, 'env_steps': 30644, 'effective_utd': 8.157029108471479, 'configured_utd': 4, 'online_buffer': 30810, 'demo_buffer': 5013, 'params_version': 62491, 'max_steps': 200000, 'mean_return_100': 0.28079529456143937, 'uptime_sec': 13209.645933389664, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=30732 learner_step=62535 utd=8.14 online=30898
+[actor] ep_ret=0.00 success=0 chunks=30820 learner_step=62580 utd=8.12 online=30986
+[actor] ep_ret=0.00 success=0 chunks=30908 learner_step=62625 utd=8.10 online=31074
+[eval] learner_step=62625 success=50.0% mean_return=0.49
+[actor] heartbeat {'learner_step': 63012, 'env_steps': 30908, 'effective_utd': 8.154781933480006, 'configured_utd': 4, 'online_buffer': 31074, 'demo_buffer': 5013, 'params_version': 63012, 'max_steps': 200000, 'mean_return_100': 0.2711893344614394, 'uptime_sec': 13318.919689893723, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.96 success=1 chunks=30978 learner_step=63049 utd=8.14 online=31144
+[actor] ep_ret=0.00 success=0 chunks=31066 learner_step=63093 utd=8.12 online=31233
+[actor] ep_ret=0.00 success=0 chunks=31154 learner_step=63142 utd=8.11 online=31321
+[eval] learner_step=63142 success=50.0% mean_return=0.49
+[actor] heartbeat {'learner_step': 63511, 'env_steps': 31154, 'effective_utd': 8.154458496501253, 'configured_utd': 4, 'online_buffer': 31321, 'demo_buffer': 5013, 'params_version': 63511, 'max_steps': 200000, 'mean_return_100': 0.28079529456143937, 'uptime_sec': 13423.453077554703, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=31242 learner_step=63555 utd=8.14 online=31409
+[actor] ep_ret=0.00 success=0 chunks=31330 learner_step=63602 utd=8.12 online=31497
+[actor] ep_ret=0.00 success=0 chunks=31418 learner_step=63647 utd=8.10 online=31585
+[eval] learner_step=63647 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 63983, 'env_steps': 31418, 'effective_utd': 8.146030937679038, 'configured_utd': 4, 'online_buffer': 31585, 'demo_buffer': 5013, 'params_version': 63983, 'max_steps': 200000, 'mean_return_100': 0.2807952945614394, 'uptime_sec': 13521.833657503128, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=31506 learner_step=64027 utd=8.13 online=31673
+[actor] ep_ret=0.00 success=0 chunks=31594 learner_step=64071 utd=8.11 online=31761
+[actor] ep_ret=0.97 success=1 chunks=31645 learner_step=64097 utd=8.10 online=31812
+[eval] learner_step=64097 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 64481, 'env_steps': 31645, 'effective_utd': 8.150545109811977, 'configured_utd': 4, 'online_buffer': 31812, 'demo_buffer': 5013, 'params_version': 64481, 'max_steps': 200000, 'mean_return_100': 0.2806972845614394, 'uptime_sec': 13626.30894613266, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=31733 learner_step=64525 utd=8.13 online=31901
+[actor] ep_ret=0.00 success=0 chunks=31821 learner_step=64569 utd=8.12 online=31989
+[actor] ep_ret=0.00 success=0 chunks=31909 learner_step=64614 utd=8.10 online=32077
+[eval] learner_step=64614 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 65009, 'env_steps': 31909, 'effective_utd': 8.149299570654048, 'configured_utd': 4, 'online_buffer': 32077, 'demo_buffer': 5013, 'params_version': 65009, 'max_steps': 200000, 'mean_return_100': 0.28069728456143944, 'uptime_sec': 13736.947366952896, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=31997 learner_step=65054 utd=8.13 online=32165
+[actor] ep_ret=0.00 success=0 chunks=32085 learner_step=65097 utd=8.12 online=32253
+[actor] ep_ret=0.98 success=1 chunks=32132 learner_step=65124 utd=8.11 online=32300
+[eval] learner_step=65124 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 65497, 'env_steps': 32132, 'effective_utd': 8.153491846134694, 'configured_utd': 4, 'online_buffer': 32300, 'demo_buffer': 5013, 'params_version': 65497, 'max_steps': 200000, 'mean_return_100': 0.2904982845614394, 'uptime_sec': 13839.114963769913, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=32220 learner_step=65542 utd=8.14 online=32389
+[actor] ep_ret=0.93 success=1 chunks=32268 learner_step=65569 utd=8.13 online=32437
+[actor] ep_ret=0.00 success=0 chunks=32356 learner_step=65615 utd=8.11 online=32526
+[eval] learner_step=65615 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 66000, 'env_steps': 32356, 'effective_utd': 8.159228582024973, 'configured_utd': 4, 'online_buffer': 32526, 'demo_buffer': 5013, 'params_version': 66000, 'max_steps': 200000, 'mean_return_100': 0.27118348306742934, 'uptime_sec': 13944.475696086884, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.97 success=1 chunks=32427 learner_step=66039 utd=8.15 online=32597
+[actor] ep_ret=0.00 success=0 chunks=32515 learner_step=66083 utd=8.13 online=32686
+[actor] ep_ret=0.00 success=0 chunks=32603 learner_step=66128 utd=8.11 online=32774
+[eval] learner_step=66128 success=90.0% mean_return=0.87
+[actor] heartbeat {'learner_step': 66449, 'env_steps': 32603, 'effective_utd': 8.152501303561023, 'configured_utd': 4, 'online_buffer': 32774, 'demo_buffer': 5013, 'params_version': 66449, 'max_steps': 200000, 'mean_return_100': 0.28088647306742937, 'uptime_sec': 14038.337979316711, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=32691 learner_step=66493 utd=8.14 online=32862
+[actor] ep_ret=0.00 success=0 chunks=32779 learner_step=66536 utd=8.12 online=32950
+[actor] ep_ret=0.00 success=0 chunks=32867 learner_step=66582 utd=8.10 online=33038
+[eval] learner_step=66582 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 66954, 'env_steps': 32867, 'effective_utd': 8.148477195971644, 'configured_utd': 4, 'online_buffer': 33038, 'demo_buffer': 5013, 'params_version': 66954, 'max_steps': 200000, 'mean_return_100': 0.2616735825684294, 'uptime_sec': 14144.283788442612, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=32955 learner_step=66998 utd=8.13 online=33126
+[actor] ep_ret=0.00 success=0 chunks=33043 learner_step=67047 utd=8.12 online=33214
+[actor] ep_ret=0.00 success=0 chunks=33131 learner_step=67091 utd=8.10 online=33302
+[eval] learner_step=67091 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 67455, 'env_steps': 33131, 'effective_utd': 8.144034288128942, 'configured_utd': 4, 'online_buffer': 33302, 'demo_buffer': 5013, 'params_version': 67455, 'max_steps': 200000, 'mean_return_100': 0.25225878107441935, 'uptime_sec': 14249.22742509842, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=33219 learner_step=67500 utd=8.13 online=33390
+[actor] ep_ret=0.00 success=0 chunks=33307 learner_step=67543 utd=8.11 online=33478
+[actor] ep_ret=0.95 success=1 chunks=33379 learner_step=67582 utd=8.10 online=33550
+[eval] learner_step=67582 success=30.0% mean_return=0.29
+[actor] heartbeat {'learner_step': 68011, 'env_steps': 33379, 'effective_utd': 8.150154288624584, 'configured_utd': 4, 'online_buffer': 33550, 'demo_buffer': 5013, 'params_version': 68011, 'max_steps': 200000, 'mean_return_100': 0.26176868157341937, 'uptime_sec': 14365.949360370636, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=33467 learner_step=68058 utd=8.13 online=33639
+[actor] ep_ret=0.00 success=0 chunks=33555 learner_step=68105 utd=8.12 online=33727
+[actor] ep_ret=0.00 success=0 chunks=33643 learner_step=68152 utd=8.10 online=33815
+[eval] learner_step=68152 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 68530, 'env_steps': 33643, 'effective_utd': 8.147905953690218, 'configured_utd': 4, 'online_buffer': 33815, 'demo_buffer': 5013, 'params_version': 68530, 'max_steps': 200000, 'mean_return_100': 0.25176868157341936, 'uptime_sec': 14474.307264328003, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=33731 learner_step=68574 utd=8.13 online=33903
+[actor] ep_ret=0.97 success=1 chunks=33782 learner_step=68603 utd=8.12 online=33954
+[actor] ep_ret=1.00 success=1 chunks=33856 learner_step=68642 utd=8.11 online=34029
+[eval] learner_step=68642 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 69026, 'env_steps': 33856, 'effective_utd': 8.155245746691872, 'configured_utd': 4, 'online_buffer': 34029, 'demo_buffer': 5013, 'params_version': 69026, 'max_steps': 200000, 'mean_return_100': 0.27147167157341934, 'uptime_sec': 14578.017674446106, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.93 success=1 chunks=33900 learner_step=69050 utd=8.15 online=34074
+[actor] ep_ret=0.00 success=0 chunks=33988 learner_step=69096 utd=8.13 online=34163
+[actor] ep_ret=0.00 success=0 chunks=34076 learner_step=69142 utd=8.12 online=34251
+[eval] learner_step=69142 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 69526, 'env_steps': 34076, 'effective_utd': 8.161286535978402, 'configured_utd': 4, 'online_buffer': 34251, 'demo_buffer': 5013, 'params_version': 69526, 'max_steps': 200000, 'mean_return_100': 0.2807923250524893, 'uptime_sec': 14683.029779195786, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.96 success=1 chunks=34132 learner_step=69558 utd=8.15 online=34307
+[actor] ep_ret=0.00 success=0 chunks=34220 learner_step=69603 utd=8.14 online=34396
+[actor] ep_ret=0.00 success=0 chunks=34308 learner_step=69648 utd=8.12 online=34484
+[eval] learner_step=69648 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 70002, 'env_steps': 34308, 'effective_utd': 8.161594963273872, 'configured_utd': 4, 'online_buffer': 34484, 'demo_buffer': 5013, 'params_version': 70002, 'max_steps': 200000, 'mean_return_100': 0.28107763167341937, 'uptime_sec': 14782.717569351196, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=34396 learner_step=70047 utd=8.15 online=34572
+[actor] ep_ret=0.00 success=0 chunks=34484 learner_step=70092 utd=8.13 online=34660
+[actor] ep_ret=0.00 success=0 chunks=34572 learner_step=70136 utd=8.11 online=34748
+[eval] learner_step=70136 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 70467, 'env_steps': 34572, 'effective_utd': 8.153071850052065, 'configured_utd': 4, 'online_buffer': 34748, 'demo_buffer': 5013, 'params_version': 70467, 'max_steps': 200000, 'mean_return_100': 0.2713746416734194, 'uptime_sec': 14880.173969507217, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=34660 learner_step=70517 utd=8.14 online=34836
+[actor] ep_ret=0.00 success=0 chunks=34748 learner_step=70565 utd=8.12 online=34924
+[actor] ep_ret=0.00 success=0 chunks=34836 learner_step=70609 utd=8.11 online=35012
+[eval] learner_step=70609 success=10.0% mean_return=0.10
+[actor] heartbeat {'learner_step': 71039, 'env_steps': 34836, 'effective_utd': 8.156964060167642, 'configured_utd': 4, 'online_buffer': 35012, 'demo_buffer': 5013, 'params_version': 71039, 'max_steps': 200000, 'mean_return_100': 0.2515736416734194, 'uptime_sec': 15000.180527210236, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.98 success=1 chunks=34919 learner_step=71084 utd=8.14 online=35095
+[actor] ep_ret=0.00 success=0 chunks=35007 learner_step=71129 utd=8.13 online=35184
+[actor] ep_ret=0.00 success=0 chunks=35095 learner_step=71175 utd=8.11 online=35272
+[eval] learner_step=71175 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 71563, 'env_steps': 35095, 'effective_utd': 8.156489528422853, 'configured_utd': 4, 'online_buffer': 35272, 'demo_buffer': 5013, 'params_version': 71563, 'max_steps': 200000, 'mean_return_100': 0.24157364167341938, 'uptime_sec': 15109.42651629448, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=35183 learner_step=71608 utd=8.14 online=35360
+[actor] ep_ret=0.00 success=0 chunks=35271 learner_step=71653 utd=8.13 online=35448
+[actor] ep_ret=0.00 success=0 chunks=35359 learner_step=71697 utd=8.11 online=35536
+[eval] learner_step=71697 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 72092, 'env_steps': 35359, 'effective_utd': 8.155434260018666, 'configured_utd': 4, 'online_buffer': 35536, 'demo_buffer': 5013, 'params_version': 72092, 'max_steps': 200000, 'mean_return_100': 0.2225499981943495, 'uptime_sec': 15220.375833749771, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=35447 learner_step=72136 utd=8.14 online=35624
+[actor] ep_ret=0.97 success=1 chunks=35501 learner_step=72167 utd=8.13 online=35678
+[actor] ep_ret=0.00 success=0 chunks=35589 learner_step=72211 utd=8.12 online=35767
+[eval] learner_step=72211 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 72600, 'env_steps': 35589, 'effective_utd': 8.159824664924555, 'configured_utd': 4, 'online_buffer': 35767, 'demo_buffer': 5013, 'params_version': 72600, 'max_steps': 200000, 'mean_return_100': 0.2222529881943495, 'uptime_sec': 15326.211137771606, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=35677 learner_step=72644 utd=8.14 online=35855
+[actor] ep_ret=0.00 success=0 chunks=35765 learner_step=72688 utd=8.13 online=35943
+[actor] ep_ret=0.99 success=1 chunks=35818 learner_step=72716 utd=8.12 online=35996
+[eval] learner_step=72716 success=70.0% mean_return=0.69
+[actor] heartbeat {'learner_step': 73078, 'env_steps': 35818, 'effective_utd': 8.161036350438327, 'configured_utd': 4, 'online_buffer': 35996, 'demo_buffer': 5013, 'params_version': 73078, 'max_steps': 200000, 'mean_return_100': 0.22235198819434948, 'uptime_sec': 15426.308140039444, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=35906 learner_step=73123 utd=8.15 online=36085
+[actor] ep_ret=0.00 success=0 chunks=35994 learner_step=73178 utd=8.13 online=36173
+[actor] ep_ret=0.98 success=1 chunks=36061 learner_step=73215 utd=8.12 online=36240
+[eval] learner_step=73215 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 73557, 'env_steps': 36061, 'effective_utd': 8.159174731704612, 'configured_utd': 4, 'online_buffer': 36240, 'demo_buffer': 5013, 'params_version': 73557, 'max_steps': 200000, 'mean_return_100': 0.22235198819434948, 'uptime_sec': 15526.217757225037, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=36149 learner_step=73601 utd=8.14 online=36329
+[actor] ep_ret=1.00 success=1 chunks=36198 learner_step=73627 utd=8.14 online=36378
+[actor] ep_ret=0.00 success=0 chunks=36286 learner_step=73685 utd=8.12 online=36467
+[eval] learner_step=73685 success=90.0% mean_return=0.86
+[actor] heartbeat {'learner_step': 74001, 'env_steps': 36286, 'effective_utd': 8.157526318690405, 'configured_utd': 4, 'online_buffer': 36467, 'demo_buffer': 5013, 'params_version': 74001, 'max_steps': 200000, 'mean_return_100': 0.2134253746152796, 'uptime_sec': 15618.785881996155, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=36374 learner_step=74045 utd=8.14 online=36555
+[actor] ep_ret=0.00 success=0 chunks=36462 learner_step=74091 utd=8.13 online=36643
+[actor] ep_ret=0.99 success=1 chunks=36518 learner_step=74121 utd=8.12 online=36699
+[eval] learner_step=74121 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 74499, 'env_steps': 36518, 'effective_utd': 8.160249739854319, 'configured_utd': 4, 'online_buffer': 36699, 'demo_buffer': 5013, 'params_version': 74499, 'max_steps': 200000, 'mean_return_100': 0.21362238461527958, 'uptime_sec': 15722.65314245224, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=36606 learner_step=74543 utd=8.15 online=36788
+[actor] ep_ret=0.00 success=0 chunks=36694 learner_step=74587 utd=8.13 online=36876
+[actor] ep_ret=0.00 success=0 chunks=36782 learner_step=74631 utd=8.12 online=36964
+[eval] learner_step=74631 success=50.0% mean_return=0.47
+[actor] heartbeat {'learner_step': 75012, 'env_steps': 36782, 'effective_utd': 8.157468326899027, 'configured_utd': 4, 'online_buffer': 36964, 'demo_buffer': 5013, 'params_version': 75012, 'max_steps': 200000, 'mean_return_100': 0.21362238461527958, 'uptime_sec': 15830.42913222313, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=36870 learner_step=75056 utd=8.14 online=37052
+[actor] ep_ret=0.00 success=0 chunks=36958 learner_step=75152 utd=8.13 online=37140
+[actor] heartbeat {'learner_step': 75161, 'env_steps': 36975, 'effective_utd': 8.131007437457741, 'configured_utd': 4, 'online_buffer': 37157, 'demo_buffer': 5013, 'params_version': 75161, 'max_steps': 200000, 'mean_return_100': 0.21362238461527958, 'uptime_sec': 15860.457792043686, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=37046 learner_step=75197 utd=8.12 online=37228
+[eval] learner_step=75197 success=60.0% mean_return=0.59
+[actor] heartbeat {'learner_step': 75564, 'env_steps': 37046, 'effective_utd': 8.158937537116017, 'configured_utd': 4, 'online_buffer': 37228, 'demo_buffer': 5013, 'params_version': 75564, 'max_steps': 200000, 'mean_return_100': 0.21362238461527958, 'uptime_sec': 15944.759722232819, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.94 success=1 chunks=37101 learner_step=75593 utd=8.15 online=37283
+[actor] ep_ret=0.00 success=0 chunks=37189 learner_step=75637 utd=8.14 online=37372
+[actor] ep_ret=0.00 success=0 chunks=37277 learner_step=75682 utd=8.12 online=37460
+[eval] learner_step=75682 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 76053, 'env_steps': 37277, 'effective_utd': 8.160849853797247, 'configured_utd': 4, 'online_buffer': 37460, 'demo_buffer': 5013, 'params_version': 76053, 'max_steps': 200000, 'mean_return_100': 0.21303718610928957, 'uptime_sec': 16046.930757522583, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=37365 learner_step=76097 utd=8.15 online=37548
+[actor] ep_ret=0.00 success=0 chunks=37453 learner_step=76144 utd=8.13 online=37636
+[actor] ep_ret=0.95 success=1 chunks=37531 learner_step=76186 utd=8.12 online=37714
+[eval] learner_step=76186 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 76540, 'env_steps': 37531, 'effective_utd': 8.157523114225574, 'configured_utd': 4, 'online_buffer': 37714, 'demo_buffer': 5013, 'params_version': 76540, 'max_steps': 200000, 'mean_return_100': 0.2033264331292197, 'uptime_sec': 16148.876821517944, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=37619 learner_step=76585 utd=8.14 online=37803
+[actor] ep_ret=0.00 success=0 chunks=37707 learner_step=76630 utd=8.13 online=37891
+[actor] ep_ret=0.00 success=0 chunks=37795 learner_step=76678 utd=8.12 online=37979
+[eval] learner_step=76678 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 77029, 'env_steps': 37795, 'effective_utd': 8.152295277153062, 'configured_utd': 4, 'online_buffer': 37979, 'demo_buffer': 5013, 'params_version': 77029, 'max_steps': 200000, 'mean_return_100': 0.1936234431292197, 'uptime_sec': 16251.22698545456, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.95 success=1 chunks=37866 learner_step=77067 utd=8.14 online=38050
+[actor] ep_ret=0.00 success=0 chunks=37954 learner_step=77111 utd=8.13 online=38139
+[actor] ep_ret=0.97 success=1 chunks=38036 learner_step=77159 utd=8.11 online=38221
+[eval] learner_step=77159 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 77540, 'env_steps': 38036, 'effective_utd': 8.154380060994846, 'configured_utd': 4, 'online_buffer': 38221, 'demo_buffer': 5013, 'params_version': 77540, 'max_steps': 200000, 'mean_return_100': 0.2128363336282197, 'uptime_sec': 16358.014969587326, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.96 success=1 chunks=38112 learner_step=77581 utd=8.14 online=38298
+[actor] ep_ret=0.94 success=1 chunks=38171 learner_step=77613 utd=8.13 online=38358
+[actor] ep_ret=0.00 success=0 chunks=38259 learner_step=77657 utd=8.12 online=38447
+[eval] learner_step=77657 success=50.0% mean_return=0.49
+[actor] heartbeat {'learner_step': 78081, 'env_steps': 38259, 'effective_utd': 8.163412530385008, 'configured_utd': 4, 'online_buffer': 38447, 'demo_buffer': 5013, 'params_version': 78081, 'max_steps': 200000, 'mean_return_100': 0.22253644174315976, 'uptime_sec': 16470.95214986801, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=38347 learner_step=78126 utd=8.15 online=38535
+[actor] ep_ret=0.00 success=0 chunks=38435 learner_step=78170 utd=8.14 online=38623
+[actor] ep_ret=0.00 success=0 chunks=38523 learner_step=78215 utd=8.12 online=38711
+[eval] learner_step=78215 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 78571, 'env_steps': 38523, 'effective_utd': 8.158346961555434, 'configured_utd': 4, 'online_buffer': 38711, 'demo_buffer': 5013, 'params_version': 78571, 'max_steps': 200000, 'mean_return_100': 0.22253644174315979, 'uptime_sec': 16573.578413009644, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=38611 learner_step=78617 utd=8.14 online=38799
+[actor] ep_ret=0.00 success=0 chunks=38699 learner_step=78662 utd=8.13 online=38887
+[actor] ep_ret=0.00 success=0 chunks=38787 learner_step=78707 utd=8.12 online=38975
+[eval] learner_step=78707 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 79061, 'env_steps': 38787, 'effective_utd': 8.153350349343853, 'configured_utd': 4, 'online_buffer': 38975, 'demo_buffer': 5013, 'params_version': 79061, 'max_steps': 200000, 'mean_return_100': 0.2125364417431598, 'uptime_sec': 16676.521476984024, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.95 success=1 chunks=38846 learner_step=79095 utd=8.14 online=39034
+[actor] ep_ret=0.00 success=0 chunks=38934 learner_step=79139 utd=8.13 online=39123
+[actor] ep_ret=0.00 success=0 chunks=39022 learner_step=79184 utd=8.12 online=39211
+[eval] learner_step=79184 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 79581, 'env_steps': 39022, 'effective_utd': 8.157552150069192, 'configured_utd': 4, 'online_buffer': 39211, 'demo_buffer': 5013, 'params_version': 79581, 'max_steps': 200000, 'mean_return_100': 0.2220463422421598, 'uptime_sec': 16785.25524020195, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=39110 learner_step=79630 utd=8.14 online=39299
+[actor] ep_ret=0.00 success=0 chunks=39198 learner_step=79677 utd=8.13 online=39387
+[actor] ep_ret=0.00 success=0 chunks=39286 learner_step=79723 utd=8.12 online=39475
+[eval] learner_step=79723 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 80081, 'env_steps': 39286, 'effective_utd': 8.153642518963498, 'configured_utd': 4, 'online_buffer': 39475, 'demo_buffer': 5013, 'params_version': 80081, 'max_steps': 200000, 'mean_return_100': 0.21244038214215977, 'uptime_sec': 16889.71811056137, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=39374 learner_step=80125 utd=8.14 online=39563
+[actor] ep_ret=0.00 success=0 chunks=39462 learner_step=80169 utd=8.13 online=39651
+[actor] ep_ret=0.00 success=0 chunks=39550 learner_step=80221 utd=8.11 online=39739
+[eval] learner_step=80221 success=20.0% mean_return=0.20
+[actor] heartbeat {'learner_step': 80665, 'env_steps': 39550, 'effective_utd': 8.158280657395702, 'configured_utd': 4, 'online_buffer': 39739, 'demo_buffer': 5013, 'params_version': 80665, 'max_steps': 200000, 'mean_return_100': 0.21244038214215977, 'uptime_sec': 17011.67506170273, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.99 success=1 chunks=39617 learner_step=80700 utd=8.15 online=39806
+[actor] ep_ret=0.00 success=0 chunks=39705 learner_step=80743 utd=8.13 online=39895
+[actor] ep_ret=0.00 success=0 chunks=39793 learner_step=80788 utd=8.12 online=39983
+[eval] learner_step=80788 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 81179, 'env_steps': 39793, 'effective_utd': 8.160128665845752, 'configured_utd': 4, 'online_buffer': 39983, 'demo_buffer': 5013, 'params_version': 81179, 'max_steps': 200000, 'mean_return_100': 0.22234038214215976, 'uptime_sec': 17119.390862703323, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.97 success=1 chunks=39867 learner_step=81220 utd=8.15 online=40057
+[actor] ep_ret=0.00 success=0 chunks=39955 learner_step=81266 utd=8.14 online=40146
+[actor] ep_ret=0.00 success=0 chunks=40043 learner_step=81312 utd=8.12 online=40234
+[eval] learner_step=81312 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 81692, 'env_steps': 40043, 'effective_utd': 8.160427540394076, 'configured_utd': 4, 'online_buffer': 40234, 'demo_buffer': 5013, 'params_version': 81692, 'max_steps': 200000, 'mean_return_100': 0.22234038214215981, 'uptime_sec': 17227.10102033615, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=40131 learner_step=81737 utd=8.15 online=40322
+[actor] ep_ret=0.98 success=1 chunks=40198 learner_step=81776 utd=8.14 online=40389
+[actor] ep_ret=0.00 success=0 chunks=40286 learner_step=81823 utd=8.12 online=40478
+[eval] learner_step=81823 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 82180, 'env_steps': 40286, 'effective_utd': 8.159658442138708, 'configured_utd': 4, 'online_buffer': 40478, 'demo_buffer': 5013, 'params_version': 82180, 'max_steps': 200000, 'mean_return_100': 0.2321413821421598, 'uptime_sec': 17328.763923883438, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=40374 learner_step=82224 utd=8.15 online=40566
+[actor] ep_ret=0.00 success=0 chunks=40462 learner_step=82268 utd=8.13 online=40654
+[actor] ep_ret=0.00 success=0 chunks=40550 learner_step=82313 utd=8.12 online=40742
+[eval] learner_step=82313 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 82657, 'env_steps': 40550, 'effective_utd': 8.153588162762022, 'configured_utd': 4, 'online_buffer': 40742, 'demo_buffer': 5013, 'params_version': 82657, 'max_steps': 200000, 'mean_return_100': 0.21301972866308985, 'uptime_sec': 17428.607681035995, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=40638 learner_step=82701 utd=8.14 online=40830
+[actor] ep_ret=0.00 success=0 chunks=40726 learner_step=82748 utd=8.13 online=40918
+[actor] ep_ret=0.00 success=0 chunks=40814 learner_step=82792 utd=8.11 online=41006
+[eval] learner_step=82792 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 83141, 'env_steps': 40814, 'effective_utd': 8.14828245209977, 'configured_utd': 4, 'online_buffer': 41006, 'demo_buffer': 5013, 'params_version': 83141, 'max_steps': 200000, 'mean_return_100': 0.20331673866308989, 'uptime_sec': 17530.192446231842, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.94 success=1 chunks=40874 learner_step=83173 utd=8.14 online=41066
+[actor] ep_ret=0.00 success=0 chunks=40962 learner_step=83219 utd=8.13 online=41155
+[actor] ep_ret=0.00 success=0 chunks=41050 learner_step=83268 utd=8.11 online=41243
+[eval] learner_step=83268 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 83615, 'env_steps': 41050, 'effective_utd': 8.14762484774665, 'configured_utd': 4, 'online_buffer': 41243, 'demo_buffer': 5013, 'params_version': 83615, 'max_steps': 200000, 'mean_return_100': 0.21273154015709989, 'uptime_sec': 17628.87708544731, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=41138 learner_step=83659 utd=8.13 online=41331
+[actor] ep_ret=0.96 success=1 chunks=41205 learner_step=83696 utd=8.12 online=41398
+[actor] ep_ret=0.00 success=0 chunks=41293 learner_step=83741 utd=8.11 online=41487
+[eval] learner_step=83741 success=70.0% mean_return=0.69
+[actor] heartbeat {'learner_step': 84093, 'env_steps': 41293, 'effective_utd': 8.14598115903422, 'configured_utd': 4, 'online_buffer': 41487, 'demo_buffer': 5013, 'params_version': 84093, 'max_steps': 200000, 'mean_return_100': 0.22233750025709986, 'uptime_sec': 17728.994240522385, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=41381 learner_step=84137 utd=8.13 online=41575
+[actor] ep_ret=0.00 success=0 chunks=41469 learner_step=84182 utd=8.12 online=41663
+[actor] ep_ret=0.00 success=0 chunks=41557 learner_step=84226 utd=8.11 online=41751
+[eval] learner_step=84226 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 84618, 'env_steps': 41557, 'effective_utd': 8.144765021536685, 'configured_utd': 4, 'online_buffer': 41751, 'demo_buffer': 5013, 'params_version': 84618, 'max_steps': 200000, 'mean_return_100': 0.22233750025709992, 'uptime_sec': 17839.102725982666, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=41645 learner_step=84663 utd=8.13 online=41839
+[actor] ep_ret=0.00 success=0 chunks=41733 learner_step=84711 utd=8.12 online=41927
+[actor] ep_ret=0.95 success=1 chunks=41797 learner_step=84745 utd=8.11 online=41991
+[eval] learner_step=84745 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 85156, 'env_steps': 41797, 'effective_utd': 8.149484412756896, 'configured_utd': 4, 'online_buffer': 41991, 'demo_buffer': 5013, 'params_version': 85156, 'max_steps': 200000, 'mean_return_100': 0.22233750025709986, 'uptime_sec': 17950.880206346512, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=41885 learner_step=85199 utd=8.14 online=42080
+[actor] ep_ret=0.96 success=1 chunks=41947 learner_step=85233 utd=8.13 online=42142
+[actor] ep_ret=0.94 success=1 chunks=42002 learner_step=85264 utd=8.12 online=42198
+[eval] learner_step=85264 success=50.0% mean_return=0.47
+[actor] heartbeat {'learner_step': 85656, 'env_steps': 42002, 'effective_utd': 8.157325841626589, 'configured_utd': 4, 'online_buffer': 42198, 'demo_buffer': 5013, 'params_version': 85656, 'max_steps': 200000, 'mean_return_100': 0.2316552718511099, 'uptime_sec': 18055.633125543594, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=42090 learner_step=85700 utd=8.14 online=42287
+[actor] ep_ret=0.00 success=0 chunks=42178 learner_step=85743 utd=8.13 online=42375
+[actor] ep_ret=0.95 success=1 chunks=42251 learner_step=85783 utd=8.12 online=42448
+[eval] learner_step=85783 success=30.0% mean_return=0.29
+[actor] heartbeat {'learner_step': 86209, 'env_steps': 42251, 'effective_utd': 8.16160564247, 'configured_utd': 4, 'online_buffer': 42448, 'demo_buffer': 5013, 'params_version': 86209, 'max_steps': 200000, 'mean_return_100': 0.22184451887103995, 'uptime_sec': 18171.797894477844, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=1.00 success=1 chunks=42318 learner_step=86245 utd=8.15 online=42516
+[actor] ep_ret=0.97 success=1 chunks=42391 learner_step=86284 utd=8.14 online=42590
+[actor] ep_ret=0.00 success=0 chunks=42479 learner_step=86328 utd=8.13 online=42679
+[eval] learner_step=86328 success=30.0% mean_return=0.28
+[actor] heartbeat {'learner_step': 86761, 'env_steps': 42479, 'effective_utd': 8.169778007956873, 'configured_utd': 4, 'online_buffer': 42679, 'demo_buffer': 5013, 'params_version': 86761, 'max_steps': 200000, 'mean_return_100': 0.23194154877104, 'uptime_sec': 18287.56753230095, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=42567 learner_step=86818 utd=8.16 online=42767
+[actor] ep_ret=0.00 success=0 chunks=42655 learner_step=86862 utd=8.15 online=42855
+[actor] heartbeat {'learner_step': 86906, 'env_steps': 42742, 'effective_utd': 8.133077534977305, 'configured_utd': 4, 'online_buffer': 42942, 'demo_buffer': 5013, 'params_version': 86906, 'max_steps': 200000, 'mean_return_100': 0.23194154877104, 'uptime_sec': 18317.63228583336, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=42743 learner_step=86906 utd=8.13 online=42943
+[eval] learner_step=86906 success=80.0% mean_return=0.76
+[actor] heartbeat {'learner_step': 87229, 'env_steps': 42743, 'effective_utd': 8.16311442809349, 'configured_utd': 4, 'online_buffer': 42943, 'demo_buffer': 5013, 'params_version': 87229, 'max_steps': 200000, 'mean_return_100': 0.23194154877103998, 'uptime_sec': 18385.095014333725, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=42831 learner_step=87278 utd=8.15 online=43031
+[actor] ep_ret=0.00 success=0 chunks=42919 learner_step=87322 utd=8.14 online=43119
+[actor] ep_ret=0.00 success=0 chunks=43007 learner_step=87366 utd=8.13 online=43207
+[eval] learner_step=87366 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 87741, 'env_steps': 43007, 'effective_utd': 8.160625014532519, 'configured_utd': 4, 'online_buffer': 43207, 'demo_buffer': 5013, 'params_version': 87741, 'max_steps': 200000, 'mean_return_100': 0.23194154877103998, 'uptime_sec': 18492.47900700569, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=43095 learner_step=87806 utd=8.15 online=43295
+[actor] ep_ret=0.00 success=0 chunks=43183 learner_step=87850 utd=8.14 online=43383
+[actor] heartbeat {'learner_step': 87886, 'env_steps': 43253, 'effective_utd': 8.127621205465516, 'configured_utd': 4, 'online_buffer': 43453, 'demo_buffer': 5013, 'params_version': 87886, 'max_steps': 200000, 'mean_return_100': 0.22214054877103998, 'uptime_sec': 18522.5610871315, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=43271 learner_step=87895 utd=8.13 online=43471
+[eval] learner_step=87895 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 88252, 'env_steps': 43271, 'effective_utd': 8.158073536548727, 'configured_utd': 4, 'online_buffer': 43471, 'demo_buffer': 5013, 'params_version': 88252, 'max_steps': 200000, 'mean_return_100': 0.22214054877103998, 'uptime_sec': 18598.97869348526, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=43359 learner_step=88296 utd=8.15 online=43559
+[actor] ep_ret=0.98 success=1 chunks=43435 learner_step=88337 utd=8.14 online=43635
+[actor] ep_ret=0.00 success=0 chunks=43523 learner_step=88381 utd=8.12 online=43724
+[eval] learner_step=88381 success=80.0% mean_return=0.78
+[actor] heartbeat {'learner_step': 88768, 'env_steps': 43523, 'effective_utd': 8.158261149277394, 'configured_utd': 4, 'online_buffer': 43724, 'demo_buffer': 5013, 'params_version': 88768, 'max_steps': 200000, 'mean_return_100': 0.23194154877103998, 'uptime_sec': 18706.628064393997, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=43611 learner_step=88817 utd=8.15 online=43812
+[actor] ep_ret=0.00 success=0 chunks=43699 learner_step=88861 utd=8.13 online=43900
+[actor] ep_ret=0.00 success=0 chunks=43787 learner_step=88905 utd=8.12 online=43988
+[eval] learner_step=88905 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 89276, 'env_steps': 43787, 'effective_utd': 8.155479936967593, 'configured_utd': 4, 'online_buffer': 43988, 'demo_buffer': 5013, 'params_version': 89276, 'max_steps': 200000, 'mean_return_100': 0.22223855877103996, 'uptime_sec': 18813.144497156143, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=43875 learner_step=89320 utd=8.14 online=44076
+[actor] ep_ret=0.00 success=0 chunks=43963 learner_step=89365 utd=8.13 online=44164
+[actor] ep_ret=0.00 success=0 chunks=44051 learner_step=89408 utd=8.12 online=44252
+[eval] learner_step=89408 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 89800, 'env_steps': 44051, 'effective_utd': 8.154184922022202, 'configured_utd': 4, 'online_buffer': 44252, 'demo_buffer': 5013, 'params_version': 89800, 'max_steps': 200000, 'mean_return_100': 0.22223855877104, 'uptime_sec': 18922.741676568985, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=44139 learner_step=89844 utd=8.14 online=44340
+[actor] ep_ret=0.00 success=0 chunks=44227 learner_step=89889 utd=8.13 online=44428
+[actor] ep_ret=0.00 success=0 chunks=44315 learner_step=89941 utd=8.12 online=44516
+[eval] learner_step=89941 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 90322, 'env_steps': 44315, 'effective_utd': 8.152724811012073, 'configured_utd': 4, 'online_buffer': 44516, 'demo_buffer': 5013, 'params_version': 90322, 'max_steps': 200000, 'mean_return_100': 0.21233855877104, 'uptime_sec': 19031.616849422455, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=44403 learner_step=90366 utd=8.14 online=44604
+[actor] ep_ret=0.00 success=0 chunks=44491 learner_step=90410 utd=8.13 online=44692
+[actor] ep_ret=0.00 success=0 chunks=44579 learner_step=90454 utd=8.12 online=44780
+[eval] learner_step=90454 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 90786, 'env_steps': 44579, 'effective_utd': 8.146077749613047, 'configured_utd': 4, 'online_buffer': 44780, 'demo_buffer': 5013, 'params_version': 90786, 'max_steps': 200000, 'mean_return_100': 0.19253755877103998, 'uptime_sec': 19128.838449716568, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=44667 learner_step=90832 utd=8.13 online=44868
+[actor] ep_ret=0.00 success=0 chunks=44755 learner_step=90877 utd=8.12 online=44956
+[actor] ep_ret=0.97 success=1 chunks=44810 learner_step=90905 utd=8.11 online=45011
+[eval] learner_step=90905 success=50.0% mean_return=0.47
+[actor] heartbeat {'learner_step': 91279, 'env_steps': 44810, 'effective_utd': 8.148091943762553, 'configured_utd': 4, 'online_buffer': 45011, 'demo_buffer': 5013, 'params_version': 91279, 'max_steps': 200000, 'mean_return_100': 0.20224054877104, 'uptime_sec': 19231.977057933807, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=44898 learner_step=91323 utd=8.14 online=45100
+[actor] ep_ret=0.00 success=0 chunks=44986 learner_step=91367 utd=8.12 online=45188
+[actor] ep_ret=0.00 success=0 chunks=45074 learner_step=91411 utd=8.11 online=45276
+[eval] learner_step=91411 success=40.0% mean_return=0.38
+[actor] heartbeat {'learner_step': 91803, 'env_steps': 45074, 'effective_utd': 8.146869592226118, 'configured_utd': 4, 'online_buffer': 45276, 'demo_buffer': 5013, 'params_version': 91803, 'max_steps': 200000, 'mean_return_100': 0.19234054877104, 'uptime_sec': 19341.49115586281, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=45162 learner_step=91847 utd=8.13 online=45364
+[actor] ep_ret=0.94 success=1 chunks=45224 learner_step=91881 utd=8.13 online=45426
+[actor] ep_ret=0.00 success=0 chunks=45312 learner_step=91925 utd=8.11 online=45515
+[eval] learner_step=91925 success=50.0% mean_return=0.49
+[actor] heartbeat {'learner_step': 92313, 'env_steps': 45312, 'effective_utd': 8.149099576271187, 'configured_utd': 4, 'online_buffer': 45515, 'demo_buffer': 5013, 'params_version': 92313, 'max_steps': 200000, 'mean_return_100': 0.20175535026504998, 'uptime_sec': 19448.173359632492, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.98 success=1 chunks=45365 learner_step=92342 utd=8.14 online=45568
+[actor] ep_ret=0.00 success=0 chunks=45453 learner_step=92387 utd=8.13 online=45657
+[actor] ep_ret=0.00 success=0 chunks=45541 learner_step=92431 utd=8.12 online=45745
+[eval] learner_step=92431 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 92777, 'env_steps': 45541, 'effective_utd': 8.148876836257438, 'configured_utd': 4, 'online_buffer': 45745, 'demo_buffer': 5013, 'params_version': 92777, 'max_steps': 200000, 'mean_return_100': 0.20214154877104, 'uptime_sec': 19545.392075538635, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.99 success=1 chunks=45591 learner_step=92805 utd=8.14 online=45795
+[actor] ep_ret=0.94 success=1 chunks=45645 learner_step=92835 utd=8.14 online=45850
+[actor] ep_ret=0.00 success=0 chunks=45733 learner_step=92880 utd=8.12 online=45939
+[actor] heartbeat {'learner_step': 92921, 'env_steps': 45810, 'effective_utd': 8.113599650731281, 'configured_utd': 4, 'online_buffer': 46016, 'demo_buffer': 5013, 'params_version': 92921, 'max_steps': 200000, 'mean_return_100': 0.22145635026504998, 'uptime_sec': 19575.469264507294, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=45821 learner_step=92928 utd=8.11 online=46027
+[eval] learner_step=92928 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 93298, 'env_steps': 45821, 'effective_utd': 8.144562536828092, 'configured_utd': 4, 'online_buffer': 46027, 'demo_buffer': 5013, 'params_version': 93298, 'max_steps': 200000, 'mean_return_100': 0.21194644976604998, 'uptime_sec': 19654.565170764923, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=45909 learner_step=93344 utd=8.13 online=46115
+[actor] ep_ret=0.93 success=1 chunks=45978 learner_step=93382 utd=8.12 online=46184
+[actor] ep_ret=0.00 success=0 chunks=46066 learner_step=93426 utd=8.11 online=46273
+[eval] learner_step=93426 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 93825, 'env_steps': 46066, 'effective_utd': 8.14700646897929, 'configured_utd': 4, 'online_buffer': 46273, 'demo_buffer': 5013, 'params_version': 93825, 'max_steps': 200000, 'mean_return_100': 0.22126710324511986, 'uptime_sec': 19764.42314839363, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=46154 learner_step=93871 utd=8.14 online=46361
+[actor] ep_ret=0.00 success=0 chunks=46242 learner_step=93918 utd=8.12 online=46449
+[actor] ep_ret=0.98 success=1 chunks=46307 learner_step=93953 utd=8.12 online=46514
+[eval] learner_step=93953 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 94303, 'env_steps': 46307, 'effective_utd': 8.145895868875115, 'configured_utd': 4, 'online_buffer': 46514, 'demo_buffer': 5013, 'params_version': 94303, 'max_steps': 200000, 'mean_return_100': 0.2118552127461199, 'uptime_sec': 19864.099590539932, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=46395 learner_step=94347 utd=8.13 online=46603
+[actor] ep_ret=0.00 success=0 chunks=46483 learner_step=94391 utd=8.12 online=46691
+[actor] ep_ret=0.00 success=0 chunks=46571 learner_step=94439 utd=8.11 online=46779
+[eval] learner_step=94439 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 94788, 'env_steps': 46571, 'effective_utd': 8.141375534130683, 'configured_utd': 4, 'online_buffer': 46779, 'demo_buffer': 5013, 'params_version': 94788, 'max_steps': 200000, 'mean_return_100': 0.19283445115210987, 'uptime_sec': 19965.952712774277, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=46659 learner_step=94835 utd=8.13 online=46867
+[actor] ep_ret=0.00 success=0 chunks=46747 learner_step=94884 utd=8.12 online=46955
+[actor] ep_ret=0.00 success=0 chunks=46835 learner_step=94929 utd=8.11 online=47043
+[eval] learner_step=94929 success=90.0% mean_return=0.86
+[actor] heartbeat {'learner_step': 95245, 'env_steps': 46835, 'effective_utd': 8.134514785950678, 'configured_utd': 4, 'online_buffer': 47043, 'demo_buffer': 5013, 'params_version': 95245, 'max_steps': 200000, 'mean_return_100': 0.19283445115210987, 'uptime_sec': 20061.13082766533, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=46923 learner_step=95295 utd=8.12 online=47131
+[actor] ep_ret=0.00 success=0 chunks=47011 learner_step=95338 utd=8.11 online=47219
+[actor] ep_ret=0.00 success=0 chunks=47099 learner_step=95383 utd=8.10 online=47307
+[eval] learner_step=95383 success=50.0% mean_return=0.49
+[actor] heartbeat {'learner_step': 95777, 'env_steps': 47099, 'effective_utd': 8.134100511688146, 'configured_utd': 4, 'online_buffer': 47307, 'demo_buffer': 5013, 'params_version': 95777, 'max_steps': 200000, 'mean_return_100': 0.19283445115210987, 'uptime_sec': 20172.34053993225, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.93 success=1 chunks=47175 learner_step=95818 utd=8.12 online=47383
+[actor] ep_ret=0.96 success=1 chunks=47232 learner_step=95849 utd=8.12 online=47441
+[actor] ep_ret=0.00 success=0 chunks=47320 learner_step=95897 utd=8.11 online=47530
+[eval] learner_step=95897 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 96280, 'env_steps': 47320, 'effective_utd': 8.138630600169062, 'configured_utd': 4, 'online_buffer': 47530, 'demo_buffer': 5013, 'params_version': 96280, 'max_steps': 200000, 'mean_return_100': 0.20225116423217976, 'uptime_sec': 20277.477585077286, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=47408 learner_step=96324 utd=8.13 online=47618
+[actor] ep_ret=0.95 success=1 chunks=47457 learner_step=96353 utd=8.12 online=47667
+[actor] ep_ret=1.00 success=1 chunks=47510 learner_step=96382 utd=8.11 online=47721
+[actor] heartbeat {'learner_step': 96424, 'env_steps': 47591, 'effective_utd': 8.104389485406905, 'configured_utd': 4, 'online_buffer': 47803, 'demo_buffer': 5013, 'params_version': 96424, 'max_steps': 200000, 'mean_return_100': 0.2217610647311798, 'uptime_sec': 20307.565613746643, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=47598 learner_step=96428 utd=8.10 online=47810
+[eval] learner_step=96428 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 96808, 'env_steps': 47598, 'effective_utd': 8.135467876801547, 'configured_utd': 4, 'online_buffer': 47810, 'demo_buffer': 5013, 'params_version': 96808, 'max_steps': 200000, 'mean_return_100': 0.22176106473117976, 'uptime_sec': 20387.80437684059, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=47686 learner_step=96853 utd=8.12 online=47898
+[actor] ep_ret=0.00 success=0 chunks=47774 learner_step=96897 utd=8.11 online=47986
+[actor] ep_ret=0.00 success=0 chunks=47862 learner_step=96942 utd=8.10 online=48074
+[eval] learner_step=96942 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 97348, 'env_steps': 47862, 'effective_utd': 8.13572353850654, 'configured_utd': 4, 'online_buffer': 48074, 'demo_buffer': 5013, 'params_version': 97348, 'max_steps': 200000, 'mean_return_100': 0.2118610647311798, 'uptime_sec': 20501.06484222412, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=47950 learner_step=97394 utd=8.12 online=48162
+[actor] ep_ret=0.00 success=0 chunks=48038 learner_step=97438 utd=8.11 online=48250
+[actor] ep_ret=0.00 success=0 chunks=48126 learner_step=97482 utd=8.10 online=48338
+[eval] learner_step=97482 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 97823, 'env_steps': 48126, 'effective_utd': 8.130573910152517, 'configured_utd': 4, 'online_buffer': 48338, 'demo_buffer': 5013, 'params_version': 97823, 'max_steps': 200000, 'mean_return_100': 0.20215807473117978, 'uptime_sec': 20600.28907442093, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=48214 learner_step=97867 utd=8.12 online=48426
+[actor] ep_ret=1.00 success=1 chunks=48271 learner_step=97898 utd=8.11 online=48483
+[actor] ep_ret=0.00 success=0 chunks=48359 learner_step=97942 utd=8.10 online=48572
+[eval] learner_step=97942 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 98332, 'env_steps': 48359, 'effective_utd': 8.133501519882545, 'configured_utd': 4, 'online_buffer': 48572, 'demo_buffer': 5013, 'params_version': 98332, 'max_steps': 200000, 'mean_return_100': 0.21215807473117976, 'uptime_sec': 20706.771468639374, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=48447 learner_step=98378 utd=8.12 online=48660
+[actor] ep_ret=0.00 success=0 chunks=48535 learner_step=98423 utd=8.11 online=48748
+[actor] ep_ret=0.96 success=1 chunks=48603 learner_step=98459 utd=8.10 online=48816
+[eval] learner_step=98459 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 98849, 'env_steps': 48603, 'effective_utd': 8.135217990659013, 'configured_utd': 4, 'online_buffer': 48816, 'demo_buffer': 5013, 'params_version': 98849, 'max_steps': 200000, 'mean_return_100': 0.2119630348311798, 'uptime_sec': 20814.521584033966, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=48691 learner_step=98894 utd=8.12 online=48905
+[actor] ep_ret=0.93 success=1 chunks=48750 learner_step=98927 utd=8.12 online=48964
+[actor] ep_ret=0.00 success=0 chunks=48838 learner_step=98975 utd=8.11 online=49053
+[eval] learner_step=98975 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 99318, 'env_steps': 48838, 'effective_utd': 8.134485441664278, 'configured_utd': 4, 'online_buffer': 49053, 'demo_buffer': 5013, 'params_version': 99318, 'max_steps': 200000, 'mean_return_100': 0.22128368831024964, 'uptime_sec': 20912.69306063652, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=48926 learner_step=99362 utd=8.12 online=49141
+[actor] ep_ret=0.00 success=0 chunks=49014 learner_step=99406 utd=8.11 online=49229
+[actor] ep_ret=0.00 success=0 chunks=49102 learner_step=99452 utd=8.10 online=49317
+[eval] learner_step=99452 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 99820, 'env_steps': 49102, 'effective_utd': 8.131644332206427, 'configured_utd': 4, 'online_buffer': 49317, 'demo_buffer': 5013, 'params_version': 99820, 'max_steps': 200000, 'mean_return_100': 0.2118688868162397, 'uptime_sec': 21017.380437135696, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=49190 learner_step=99864 utd=8.12 online=49405
+[actor] ep_ret=0.00 success=0 chunks=49278 learner_step=99908 utd=8.11 online=49493
+[actor] ep_ret=0.98 success=1 chunks=49331 learner_step=99936 utd=8.10 online=49546
+[eval] learner_step=99936 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 100257, 'env_steps': 49331, 'effective_utd': 8.129330441304656, 'configured_utd': 4, 'online_buffer': 49546, 'demo_buffer': 5013, 'params_version': 100257, 'max_steps': 200000, 'mean_return_100': 0.2216698868162397, 'uptime_sec': 21109.087244987488, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=49419 learner_step=100302 utd=8.12 online=49635
+[actor] ep_ret=0.00 success=0 chunks=49507 learner_step=100347 utd=8.11 online=49723
+[actor] ep_ret=1.00 success=1 chunks=49584 learner_step=100387 utd=8.10 online=49800
+[eval] learner_step=100387 success=80.0% mean_return=0.78
+[actor] heartbeat {'learner_step': 100734, 'env_steps': 49584, 'effective_utd': 8.126331074540174, 'configured_utd': 4, 'online_buffer': 49800, 'demo_buffer': 5013, 'params_version': 100734, 'max_steps': 200000, 'mean_return_100': 0.2220639267162397, 'uptime_sec': 21208.484709501266, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=49672 learner_step=100780 utd=8.12 online=49889
+[actor] ep_ret=0.00 success=0 chunks=49760 learner_step=100825 utd=8.10 online=49977
+[actor] ep_ret=0.00 success=0 chunks=49848 learner_step=100871 utd=8.09 online=50065
+[eval] learner_step=100871 success=40.0% mean_return=0.38
+[actor] heartbeat {'learner_step': 101265, 'env_steps': 49848, 'effective_utd': 8.125902744342802, 'configured_utd': 4, 'online_buffer': 50065, 'demo_buffer': 5013, 'params_version': 101265, 'max_steps': 200000, 'mean_return_100': 0.22206392671623967, 'uptime_sec': 21319.874798059464, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=49936 learner_step=101310 utd=8.12 online=50153
+[actor] ep_ret=0.00 success=0 chunks=50024 learner_step=101354 utd=8.10 online=50241
+[actor] ep_ret=0.94 success=1 chunks=50091 learner_step=101391 utd=8.10 online=50308
+[eval] learner_step=101391 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 101754, 'env_steps': 50091, 'effective_utd': 8.12553153261065, 'configured_utd': 4, 'online_buffer': 50308, 'demo_buffer': 5013, 'params_version': 101754, 'max_steps': 200000, 'mean_return_100': 0.22196882771124965, 'uptime_sec': 21422.065782546997, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=50179 learner_step=101797 utd=8.11 online=50397
+[actor] ep_ret=0.00 success=0 chunks=50267 learner_step=101841 utd=8.10 online=50485
+[actor] ep_ret=0.00 success=0 chunks=50355 learner_step=101885 utd=8.09 online=50573
+[eval] learner_step=101885 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 102259, 'env_steps': 50355, 'effective_utd': 8.12304637076755, 'configured_utd': 4, 'online_buffer': 50573, 'demo_buffer': 5013, 'params_version': 102259, 'max_steps': 200000, 'mean_return_100': 0.20294806611723967, 'uptime_sec': 21528.21723008156, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=50443 learner_step=102304 utd=8.11 online=50661
+[actor] ep_ret=0.00 success=0 chunks=50531 learner_step=102347 utd=8.10 online=50749
+[actor] ep_ret=0.00 success=0 chunks=50619 learner_step=102393 utd=8.09 online=50837
+[eval] learner_step=102393 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 102749, 'env_steps': 50619, 'effective_utd': 8.1194018056461, 'configured_utd': 4, 'online_buffer': 50837, 'demo_buffer': 5013, 'params_version': 102749, 'max_steps': 200000, 'mean_return_100': 0.18343816561823967, 'uptime_sec': 21630.597217798233, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=50707 learner_step=102792 utd=8.11 online=50925
+[actor] ep_ret=0.00 success=0 chunks=50795 learner_step=102836 utd=8.10 online=51013
+[actor] ep_ret=0.00 success=0 chunks=50883 learner_step=102880 utd=8.09 online=51101
+[eval] learner_step=102880 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 103236, 'env_steps': 50883, 'effective_utd': 8.115559224102352, 'configured_utd': 4, 'online_buffer': 51101, 'demo_buffer': 5013, 'params_version': 103236, 'max_steps': 200000, 'mean_return_100': 0.1737351756182397, 'uptime_sec': 21732.48898434639, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=50971 learner_step=103280 utd=8.11 online=51189
+[actor] ep_ret=0.00 success=0 chunks=51059 learner_step=103324 utd=8.09 online=51277
+[actor] ep_ret=0.00 success=0 chunks=51147 learner_step=103368 utd=8.08 online=51365
+[eval] learner_step=103368 success=50.0% mean_return=0.49
+[actor] heartbeat {'learner_step': 103754, 'env_steps': 51147, 'effective_utd': 8.114180694859913, 'configured_utd': 4, 'online_buffer': 51365, 'demo_buffer': 5013, 'params_version': 103754, 'max_steps': 200000, 'mean_return_100': 0.17373517561823967, 'uptime_sec': 21841.319009780884, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=51235 learner_step=103799 utd=8.10 online=51453
+[actor] ep_ret=0.00 success=0 chunks=51323 learner_step=103846 utd=8.09 online=51541
+[actor] ep_ret=0.00 success=0 chunks=51411 learner_step=103890 utd=8.08 online=51629
+[eval] learner_step=103890 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 104252, 'env_steps': 51411, 'effective_utd': 8.111260236136236, 'configured_utd': 4, 'online_buffer': 51629, 'demo_buffer': 5013, 'params_version': 104252, 'max_steps': 200000, 'mean_return_100': 0.17373517561823967, 'uptime_sec': 21945.65371441841, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.97 success=1 chunks=51486 learner_step=104294 utd=8.10 online=51704
+[actor] ep_ret=0.98 success=1 chunks=51552 learner_step=104330 utd=8.10 online=51771
+[actor] ep_ret=0.93 success=1 chunks=51607 learner_step=104359 utd=8.09 online=51827
+[actor] ep_ret=0.94 success=1 chunks=51656 learner_step=104385 utd=8.08 online=51877
+[eval] learner_step=104385 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 104729, 'env_steps': 51656, 'effective_utd': 8.109725878891126, 'configured_utd': 4, 'online_buffer': 51877, 'demo_buffer': 5013, 'params_version': 104729, 'max_steps': 200000, 'mean_return_100': 0.20217362059131957, 'uptime_sec': 22045.16680955887, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=51744 learner_step=104774 utd=8.10 online=51966
+[actor] ep_ret=0.00 success=0 chunks=51832 learner_step=104819 utd=8.09 online=52054
+[actor] ep_ret=0.00 success=0 chunks=51920 learner_step=104864 utd=8.08 online=52142
+[eval] learner_step=104864 success=40.0% mean_return=0.38
+[actor] heartbeat {'learner_step': 105249, 'env_steps': 51920, 'effective_utd': 8.108551617873651, 'configured_utd': 4, 'online_buffer': 52142, 'demo_buffer': 5013, 'params_version': 105249, 'max_steps': 200000, 'mean_return_100': 0.20217362059131957, 'uptime_sec': 22154.04296565056, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.99 success=1 chunks=51977 learner_step=105278 utd=8.10 online=52199
+[actor] ep_ret=0.00 success=0 chunks=52065 learner_step=105325 utd=8.09 online=52288
+[actor] ep_ret=0.00 success=0 chunks=52153 learner_step=105369 utd=8.08 online=52376
+[eval] learner_step=105369 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 105731, 'env_steps': 52153, 'effective_utd': 8.109293808601615, 'configured_utd': 4, 'online_buffer': 52376, 'demo_buffer': 5013, 'params_version': 105731, 'max_steps': 200000, 'mean_return_100': 0.21207362059131957, 'uptime_sec': 22254.839744329453, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=52241 learner_step=105776 utd=8.10 online=52464
+[actor] ep_ret=0.00 success=0 chunks=52329 learner_step=105820 utd=8.09 online=52552
+[actor] ep_ret=0.00 success=0 chunks=52417 learner_step=105865 utd=8.08 online=52640
+[eval] learner_step=105865 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 106199, 'env_steps': 52417, 'effective_utd': 8.104164679397906, 'configured_utd': 4, 'online_buffer': 52640, 'demo_buffer': 5013, 'params_version': 106199, 'max_steps': 200000, 'mean_return_100': 0.2120736205913196, 'uptime_sec': 22352.77003788948, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=52505 learner_step=106243 utd=8.09 online=52728
+[actor] ep_ret=0.00 success=0 chunks=52593 learner_step=106287 utd=8.08 online=52816
+[actor] ep_ret=0.00 success=0 chunks=52681 learner_step=106331 utd=8.07 online=52904
+[eval] learner_step=106331 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 106697, 'env_steps': 52681, 'effective_utd': 8.101364818435489, 'configured_utd': 4, 'online_buffer': 52904, 'demo_buffer': 5013, 'params_version': 106697, 'max_steps': 200000, 'mean_return_100': 0.2120736205913196, 'uptime_sec': 22456.94632458687, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=52769 learner_step=106741 utd=8.09 online=52992
+[actor] ep_ret=0.00 success=0 chunks=52857 learner_step=106785 utd=8.08 online=53080
+[actor] ep_ret=0.00 success=0 chunks=52945 learner_step=106830 utd=8.07 online=53168
+[eval] learner_step=106830 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 107215, 'env_steps': 52945, 'effective_utd': 8.100103881386344, 'configured_utd': 4, 'online_buffer': 53168, 'demo_buffer': 5013, 'params_version': 107215, 'max_steps': 200000, 'mean_return_100': 0.2120736205913196, 'uptime_sec': 22565.513548612595, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=53033 learner_step=107260 utd=8.09 online=53256
+[actor] ep_ret=0.00 success=0 chunks=53121 learner_step=107306 utd=8.08 online=53344
+[actor] ep_ret=0.00 success=0 chunks=53209 learner_step=107350 utd=8.07 online=53432
+[eval] learner_step=107350 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 107751, 'env_steps': 53209, 'effective_utd': 8.100208611325153, 'configured_utd': 4, 'online_buffer': 53432, 'demo_buffer': 5013, 'params_version': 107751, 'max_steps': 200000, 'mean_return_100': 0.2023706305913196, 'uptime_sec': 22677.476318359375, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=53297 learner_step=107798 utd=8.09 online=53520
+[actor] ep_ret=0.00 success=0 chunks=53385 learner_step=107842 utd=8.08 online=53608
+[actor] ep_ret=0.95 success=1 chunks=53447 learner_step=107875 utd=8.07 online=53670
+[eval] learner_step=107875 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 108263, 'env_steps': 53447, 'effective_utd': 8.102456639287519, 'configured_utd': 4, 'online_buffer': 53670, 'demo_buffer': 5013, 'params_version': 108263, 'max_steps': 200000, 'mean_return_100': 0.2024657295963096, 'uptime_sec': 22784.71893143654, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=53535 learner_step=108308 utd=8.09 online=53759
+[actor] ep_ret=0.00 success=0 chunks=53623 learner_step=108353 utd=8.08 online=53847
+[actor] ep_ret=0.00 success=0 chunks=53711 learner_step=108398 utd=8.07 online=53935
+[eval] learner_step=108398 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 108765, 'env_steps': 53711, 'effective_utd': 8.100016756344138, 'configured_utd': 4, 'online_buffer': 53935, 'demo_buffer': 5013, 'params_version': 108765, 'max_steps': 200000, 'mean_return_100': 0.1926647295963096, 'uptime_sec': 22889.48223233223, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=53799 learner_step=108812 utd=8.09 online=54023
+[actor] ep_ret=0.00 success=0 chunks=53887 learner_step=108856 utd=8.08 online=54111
+[actor] ep_ret=0.00 success=0 chunks=53975 learner_step=108901 utd=8.07 online=54199
+[eval] learner_step=108901 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 109318, 'env_steps': 53975, 'effective_utd': 8.10138026864289, 'configured_utd': 4, 'online_buffer': 54199, 'demo_buffer': 5013, 'params_version': 109318, 'max_steps': 200000, 'mean_return_100': 0.1733499281022996, 'uptime_sec': 23005.078635454178, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=54063 learner_step=109362 utd=8.09 online=54287
+[actor] ep_ret=0.00 success=0 chunks=54151 learner_step=109406 utd=8.08 online=54375
+[actor] ep_ret=0.00 success=0 chunks=54239 learner_step=109451 utd=8.07 online=54463
+[eval] learner_step=109451 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 109867, 'env_steps': 54239, 'effective_utd': 8.102435516878998, 'configured_utd': 4, 'online_buffer': 54463, 'demo_buffer': 5013, 'params_version': 109867, 'max_steps': 200000, 'mean_return_100': 0.1733499281022996, 'uptime_sec': 23120.070739507675, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=54327 learner_step=109911 utd=8.09 online=54551
+[actor] ep_ret=0.00 success=0 chunks=54415 learner_step=109955 utd=8.08 online=54639
+[actor] ep_ret=0.00 success=0 chunks=54503 learner_step=109999 utd=8.07 online=54727
+[eval] learner_step=109999 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 110365, 'env_steps': 54503, 'effective_utd': 8.099737629121332, 'configured_utd': 4, 'online_buffer': 54727, 'demo_buffer': 5013, 'params_version': 110365, 'max_steps': 200000, 'mean_return_100': 0.16402927462322972, 'uptime_sec': 23224.712037324905, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=54591 learner_step=110409 utd=8.09 online=54815
+[actor] ep_ret=0.00 success=0 chunks=54679 learner_step=110456 utd=8.08 online=54903
+[actor] ep_ret=0.00 success=0 chunks=54767 learner_step=110500 utd=8.07 online=54991
+[eval] learner_step=110500 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 110873, 'env_steps': 54767, 'effective_utd': 8.097796118100316, 'configured_utd': 4, 'online_buffer': 54991, 'demo_buffer': 5013, 'params_version': 110873, 'max_steps': 200000, 'mean_return_100': 0.1542282746232297, 'uptime_sec': 23331.222998142242, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=54855 learner_step=110919 utd=8.09 online=55079
+[actor] ep_ret=0.00 success=0 chunks=54943 learner_step=110974 utd=8.08 online=55167
+[actor] heartbeat {'learner_step': 111018, 'env_steps': 55030, 'effective_utd': 8.069634744684718, 'configured_utd': 4, 'online_buffer': 55254, 'demo_buffer': 5013, 'params_version': 111018, 'max_steps': 200000, 'mean_return_100': 0.1542282746232297, 'uptime_sec': 23361.299540281296, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=55031 learner_step=111018 utd=8.07 online=55255
+[eval] learner_step=111018 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 111381, 'env_steps': 55031, 'effective_utd': 8.095873235085678, 'configured_utd': 4, 'online_buffer': 55255, 'demo_buffer': 5013, 'params_version': 111381, 'max_steps': 200000, 'mean_return_100': 0.1542282746232297, 'uptime_sec': 23437.373079061508, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=55119 learner_step=111425 utd=8.09 online=55343
+[actor] ep_ret=0.00 success=0 chunks=55207 learner_step=111469 utd=8.08 online=55431
+[actor] ep_ret=0.00 success=0 chunks=55295 learner_step=111516 utd=8.07 online=55519
+[eval] learner_step=111516 success=70.0% mean_return=0.66
+[actor] heartbeat {'learner_step': 111861, 'env_steps': 55295, 'effective_utd': 8.091943213672122, 'configured_utd': 4, 'online_buffer': 55519, 'demo_buffer': 5013, 'params_version': 111861, 'max_steps': 200000, 'mean_return_100': 0.1542282746232297, 'uptime_sec': 23538.086548805237, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=55383 learner_step=111907 utd=8.08 online=55607
+[actor] ep_ret=0.00 success=0 chunks=55471 learner_step=111951 utd=8.07 online=55695
+[actor] ep_ret=0.00 success=0 chunks=55559 learner_step=111995 utd=8.06 online=55783
+[eval] learner_step=111995 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 112411, 'env_steps': 55559, 'effective_utd': 8.093090228405838, 'configured_utd': 4, 'online_buffer': 55783, 'demo_buffer': 5013, 'params_version': 112411, 'max_steps': 200000, 'mean_return_100': 0.14490762114415978, 'uptime_sec': 23653.15195417404, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=55647 learner_step=112455 utd=8.08 online=55871
+[actor] ep_ret=0.00 success=0 chunks=55735 learner_step=112499 utd=8.07 online=55959
+[actor] ep_ret=1.00 success=1 chunks=55785 learner_step=112526 utd=8.07 online=56009
+[eval] learner_step=112526 success=40.0% mean_return=0.39
+[actor] heartbeat {'learner_step': 112947, 'env_steps': 55785, 'effective_utd': 8.098736219413821, 'configured_utd': 4, 'online_buffer': 56009, 'demo_buffer': 5013, 'params_version': 112947, 'max_steps': 200000, 'mean_return_100': 0.14530166104415979, 'uptime_sec': 23765.247108221054, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.93 success=1 chunks=55856 learner_step=112984 utd=8.09 online=56081
+[actor] ep_ret=0.97 success=1 chunks=55912 learner_step=113016 utd=8.09 online=56138
+[actor] ep_ret=0.00 success=0 chunks=56000 learner_step=113060 utd=8.08 online=56227
+[eval] learner_step=113060 success=60.0% mean_return=0.58
+[actor] heartbeat {'learner_step': 113443, 'env_steps': 56000, 'effective_utd': 8.103071428571429, 'configured_utd': 4, 'online_buffer': 56227, 'demo_buffer': 5013, 'params_version': 113443, 'max_steps': 200000, 'mean_return_100': 0.1448154040242297, 'uptime_sec': 23869.2932806015, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=56088 learner_step=113487 utd=8.09 online=56315
+[actor] ep_ret=0.00 success=0 chunks=56176 learner_step=113531 utd=8.08 online=56403
+[actor] ep_ret=0.00 success=0 chunks=56264 learner_step=113576 utd=8.07 online=56491
+[eval] learner_step=113576 success=80.0% mean_return=0.77
+[actor] heartbeat {'learner_step': 113920, 'env_steps': 56264, 'effective_utd': 8.098962036115456, 'configured_utd': 4, 'online_buffer': 56491, 'demo_buffer': 5013, 'params_version': 113920, 'max_steps': 200000, 'mean_return_100': 0.1448154040242297, 'uptime_sec': 23969.170367479324, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=56352 learner_step=113972 utd=8.09 online=56579
+[actor] ep_ret=0.00 success=0 chunks=56440 learner_step=114016 utd=8.08 online=56667
+[actor] ep_ret=0.00 success=0 chunks=56528 learner_step=114060 utd=8.07 online=56755
+[eval] learner_step=114060 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 114453, 'env_steps': 56528, 'effective_utd': 8.098853665440135, 'configured_utd': 4, 'online_buffer': 56755, 'demo_buffer': 5013, 'params_version': 114453, 'max_steps': 200000, 'mean_return_100': 0.1448154040242297, 'uptime_sec': 24080.216820716858, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=56616 learner_step=114497 utd=8.09 online=56843
+[actor] ep_ret=0.00 success=0 chunks=56704 learner_step=114542 utd=8.08 online=56931
+[actor] ep_ret=0.99 success=1 chunks=56778 learner_step=114583 utd=8.07 online=57005
+[eval] learner_step=114583 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 114972, 'env_steps': 56778, 'effective_utd': 8.099756948113706, 'configured_utd': 4, 'online_buffer': 57005, 'demo_buffer': 5013, 'params_version': 114972, 'max_steps': 200000, 'mean_return_100': 0.1447154040242297, 'uptime_sec': 24188.770974874496, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.96 success=1 chunks=56854 learner_step=115014 utd=8.09 online=57082
+[actor] ep_ret=0.00 success=0 chunks=56942 learner_step=115062 utd=8.08 online=57171
+[actor] ep_ret=0.94 success=1 chunks=57010 learner_step=115098 utd=8.08 online=57239
+[eval] learner_step=115098 success=50.0% mean_return=0.49
+[actor] heartbeat {'learner_step': 115502, 'env_steps': 57010, 'effective_utd': 8.103981757586388, 'configured_utd': 4, 'online_buffer': 57239, 'demo_buffer': 5013, 'params_version': 115502, 'max_steps': 200000, 'mean_return_100': 0.1541302055182397, 'uptime_sec': 24299.241963148117, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=57098 learner_step=115549 utd=8.09 online=57328
+[actor] ep_ret=0.00 success=0 chunks=57186 learner_step=115594 utd=8.09 online=57416
+[actor] ep_ret=0.00 success=0 chunks=57274 learner_step=115640 utd=8.08 online=57504
+[eval] learner_step=115640 success=60.0% mean_return=0.57
+[actor] heartbeat {'learner_step': 116028, 'env_steps': 57274, 'effective_utd': 8.10336278241436, 'configured_utd': 4, 'online_buffer': 57504, 'demo_buffer': 5013, 'params_version': 116028, 'max_steps': 200000, 'mean_return_100': 0.1448095520391698, 'uptime_sec': 24408.92757320404, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=57362 learner_step=116074 utd=8.09 online=57592
+[actor] ep_ret=0.00 success=0 chunks=57450 learner_step=116118 utd=8.08 online=57680
+[actor] ep_ret=0.00 success=0 chunks=57538 learner_step=116162 utd=8.08 online=57768
+[eval] learner_step=116162 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 116514, 'env_steps': 57538, 'effective_utd': 8.099968716326602, 'configured_utd': 4, 'online_buffer': 57768, 'demo_buffer': 5013, 'params_version': 116514, 'max_steps': 200000, 'mean_return_100': 0.1448095520391698, 'uptime_sec': 24510.934238672256, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=57626 learner_step=116558 utd=8.09 online=57856
+[actor] ep_ret=0.00 success=0 chunks=57714 learner_step=116604 utd=8.08 online=57944
+[actor] ep_ret=0.00 success=0 chunks=57802 learner_step=116649 utd=8.07 online=58032
+[eval] learner_step=116649 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 117028, 'env_steps': 57802, 'effective_utd': 8.098543302999897, 'configured_utd': 4, 'online_buffer': 58032, 'demo_buffer': 5013, 'params_version': 117028, 'max_steps': 200000, 'mean_return_100': 0.13500855203916978, 'uptime_sec': 24618.759264469147, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=57890 learner_step=117073 utd=8.09 online=58120
+[actor] ep_ret=0.00 success=0 chunks=57978 learner_step=117117 utd=8.08 online=58208
+[actor] ep_ret=0.00 success=0 chunks=58066 learner_step=117163 utd=8.07 online=58296
+[eval] learner_step=117163 success=30.0% mean_return=0.30
+[actor] heartbeat {'learner_step': 117603, 'env_steps': 58066, 'effective_utd': 8.101332965935315, 'configured_utd': 4, 'online_buffer': 58296, 'demo_buffer': 5013, 'params_version': 117603, 'max_steps': 200000, 'mean_return_100': 0.1250085520391698, 'uptime_sec': 24739.161846876144, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=58154 learner_step=117647 utd=8.09 online=58384
+[actor] ep_ret=0.00 success=0 chunks=58242 learner_step=117692 utd=8.08 online=58472
+[actor] ep_ret=0.00 success=0 chunks=58330 learner_step=117737 utd=8.07 online=58560
+[eval] learner_step=117737 success=40.0% mean_return=0.38
+[actor] heartbeat {'learner_step': 118140, 'env_steps': 58330, 'effective_utd': 8.101491513800788, 'configured_utd': 4, 'online_buffer': 58560, 'demo_buffer': 5013, 'params_version': 118140, 'max_steps': 200000, 'mean_return_100': 0.1250085520391698, 'uptime_sec': 24852.02514052391, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=58418 learner_step=118187 utd=8.09 online=58648
+[actor] ep_ret=0.00 success=0 chunks=58506 learner_step=118232 utd=8.08 online=58736
+[actor] ep_ret=0.00 success=0 chunks=58594 learner_step=118276 utd=8.07 online=58824
+[eval] learner_step=118276 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 118673, 'env_steps': 58594, 'effective_utd': 8.101375567464245, 'configured_utd': 4, 'online_buffer': 58824, 'demo_buffer': 5013, 'params_version': 118673, 'max_steps': 200000, 'mean_return_100': 0.11559375054515979, 'uptime_sec': 24963.126640319824, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=58682 learner_step=118717 utd=8.09 online=58912
+[actor] ep_ret=0.98 success=1 chunks=58739 learner_step=118748 utd=8.09 online=58969
+[actor] ep_ret=0.97 success=1 chunks=58826 learner_step=118794 utd=8.08 online=59057
+[eval] learner_step=118794 success=60.0% mean_return=0.59
+[actor] heartbeat {'learner_step': 119156, 'env_steps': 58826, 'effective_utd': 8.1022677047564, 'configured_utd': 4, 'online_buffer': 59057, 'demo_buffer': 5013, 'params_version': 119156, 'max_steps': 200000, 'mean_return_100': 0.1350977405451598, 'uptime_sec': 25064.299218177795, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=58914 learner_step=119204 utd=8.09 online=59146
+[actor] ep_ret=0.00 success=0 chunks=59002 learner_step=119248 utd=8.08 online=59234
+[actor] ep_ret=0.00 success=0 chunks=59090 learner_step=119294 utd=8.08 online=59322
+[eval] learner_step=119294 success=80.0% mean_return=0.78
+[actor] heartbeat {'learner_step': 119671, 'env_steps': 59090, 'effective_utd': 8.100930783550517, 'configured_utd': 4, 'online_buffer': 59322, 'demo_buffer': 5013, 'params_version': 119671, 'max_steps': 200000, 'mean_return_100': 0.1350977405451598, 'uptime_sec': 25171.35975265503, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=1.00 success=1 chunks=59149 learner_step=119702 utd=8.09 online=59381
+[actor] ep_ret=0.00 success=0 chunks=59237 learner_step=119746 utd=8.09 online=59470
+[actor] ep_ret=0.99 success=1 chunks=59285 learner_step=119772 utd=8.08 online=59518
+[actor] heartbeat {'learner_step': 119813, 'env_steps': 59365, 'effective_utd': 8.072972290069906, 'configured_utd': 4, 'online_buffer': 59599, 'demo_buffer': 5013, 'params_version': 119813, 'max_steps': 200000, 'mean_return_100': 0.1549977405451598, 'uptime_sec': 25201.39642739296, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=59373 learner_step=119817 utd=8.07 online=59607
+[eval] learner_step=119817 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 120173, 'env_steps': 59373, 'effective_utd': 8.096137975173901, 'configured_utd': 4, 'online_buffer': 59607, 'demo_buffer': 5013, 'params_version': 120173, 'max_steps': 200000, 'mean_return_100': 0.15499774054515977, 'uptime_sec': 25276.486747026443, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.97 success=1 chunks=59453 learner_step=120216 utd=8.09 online=59687
+[actor] ep_ret=0.00 success=0 chunks=59541 learner_step=120260 utd=8.08 online=59776
+[actor] ep_ret=0.00 success=0 chunks=59629 learner_step=120305 utd=8.07 online=59864
+[eval] learner_step=120305 success=70.0% mean_return=0.68
+[actor] heartbeat {'learner_step': 120632, 'env_steps': 59629, 'effective_utd': 8.092169917322108, 'configured_utd': 4, 'online_buffer': 59864, 'demo_buffer': 5013, 'params_version': 120632, 'max_steps': 200000, 'mean_return_100': 0.1647007305451598, 'uptime_sec': 25372.64888858795, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.94 success=1 chunks=59686 learner_step=120663 utd=8.09 online=59921
+[actor] ep_ret=0.00 success=0 chunks=59774 learner_step=120707 utd=8.08 online=60010
+[actor] ep_ret=0.00 success=0 chunks=59862 learner_step=120751 utd=8.07 online=60098
+[eval] learner_step=120751 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 121112, 'env_steps': 59862, 'effective_utd': 8.092746650629781, 'configured_utd': 4, 'online_buffer': 60098, 'demo_buffer': 5013, 'params_version': 121112, 'max_steps': 200000, 'mean_return_100': 0.1644125420391698, 'uptime_sec': 25472.85204052925, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=59950 learner_step=121156 utd=8.08 online=60186
+[actor] ep_ret=0.00 success=0 chunks=60038 learner_step=121204 utd=8.08 online=60274
+[actor] ep_ret=0.00 success=0 chunks=60126 learner_step=121249 utd=8.07 online=60362
+[eval] learner_step=121249 success=50.0% mean_return=0.48
+[actor] heartbeat {'learner_step': 121630, 'env_steps': 60126, 'effective_utd': 8.091674150949672, 'configured_utd': 4, 'online_buffer': 60362, 'demo_buffer': 5013, 'params_version': 121630, 'max_steps': 200000, 'mean_return_100': 0.1358760870660899, 'uptime_sec': 25581.574800252914, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.94 success=1 chunks=60203 learner_step=121672 utd=8.08 online=60439
+[actor] ep_ret=0.00 success=0 chunks=60291 learner_step=121717 utd=8.08 online=60528
+[actor] ep_ret=0.95 success=1 chunks=60363 learner_step=121756 utd=8.07 online=60600
+[eval] learner_step=121756 success=70.0% mean_return=0.67
+[actor] heartbeat {'learner_step': 122085, 'env_steps': 60363, 'effective_utd': 8.090055166244223, 'configured_utd': 4, 'online_buffer': 60600, 'demo_buffer': 5013, 'params_version': 122085, 'max_steps': 200000, 'mean_return_100': 0.15480078905909989, 'uptime_sec': 25676.5480158329, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.00 success=0 chunks=60451 learner_step=122129 utd=8.08 online=60689
+[actor] ep_ret=0.00 success=0 chunks=60539 learner_step=122179 utd=8.07 online=60777
+[actor] ep_ret=0.00 success=0 chunks=60627 learner_step=122224 utd=8.06 online=60865
+[eval] learner_step=122224 success=30.0% mean_return=0.29
+[actor] heartbeat {'learner_step': 122645, 'env_steps': 60627, 'effective_utd': 8.09177429198212, 'configured_utd': 4, 'online_buffer': 60865, 'demo_buffer': 5013, 'params_version': 122645, 'max_steps': 200000, 'mean_return_100': 0.1449007890590999, 'uptime_sec': 25793.704352378845, 'learner_running': True, 'server_running': True}
+[actor] ep_ret=0.93 success=1 chunks=60700 learner_step=122685 utd=8.08 online=60938
+[actor] ep_ret=0.00 success=0 chunks=60788 learner_step=122729 utd=8.08 online=61027
+[actor] ep_ret=0.00 success=0 chunks=60876 learner_step=122773 utd=8.07 online=61115
