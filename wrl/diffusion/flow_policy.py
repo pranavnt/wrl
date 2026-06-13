@@ -61,11 +61,30 @@ class _BasicBlock(nn.Module):
         return nn.relu(h + s)
 
 
+def _spatial_softmax(x):
+    """Spatial-softmax pooling (Levine et al). x: (N,H,W,C) -> (N, 2C) of the
+    softmax-expected (x,y) feature-point coordinates per channel. Unlike global
+    average pool this preserves *where* features fire, which matters for precise
+    alignment tasks (e.g. tool-hang insertion)."""
+    N, H, W, C = x.shape
+    feat = x.reshape(N, H * W, C)
+    sm = jax.nn.softmax(feat, axis=1)  # spatial softmax per channel
+    xs = jnp.linspace(-1.0, 1.0, W)
+    ys = jnp.linspace(-1.0, 1.0, H)
+    gx, gy = jnp.meshgrid(xs, ys)  # (H,W)
+    gx = gx.reshape(H * W, 1)
+    gy = gy.reshape(H * W, 1)
+    ex = (sm * gx).sum(axis=1)  # (N,C)
+    ey = (sm * gy).sum(axis=1)
+    return jnp.concatenate([ex, ey], axis=-1)  # (N, 2C)
+
+
 class FrameEncoder(nn.Module):
     """(N, H, W, 3) uint8/float frame -> (N, d_model)."""
 
     d_model: int
     channels: tuple = (32, 64, 128, 256)
+    pooling: str = "avg"  # "avg" (global average) | "spatial_softmax"
 
     @nn.compact
     def __call__(self, frames):
@@ -75,7 +94,10 @@ class FrameEncoder(nn.Module):
         for i, c in enumerate(self.channels):
             x = _BasicBlock(c, stride=1 if i == 0 else 2)(x)
             x = _BasicBlock(c)(x)
-        x = jnp.mean(x, axis=(-3, -2))  # global average pool -> (N, C)
+        if self.pooling == "spatial_softmax":
+            x = _spatial_softmax(x)  # (N, 2C) — keeps spatial localization
+        else:
+            x = jnp.mean(x, axis=(-3, -2))  # global average pool -> (N, C)
         return nn.Dense(self.d_model)(x)
 
 
@@ -116,6 +138,7 @@ class FlowDenoiser(nn.Module):
     n_heads: int = 8
     image_keys: tuple = ("agentview_image",)
     use_proprio: bool = True
+    pooling: str = "avg"
 
     @nn.compact
     def __call__(self, x, t, observations, train: bool = False):
@@ -130,7 +153,7 @@ class FlowDenoiser(nn.Module):
             imgs = observations[k]  # (B, T, H, W, C)
             B, T = imgs.shape[0], imgs.shape[1]
             flat = imgs.reshape((B * T,) + imgs.shape[2:])
-            emb = FrameEncoder(d_model=d, name=f"enc_{k}")(flat)  # (B*T, d)
+            emb = FrameEncoder(d_model=d, pooling=self.pooling, name=f"enc_{k}")(flat)  # (B*T, d)
             parts.append(emb.reshape(B, T * d))
         if self.use_proprio and "state" in observations:
             s = observations["state"]
@@ -254,10 +277,11 @@ class FlowPolicy(flax.struct.PyTreeNode):
         learning_rate: float = 1e-4,
         weight_decay: float = 1e-4,
         ema_decay: float = 0.9999,
+        pooling: str = "avg",
     ):
         net = FlowDenoiser(
             d_a=d_a, Tp=Tp, d_model=d_model, n_layers=n_layers, n_heads=n_heads,
-            image_keys=tuple(image_keys), use_proprio=use_proprio,
+            image_keys=tuple(image_keys), use_proprio=use_proprio, pooling=pooling,
         )
         rng, init_rng, state_rng = jax.random.split(rng, 3)
         obs_b = jax.tree_util.tree_map(lambda v: jnp.asarray(v)[None], sample_obs)
@@ -279,6 +303,7 @@ class FlowPolicy(flax.struct.PyTreeNode):
                 d_a=d_a, Tp=Tp, Ta=Ta, image_keys=tuple(image_keys),
                 use_proprio=use_proprio, d_model=d_model, n_layers=n_layers,
                 n_heads=n_heads, n_sample_steps=n_sample_steps, ema_decay=ema_decay,
+                pooling=pooling,
                 image_shape=tuple(int(s) for s in img0.shape),
                 proprio_dim=int(np.asarray(sample_obs["state"]).shape[-1]) if use_proprio else 0,
             ),
@@ -307,7 +332,7 @@ class FlowPolicy(flax.struct.PyTreeNode):
             jax.random.PRNGKey(0), obs, cfg["d_a"], Tp=cfg["Tp"], Ta=cfg["Ta"],
             image_keys=cfg["image_keys"], use_proprio=cfg["use_proprio"],
             d_model=cfg["d_model"], n_layers=cfg["n_layers"], n_heads=cfg["n_heads"],
-            n_sample_steps=cfg["n_sample_steps"],
+            n_sample_steps=cfg["n_sample_steps"], pooling=cfg.get("pooling", "avg"),
         )
         params = jax.tree_util.tree_map(jnp.asarray, blob["params"])
         ema = jax.tree_util.tree_map(jnp.asarray, blob.get("ema_params", blob["params"]))

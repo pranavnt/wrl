@@ -55,8 +55,9 @@ def main(
     lr: float = 1e-4,
     d_model: int = 256,
     n_layers: int = 6,
-    n_sample_steps: int = 16,
-    ema_decay: float = 0.999,
+    n_sample_steps: int = 32,
+    ema_decay: float = 0.9999,
+    pooling: str = "spatial_softmax",  # "spatial_softmax" | "avg"
     eval_every: int = 5000,
     eval_episodes: int = 20,
     max_episode_steps: int = 700,
@@ -82,7 +83,7 @@ def main(
     fp = FlowPolicy.create(
         jax.random.PRNGKey(seed), sample_obs, d_a, Tp=tp, Ta=ta, image_keys=image_keys,
         d_model=d_model, n_layers=n_layers, n_sample_steps=n_sample_steps, learning_rate=lr,
-        ema_decay=ema_decay,
+        ema_decay=ema_decay, pooling=pooling,
     ).with_action_stats(a_mean, a_std)
 
     if wandb_project:

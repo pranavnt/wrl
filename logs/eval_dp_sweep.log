@@ -1,0 +1,10 @@
+=== RUN n_sample_steps=16 n_exec=4 ===
+[eval] ckpt=checkpoints/flowdp_toolhang.pkl Ta=8 n_exec=4 n_sample_steps=16 obs_hist=2 episodes=50
+[eval] FINAL success=52.0%  (26/50)  Wilson95=[38.5%,65.2%]  n_exec=4 n_sample_steps=16
+=== RUN n_sample_steps=32 n_exec=8 ===
+[eval] ckpt=checkpoints/flowdp_toolhang.pkl Ta=8 n_exec=8 n_sample_steps=32 obs_hist=2 episodes=50
+[eval] FINAL success=66.0%  (33/50)  Wilson95=[52.2%,77.6%]  n_exec=8 n_sample_steps=32
+=== RUN n_sample_steps=32 n_exec=4 ===
+[eval] ckpt=checkpoints/flowdp_toolhang.pkl Ta=8 n_exec=4 n_sample_steps=32 obs_hist=2 episodes=50
+[eval] FINAL success=46.0%  (23/50)  Wilson95=[33.0%,59.6%]  n_exec=4 n_sample_steps=32
+=== SWEEP DONE ===
