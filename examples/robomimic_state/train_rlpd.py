@@ -49,6 +49,9 @@ def main(
     random_steps: int = 1000,
     max_steps: int = 200_000,
     max_episode_steps: int = 700,
+    lean_obs: bool = True,          # canonical low_dim state (match the state DP / its demos)
+    extra_demos: str = "",          # npz of state-DP-collected demos (examples/collect_state_dp_demos.py)
+    demo_buffer_capacity: int = 1_000_000,
     reset_to_demo_prob: float = 0.5,   # train resets from demo states (eval uses full dist)
     min_utd: float = 0.0,           # actor pacing (0 = off); set ~cta_ratio to keep UTD high
     eval_every: int = 10_000,       # env steps between evals
@@ -59,7 +62,7 @@ def main(
     seed: int = 0,
 ):
     env = RoboMimicStateEnv(dataset_path, max_episode_steps=max_episode_steps,
-                            reset_to_demo_prob=reset_to_demo_prob)
+                            reset_to_demo_prob=reset_to_demo_prob, lean_obs=lean_obs)
     sample_obs = env.observation_space.sample()
     sample_action = env.action_space.sample()
     print(f"[rlpd] obs_dim={sample_obs.shape} action_dim={sample_action.shape}")
@@ -70,13 +73,22 @@ def main(
 
     cfg = wrl.Config(
         batch_size=batch_size, cta_ratio=cta_ratio, training_starts=training_starts,
-        replay_buffer_capacity=1_000_000, demo_buffer_capacity=200_000,
+        replay_buffer_capacity=1_000_000, demo_buffer_capacity=demo_buffer_capacity,
         max_steps=max_steps,
     )
     session = wrl.Session(agent, env, cfg, rng_seed=seed)
 
-    n = session.preload_demos(env.demo_transitions())
-    print(f"[rlpd] preloaded {n} demo transitions")
+    demos = env.demo_transitions()
+    n_human = len(demos)
+    if extra_demos:
+        from examples.collect_state_dp_demos import load_state_demos
+        dp_demos = load_state_demos(extra_demos)
+        assert dp_demos[0]["observations"].shape == demos[0]["observations"].shape, \
+            (dp_demos[0]["observations"].shape, demos[0]["observations"].shape)
+        demos = demos + dp_demos
+        print(f"[rlpd] + {len(dp_demos)} state-DP demo transitions from {extra_demos}")
+    n = session.preload_demos(demos)
+    print(f"[rlpd] preloaded {n} demo transitions ({n_human} human + {n - n_human} DP)")
 
     if wandb_project:
         import wandb
