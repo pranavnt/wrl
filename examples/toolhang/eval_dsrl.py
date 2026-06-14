@@ -56,15 +56,24 @@ def main(
     print(f"[eval-dsrl] ckpt={dsrl_checkpoint} latent_scale={latent_scale} "
           f"best_of_n={best_of_n} saved_eval={blob.get('eval_success')}")
 
+    state_policy = blob.get("state_policy", False)
     env = make_robomimic_pixel_env(dataset_path, image_size=84,
-                                   max_episode_steps=max_episode_steps)
+                                   max_episode_steps=max_episode_steps,
+                                   include_lowdim=state_policy)
     chunk_env = ActionChunkWrapper(env, d_a, Ta, discount=discount, frame_history=obs_hist)
-    cenv = LatentDecodeEnv(chunk_env, fp, latent_scale, Tp, Ta, d_a, obs_hist, norm_clip_ratio=5.0)
+    cenv = LatentDecodeEnv(chunk_env, fp, latent_scale, Tp, Ta, d_a, obs_hist,
+                           norm_clip_ratio=5.0, state_obs=state_policy)
 
-    agent = make_sac_pixel_agent(seed, env.observation_space.sample(),
-                                 np.zeros(latent_dim, np.float32), image_keys=env.image_keys,
-                                 discount=discount ** Ta, critic_ensemble_size=10,
-                                 critic_subsample_size=2)
+    if state_policy:
+        from wrl.utils.launcher import make_sac_state_agent
+        agent = make_sac_state_agent(seed, cenv.observation_space.sample(),
+                                     np.zeros(latent_dim, np.float32), discount=discount ** Ta,
+                                     critic_ensemble_size=10, critic_subsample_size=2)
+    else:
+        agent = make_sac_pixel_agent(seed, env.observation_space.sample(),
+                                     np.zeros(latent_dim, np.float32), image_keys=env.image_keys,
+                                     discount=discount ** Ta, critic_ensemble_size=10,
+                                     critic_subsample_size=2)
     agent = agent.replace(state=agent.state.replace(
         params=jax.tree_util.tree_map(jnp.asarray, blob["params"]),
         target_params=jax.tree_util.tree_map(jnp.asarray, blob["target_params"])))
