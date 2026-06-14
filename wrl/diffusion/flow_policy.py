@@ -305,7 +305,14 @@ class FlowPolicy(flax.struct.PyTreeNode):
             apply_fn=net.apply, params=params,
             tx=optax.adamw(learning_rate, weight_decay=weight_decay),
         )
-        img0 = np.asarray(sample_obs[image_keys[0]])
+        # image_keys=() -> state-only DP (condition on the low-dim state history).
+        if image_keys:
+            img0 = np.asarray(sample_obs[image_keys[0]])
+            image_shape = tuple(int(s) for s in img0.shape)
+            obs_history = image_shape[0]
+        else:
+            image_shape = None
+            obs_history = int(np.asarray(sample_obs["state"]).shape[0])
         return cls(
             state=state,
             ema_params=jax.tree_util.tree_map(jnp.array, params),
@@ -317,7 +324,7 @@ class FlowPolicy(flax.struct.PyTreeNode):
                 use_proprio=use_proprio, d_model=d_model, n_layers=n_layers,
                 n_heads=n_heads, n_sample_steps=n_sample_steps, ema_decay=ema_decay,
                 pooling=pooling,
-                image_shape=tuple(int(s) for s in img0.shape),
+                image_shape=image_shape, obs_history=obs_history,
                 proprio_dim=int(np.asarray(sample_obs["state"]).shape[-1]) if use_proprio else 0,
             ),
         )
@@ -337,7 +344,7 @@ class FlowPolicy(flax.struct.PyTreeNode):
         with open(path, "rb") as f:
             blob = pickle.load(f)
         cfg = blob["config"]
-        T = cfg["image_shape"][0]
+        T = cfg["image_shape"][0] if cfg["image_keys"] else cfg["obs_history"]
         obs = {k: np.zeros(cfg["image_shape"], np.uint8) for k in cfg["image_keys"]}
         if cfg["use_proprio"]:
             obs["state"] = np.zeros((T, cfg["proprio_dim"]), np.float32)

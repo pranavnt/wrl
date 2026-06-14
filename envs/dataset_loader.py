@@ -165,3 +165,66 @@ class RobomimicPixelData:
 
 def load_robomimic_pixels(dataset_path, image_keys, proprio_keys, horizon):
     return RobomimicPixelData(dataset_path, image_keys, proprio_keys, horizon)
+
+
+class RobomimicStateData:
+    """Low-dim (state) version of RobomimicPixelData for a STATE diffusion policy.
+
+    Observation is the full low-dim state (robot keys + object) concatenated in the
+    SAME order as `envs.robomimic_state.RoboMimicStateEnv`, so a DP trained here
+    matches the env it is rolled out / deployed on. No images."""
+
+    def __init__(self, dataset_path, horizon):
+        from envs.robomimic_state import _robot_obs_keys
+
+        self.H = horizon
+        states, actions, rewards, dones, demo_of_step = [], [], [], [], []
+        with h5py.File(dataset_path, "r") as f:
+            demos = sorted(f["data"].keys(), key=lambda d: int(d.split("_")[1]))
+            obs_keys = list(f["data"][demos[0]]["obs"].keys())
+            robot_keys = _robot_obs_keys(obs_keys)
+            object_key = "object" if "object" in obs_keys else "object-state"
+            self.state_keys = list(robot_keys) + [object_key]
+            for di, demo in enumerate(demos):
+                g = f["data"][demo]
+                T = g["actions"].shape[0]
+                s = np.concatenate(
+                    [np.asarray(g["obs"][k][:], np.float32).reshape(T, -1) for k in self.state_keys],
+                    axis=1,
+                )
+                states.append(s)
+                actions.append(np.asarray(g["actions"][:], np.float32))
+                rewards.append(np.asarray(g["rewards"][:], np.float32))
+                dones.append(np.asarray(g["dones"][:], np.float32))
+                demo_of_step.append(np.full(T, di, np.int32))
+
+        self.proprio = np.concatenate(states, axis=0)   # named to mirror the pixel loader
+        self.actions = np.concatenate(actions, axis=0)
+        self.rewards = np.concatenate(rewards, axis=0)
+        self.dones = np.concatenate(dones, axis=0)
+        self.demo_of_step = np.concatenate(demo_of_step, axis=0)
+        self.action_dim = self.actions.shape[1]
+        self.state_dim = self.proprio.shape[1]
+        self.N = self.actions.shape[0]
+
+        self.demo_start = np.zeros(self.N, np.int64)
+        self.demo_end = np.zeros(self.N, np.int64)
+        for di in np.unique(self.demo_of_step):
+            idx = np.nonzero(self.demo_of_step == di)[0]
+            self.demo_start[idx] = idx[0]
+            self.demo_end[idx] = idx[-1]
+
+    def action_stats(self):
+        return self.actions.mean(0), self.actions.std(0)
+
+    def flow_sample(self, batch_size, Tp, obs_history, rng):
+        s = rng.integers(0, self.N, batch_size)
+        offs = np.arange(-obs_history + 1, 1)
+        fidx = np.clip(s[:, None] + offs[None], self.demo_start[s][:, None], s[:, None])
+        obs = {"state": self.proprio[fidx]}  # (B, h, state_dim)
+        aidx = np.clip(s[:, None] + np.arange(Tp)[None], 0, self.demo_end[s][:, None])
+        return {"observations": obs, "actions": self.actions[aidx]}
+
+
+def load_robomimic_state(dataset_path, horizon):
+    return RobomimicStateData(dataset_path, horizon)
