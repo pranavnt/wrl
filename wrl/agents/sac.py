@@ -362,6 +362,21 @@ class SACAgent(flax.struct.PyTreeNode):
         else:
             return dist.sample(seed=seed)
 
+    @partial(jax.jit, static_argnames=("n",))
+    def sample_best_of_n(self, observations: Data, n: int, seed: PRNGKey) -> jnp.ndarray:
+        """Sample `n` candidate actions from the policy for a single observation
+        and return the one the critic scores highest (mean over the ensemble).
+        Used by DSRL to steer a frozen decoder: the critic picks the best latent.
+        `observations` is a single unbatched obs (leading dim = frame stack)."""
+        obs_n = jax.tree_util.tree_map(
+            lambda x: jnp.broadcast_to(x[None], (n,) + x.shape), observations
+        )
+        skey, ckey = jax.random.split(seed)
+        dist = self.forward_policy(obs_n, rng=skey, train=False)
+        acts = dist.sample(seed=skey)               # (n, action_dim)
+        qs = self.forward_critic(obs_n, acts, rng=ckey, train=False)  # (ensemble, n)
+        return acts[jnp.argmax(qs.mean(axis=0))]    # (action_dim,)
+
     @classmethod
     def create(
         cls,

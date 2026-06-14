@@ -75,8 +75,9 @@ class LatentDecodeEnv(gym.Wrapper):
 def main(
     dataset_path: str,
     checkpoint: str,
-    latent_scale: float = 3.0,      # w = latent_scale * tanh(actor); covers N(0,I) bulk
-    norm_clip_ratio: float = 1.1,   # cap |w| at sqrt(latent_dim)*ratio (prior shell; anti-OOD)
+    latent_scale: float = 1.0,      # w = latent_scale * tanh(actor); =1 keeps w in [-1,1] (in-dist)
+    norm_clip_ratio: float = 5.0,   # cap |w| at sqrt(latent_dim)*ratio (safety; inactive at scale=1)
+    best_of_n: int = 16,            # critic-guided: sample N latents, take the highest-Q decode
     discount: float = 0.99,
     image_size: int = 84,
     max_episode_steps: int = 700,
@@ -144,32 +145,36 @@ def main(
         """SAC-space action a whose decoded w ~ N(0,I) (= base DP)."""
         return np.clip(rng.normal(0.0, sigma, latent_dim), -1.0, 1.0).astype(np.float32)
 
+    def _policy_action(o, mode):
+        if mode == "base":
+            return base_latent()
+        if mode == "bon":
+            return np.asarray(session.policy.sample_best_of_n(o, best_of_n), np.float32)
+        return np.asarray(session.policy.sample(o, argmax=(mode == "argmax")), np.float32)
+
     def _rollout(mode, reset_seed):
-        """mode: 'base' (w~N(0,I)), 'argmax' (actor mean), 'sample' (actor sample).
+        """mode: 'base' (w~N(0,I)), 'argmax', 'sample', 'bon' (best-of-n).
         Returns (success, mean latent norm ||w|| over the episode)."""
         o, _ = cenv.reset(seed=reset_seed)
         s, done, trunc, norms = 0.0, False, False, []
         while not (done or trunc):
-            if mode == "base":
-                a = base_latent()
-            else:
-                a = np.asarray(session.policy.sample(o, argmax=(mode == "argmax")), np.float32)
+            a = _policy_action(o, mode)
             norms.append(float(np.linalg.norm(latent_scale * a)))
             o, r, done, trunc, info = cenv.step(a)
             s = max(s, float(info.get("success", 0.0)))
         return int(s > 0), float(np.mean(norms))
 
     def evaluate(n):
-        amax = [_rollout("argmax", 30000 + i) for i in range(n)]
-        samp = [_rollout("sample", 40000 + i) for i in range(n)]
+        bon = [_rollout("bon", 30000 + i) for i in range(n)]
+        amax = [_rollout("argmax", 40000 + i) for i in range(n)]
+        sr_b = float(np.mean([x[0] for x in bon]))
         sr_a = float(np.mean([x[0] for x in amax]))
-        sr_s = float(np.mean([x[0] for x in samp]))
-        wnorm = float(np.mean([x[1] for x in amax]))
-        return sr_a, sr_s, wnorm
+        wnorm = float(np.mean([x[1] for x in bon]))
+        return sr_b, sr_a, wnorm
 
     def paired_eval(n):
         base_s = np.array([_rollout("base", 1000 + i)[0] for i in range(n)])
-        dsrl_s = np.array([_rollout("argmax", 1000 + i)[0] for i in range(n)])
+        dsrl_s = np.array([_rollout("bon", 1000 + i)[0] for i in range(n)])
         b = int(((base_s == 1) & (dsrl_s == 0)).sum())
         c = int(((base_s == 0) & (dsrl_s == 1)).sum())
         return base_s.mean(), dsrl_s.mean(), b, c, _mcnemar_exact_p(b, c)
@@ -182,7 +187,7 @@ def main(
             if chunk_step < random_chunks:
                 a = base_latent()
             else:
-                a = np.asarray(session.policy.sample(obs), np.float32)
+                a = np.asarray(session.policy.sample_best_of_n(obs, best_of_n), np.float32)
             next_obs, r, done, trunc, info = cenv.step(a)
             session.buffer.add(obs, a, next_obs, r, done)
             ep_ret += r
@@ -203,12 +208,12 @@ def main(
                     session.wait_for_utd(min_utd)
                 if eval_every > 0 and chunk_step - last_eval >= eval_every:
                     last_eval = chunk_step
-                    sr_a, sr_s, wnorm = evaluate(eval_episodes)
-                    print(f"[eval] learner_step={st['learner_step']} argmax={sr_a:.1%} "
-                          f"sample={sr_s:.1%} |w|={wnorm:.1f} (base|w|~{math.sqrt(latent_dim):.1f})")
+                    sr_b, sr_a, wnorm = evaluate(eval_episodes)
+                    print(f"[eval] learner_step={st['learner_step']} bon={sr_b:.1%} "
+                          f"argmax={sr_a:.1%} |w|={wnorm:.1f} (base|w|~{math.sqrt(latent_dim):.1f})")
                     if wandb_project:
                         import wandb
-                        wandb.log({"eval/success": sr_a, "eval/success_sample": sr_s,
+                        wandb.log({"eval/success": sr_b, "eval/success_argmax": sr_a,
                                    "eval/latent_norm": wnorm, "learner_step": st["learner_step"]})
                 obs, _ = cenv.reset()
                 ep_ret, ep_succ = 0.0, 0.0

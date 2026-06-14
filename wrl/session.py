@@ -429,6 +429,14 @@ class _PolicyFacade:
         )
         return np.asarray(jax.device_get(action))
 
+    def sample_best_of_n(self, obs, n: int, *, key=None):
+        """Critic-guided action selection: sample `n` policy actions and return
+        the highest-Q one (DSRL latent steering). Needs an agent with a critic."""
+        if key is None:
+            key = self._session._next_rng_key()
+        action = self._session._agent.sample_best_of_n(jax.device_put(obs), n, key)
+        return np.asarray(jax.device_get(action))
+
     @property
     def params_version(self) -> int:
         return self._session._params_version
