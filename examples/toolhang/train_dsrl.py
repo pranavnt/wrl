@@ -85,6 +85,16 @@ class LatentDecodeEnv(gym.Wrapper):
         obs, r, done, trunc, info = self.env.step(self.decode(w))
         return self._obs(obs), r, done, trunc, info
 
+    def decode_action(self, a):
+        """Decode latent SAC action a -> executed chunk (uses current pixel
+        obs-history). For the faithful DSRL loop that stores decoded actions."""
+        return self.decode(self.latent_scale * np.asarray(a, np.float32))
+
+    def step_decoded(self, chunk):
+        """Step with an already-decoded chunk (no re-decode)."""
+        obs, r, done, trunc, info = self.env.step(np.asarray(chunk, np.float32))
+        return self._obs(obs), r, done, trunc, info
+
 
 def main(
     dataset_path: str,
