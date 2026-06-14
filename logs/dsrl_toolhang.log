@@ -43,3 +43,55 @@ wandb: 🚀 View run at https://wandb.ai/pranavnt/wrl-dsrl/runs/yjnocsow
 [dsrl] ep_ret=0.00 success=0 chunks=636 learner_step=0 utd=0.00 online=642
 [dsrl] ep_ret=0.00 success=0 chunks=724 learner_step=0 utd=0.00 online=730
 [dsrl] ep_ret=0.94 success=1 chunks=805 learner_step=0 utd=0.00 online=811
+[dsrl] ep_ret=0.94 success=1 chunks=869 learner_step=0 utd=0.00 online=876
+[dsrl] ep_ret=0.93 success=1 chunks=921 learner_step=0 utd=0.00 online=929
+[learner] warmup ok (online=1002, demo=0) — running updates
+2026-06-13 21:25:44.765343: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:25:44.765477: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:25:44.765623: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+[dsrl] ep_ret=0.00 success=0 chunks=1009 learner_step=0 utd=0.00 online=1018
+[dsrl] ep_ret=0.97 success=1 chunks=1055 learner_step=0 utd=0.00 online=1064
+[dsrl] ep_ret=0.00 success=0 chunks=1143 learner_step=0 utd=0.00 online=1153
+[dsrl] ep_ret=0.00 success=0 chunks=1231 learner_step=0 utd=0.00 online=1241
+[dsrl] ep_ret=0.00 success=0 chunks=1319 learner_step=0 utd=0.00 online=1329
+[dsrl] ep_ret=0.00 success=0 chunks=1407 learner_step=0 utd=0.00 online=1417
+[dsrl] ep_ret=0.00 success=0 chunks=1495 learner_step=0 utd=0.00 online=1505
+2026-06-13 21:26:23.233545: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:26:23.233726: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:26:23.233821: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:26:23.233832: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:26:23.233858: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+[dsrl] ep_ret=0.00 success=0 chunks=1583 learner_step=0 utd=0.00 online=1593
+[dsrl] ep_ret=0.93 success=1 chunks=1632 learner_step=0 utd=0.00 online=1642
+[dsrl] ep_ret=0.00 success=0 chunks=1720 learner_step=0 utd=0.00 online=1731
+[dsrl] ep_ret=0.00 success=0 chunks=1808 learner_step=18 utd=0.04 online=1819
+[dsrl] ep_ret=0.94 success=1 chunks=1869 learner_step=79 utd=0.17 online=1880
+[dsrl] ep_ret=0.00 success=0 chunks=1957 learner_step=167 utd=0.34 online=1969
+[dsrl] ep_ret=0.00 success=0 chunks=2045 learner_step=255 utd=0.50 online=2057
+[eval] learner_step=255 bon=60.0% argmax=70.0% |w|=6.5 (base|w|~10.6)
+[dsrl] ep_ret=0.99 success=1 chunks=2091 learner_step=1669 utd=3.19 online=2103
+[dsrl] ep_ret=0.00 success=0 chunks=2179 learner_step=1757 utd=3.23 online=2192
+[dsrl] ep_ret=0.93 success=1 chunks=2232 learner_step=1810 utd=3.24 online=2245
+[dsrl] ep_ret=0.97 success=1 chunks=2306 learner_step=1884 utd=3.27 online=2320
+[dsrl] ep_ret=0.97 success=1 chunks=2355 learner_step=1933 utd=3.28 online=2370
+[dsrl] ep_ret=0.00 success=0 chunks=2443 learner_step=2033 utd=3.33 online=2459
+[dsrl] ep_ret=0.94 success=1 chunks=2494 learner_step=2084 utd=3.34 online=2510
+[dsrl] ep_ret=0.96 success=1 chunks=2538 learner_step=2129 utd=3.36 online=2555
+[dsrl] ep_ret=0.93 success=1 chunks=2586 learner_step=2177 utd=3.37 online=2604
+[dsrl] ep_ret=0.00 success=0 chunks=2674 learner_step=2265 utd=3.39 online=2693
+[dsrl] ep_ret=0.99 success=1 chunks=2721 learner_step=2315 utd=3.40 online=2740
+[dsrl] ep_ret=0.00 success=0 chunks=2809 learner_step=2403 utd=3.42 online=2829
+[dsrl] ep_ret=0.95 success=1 chunks=2876 learner_step=2470 utd=3.44 online=2896
+[dsrl] ep_ret=0.96 success=1 chunks=2922 learner_step=2516 utd=3.44 online=2943
+[dsrl] ep_ret=0.00 success=0 chunks=3010 learner_step=2604 utd=3.46 online=3032
+[dsrl] ep_ret=0.98 success=1 chunks=3066 learner_step=2660 utd=3.47 online=3088
+[dsrl] ep_ret=0.00 success=0 chunks=3154 learner_step=2748 utd=3.49 online=3177
+[dsrl] ep_ret=0.00 success=0 chunks=3242 learner_step=2836 utd=3.50 online=3265
+[dsrl] ep_ret=0.99 success=1 chunks=3288 learner_step=2882 utd=3.51 online=3311
+[dsrl] ep_ret=0.00 success=0 chunks=3376 learner_step=2970 utd=3.52 online=3400
+[dsrl] ep_ret=0.00 success=0 chunks=3464 learner_step=3059 utd=3.53 online=3488
+[dsrl] ep_ret=0.99 success=1 chunks=3513 learner_step=3109 utd=3.54 online=3537
+[dsrl] ep_ret=0.96 success=1 chunks=3561 learner_step=3159 utd=3.55 online=3586
+[dsrl] ep_ret=0.00 success=0 chunks=3649 learner_step=3247 utd=3.56 online=3675
+[dsrl] ep_ret=0.96 success=1 chunks=3702 learner_step=3300 utd=3.57 online=3728
+[dsrl] ep_ret=0.93 success=1 chunks=3750 learner_step=3348 utd=3.57 online=3777

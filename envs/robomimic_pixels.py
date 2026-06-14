@@ -92,7 +92,12 @@ class RoboMimicPixelEnv(gym.Env):
         max_episode_steps: int = 700,
         reward_shaping: bool = False,
         cameras=None,
+        include_lowdim: bool = False,
     ):
+        # include_lowdim: also expose a flat full low-dim state (proprio +
+        # object-state) under obs["lowdim"], for a STATE-conditioned steering
+        # policy (DSRL) riding a pixel-conditioned base DP.
+        self.include_lowdim = include_lowdim
         env_meta = read_env_meta(dataset_path)
         env_name = env_meta["env_name"]
         if env_name not in _ENV_SPECS:
@@ -137,6 +142,11 @@ class RoboMimicPixelEnv(gym.Env):
             for cam in self.cameras
         }
         obs_spaces["state"] = gym.spaces.Box(-np.inf, np.inf, (1, proprio_dim), np.float32)
+        self._object_key = "object-state" if "object-state" in first else "object"
+        if include_lowdim:
+            lowdim = self._lowdim(first)
+            self.lowdim_dim = int(lowdim.shape[0])
+            obs_spaces["lowdim"] = gym.spaces.Box(-np.inf, np.inf, (self.lowdim_dim,), np.float32)
         self.observation_space = gym.spaces.Dict(obs_spaces)
 
         adim = self.env.action_dim
@@ -144,6 +154,12 @@ class RoboMimicPixelEnv(gym.Env):
         self.image_keys = tuple(f"{cam}_image" for cam in self.cameras)
         self.proprio_keys = tuple(self._proprio_keys)
         self._elapsed = 0
+
+    def _lowdim(self, raw: dict) -> np.ndarray:
+        """Flat full low-dim state: proprio (eef pos/quat/gripper) + object-state."""
+        parts = [np.asarray(raw[k], np.float32).reshape(-1) for k in self._proprio_keys]
+        parts.append(np.asarray(raw[self._object_key], np.float32).reshape(-1))
+        return np.concatenate(parts).astype(np.float32)
 
     def _obs(self, raw: dict) -> dict:
         out = {}
@@ -157,6 +173,8 @@ class RoboMimicPixelEnv(gym.Env):
             [np.asarray(raw[k], np.float32).reshape(-1) for k in self._proprio_keys]
         )
         out["state"] = state[None].astype(np.float32)
+        if self.include_lowdim:
+            out["lowdim"] = self._lowdim(raw)
         return out
 
     def reset(self, *, seed=None, options=None):

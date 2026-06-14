@@ -48,7 +48,8 @@ class LatentDecodeEnv(gym.Wrapper):
     chunk env. So the replay buffer stores the latent (what SAC learns) and the
     robot only ever sees decoded chunks. Obs space is unchanged (the env's)."""
 
-    def __init__(self, chunk_env, fp, latent_scale, Tp, Ta, d_a, obs_hist, norm_clip_ratio=1.1):
+    def __init__(self, chunk_env, fp, latent_scale, Tp, Ta, d_a, obs_hist,
+                 norm_clip_ratio=1.1, state_obs=False):
         super().__init__(chunk_env)
         self.fp, self.latent_scale = fp, latent_scale
         self.Tp, self.Ta, self.d_a, self.obs_hist = Tp, Ta, d_a, obs_hist
@@ -57,6 +58,14 @@ class LatentDecodeEnv(gym.Wrapper):
         # so the frozen DP never sees an OOD-norm noise -> no decode garbage. The
         # actor keeps full DIRECTIONAL steering; only magnitude is capped.
         self.r_max = float(np.sqrt(Tp * d_a) * norm_clip_ratio)
+        # state_obs: the steering policy sees the flat low-dim state ("lowdim"),
+        # while the frozen DP still decodes from the pixel obs-history (base_obs).
+        self.state_obs = state_obs
+        if state_obs:
+            self.observation_space = chunk_env.observation_space["lowdim"]
+
+    def _obs(self, obs):
+        return obs["lowdim"] if self.state_obs else obs
 
     def decode(self, w):
         norm = float(np.linalg.norm(w))
@@ -67,9 +76,14 @@ class LatentDecodeEnv(gym.Wrapper):
             jnp.asarray(w, jnp.float32).reshape(self.Tp, self.d_a))
         return np.asarray(jax.device_get(chunk), np.float32)
 
+    def reset(self, **kwargs):
+        obs, info = self.env.reset(**kwargs)
+        return self._obs(obs), info
+
     def step(self, a):
         w = self.latent_scale * np.asarray(a, np.float32)
-        return self.env.step(self.decode(w))
+        obs, r, done, trunc, info = self.env.step(self.decode(w))
+        return self._obs(obs), r, done, trunc, info
 
 
 def main(
@@ -78,6 +92,7 @@ def main(
     latent_scale: float = 1.0,      # w = latent_scale * tanh(actor); =1 keeps w in [-1,1] (in-dist)
     norm_clip_ratio: float = 5.0,   # cap |w| at sqrt(latent_dim)*ratio (safety; inactive at scale=1)
     best_of_n: int = 16,            # critic-guided: sample N latents, take the highest-Q decode
+    state_policy: bool = False,     # steering policy sees low-dim state (DP still decodes pixels)
     discount: float = 0.99,
     image_size: int = 84,
     max_episode_steps: int = 700,
@@ -109,6 +124,7 @@ def main(
             "latent_dim": latent_dim, "latent_scale": latent_scale,
             "best_of_n": best_of_n, "base_checkpoint": checkpoint,
             "image_keys": list(env.image_keys), "eval_success": sr,
+            "state_policy": state_policy,
         }
         tmp = path + ".tmp"
         with open(tmp, "wb") as f:
@@ -124,26 +140,39 @@ def main(
           f"obs_hist={obs_hist} scale={latent_scale}")
 
     env = make_robomimic_pixel_env(dataset_path, image_size=image_size,
-                                   max_episode_steps=max_episode_steps)
+                                   max_episode_steps=max_episode_steps,
+                                   include_lowdim=state_policy)
     assert env.action_space.shape[0] == d_a, (env.action_space.shape, d_a)
     chunk_env = ActionChunkWrapper(env, d_a, Ta, discount=discount, frame_history=obs_hist)
     cenv = LatentDecodeEnv(chunk_env, fp, latent_scale, Tp, Ta, d_a, obs_hist,
-                           norm_clip_ratio=norm_clip_ratio)
+                           norm_clip_ratio=norm_clip_ratio, state_obs=state_policy)
 
     # ---- SAC over the latent action -------------------------------------
-    sample_obs = env.observation_space.sample()
     sample_action = np.zeros(latent_dim, np.float32)
-    agent = make_sac_pixel_agent(
-        seed, sample_obs, sample_action, image_keys=env.image_keys,
-        discount=discount ** Ta, critic_ensemble_size=critic_ensemble_size,
-        critic_subsample_size=critic_subsample_size,
-    )
+    if state_policy:
+        from wrl.utils.launcher import make_sac_state_agent
+        sample_obs = cenv.observation_space.sample()
+        print(f"[dsrl] STATE noise policy: state_dim={sample_obs.shape}")
+        agent = make_sac_state_agent(
+            seed, sample_obs, sample_action, discount=discount ** Ta,
+            critic_ensemble_size=critic_ensemble_size,
+            critic_subsample_size=critic_subsample_size,
+        )
+        image_keys_cfg = None
+    else:
+        sample_obs = env.observation_space.sample()
+        agent = make_sac_pixel_agent(
+            seed, sample_obs, sample_action, image_keys=env.image_keys,
+            discount=discount ** Ta, critic_ensemble_size=critic_ensemble_size,
+            critic_subsample_size=critic_subsample_size,
+        )
+        image_keys_cfg = env.image_keys
     agent = jax.tree_util.tree_map(jnp.asarray, agent)
 
     cfg = wrl.Config(
         batch_size=batch_size, cta_ratio=cta_ratio, training_starts=training_starts,
         replay_buffer_capacity=200_000, demo_buffer_capacity=1, max_steps=max_steps,
-        image_keys=env.image_keys,
+        image_keys=image_keys_cfg,
     )
     session = wrl.Session(agent, cenv, cfg, rng_seed=seed)
     session.start_learner()
