@@ -94,9 +94,26 @@ def main(
     eval_every: int = 2_000,        # chunks between evals (0 = off)
     eval_episodes: int = 10,
     final_eval_episodes: int = 50,
+    out_path: str = "checkpoints/dsrl_toolhang.pkl",
     wandb_project: str = "",
     seed: int = 0,
 ):
+    import os
+    import pickle
+
+    def save_dsrl(ag, path, sr):
+        os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
+        blob = {
+            "params": jax.tree_util.tree_map(np.asarray, ag.state.params),
+            "target_params": jax.tree_util.tree_map(np.asarray, ag.state.target_params),
+            "latent_dim": latent_dim, "latent_scale": latent_scale,
+            "best_of_n": best_of_n, "base_checkpoint": checkpoint,
+            "image_keys": list(env.image_keys), "eval_success": sr,
+        }
+        tmp = path + ".tmp"
+        with open(tmp, "wb") as f:
+            pickle.dump(blob, f)
+        os.replace(tmp, path)
     # ---- frozen base DP --------------------------------------------------
     fp = FlowPolicy.load(checkpoint)
     fp = fp.replace(config={**fp.config, "n_sample_steps": n_sample_steps})
@@ -180,7 +197,7 @@ def main(
         return base_s.mean(), dsrl_s.mean(), b, c, _mcnemar_exact_p(b, c)
 
     obs, _ = cenv.reset(seed=seed)
-    chunk_step, last_eval = 0, 0
+    chunk_step, last_eval, best_sr = 0, 0, -1.0
     ep_ret, ep_succ, t0 = 0.0, 0.0, time.time()
     try:
         while session.status()["learner_running"]:
@@ -211,6 +228,10 @@ def main(
                     sr_b, sr_a, wnorm = evaluate(eval_episodes)
                     print(f"[eval] learner_step={st['learner_step']} bon={sr_b:.1%} "
                           f"argmax={sr_a:.1%} |w|={wnorm:.1f} (base|w|~{math.sqrt(latent_dim):.1f})")
+                    save_dsrl(session.snapshot_agent(), out_path, sr_b)
+                    if sr_b >= best_sr:
+                        best_sr = sr_b
+                        save_dsrl(session.snapshot_agent(), out_path.replace(".pkl", "_best.pkl"), sr_b)
                     if wandb_project:
                         import wandb
                         wandb.log({"eval/success": sr_b, "eval/success_argmax": sr_a,
