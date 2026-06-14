@@ -22,17 +22,30 @@ from envs.robomimic_state import RoboMimicStateEnv
 from wrl.diffusion.flow_policy import FlowPolicy
 
 
-def load_state_demos(path):
-    """npz -> list of RLPD transition dicts (is_intervention=True)."""
+def load_state_demos_arrays(path):
+    """npz -> dict of contiguous arrays (for bulk preload). np.load is lazy, so
+    materialize each array ONCE (indexing d[key] re-decompresses the whole array)."""
     d = np.load(path)
-    out = []
-    for i in range(len(d["actions"])):
-        out.append(dict(
-            observations=d["observations"][i], actions=d["actions"][i],
-            next_observations=d["next_observations"][i], rewards=float(d["rewards"][i]),
-            masks=float(d["masks"][i]), dones=bool(d["dones"][i]), is_intervention=True,
-        ))
-    return out
+    return dict(
+        observations=np.asarray(d["observations"], np.float32),
+        actions=np.asarray(d["actions"], np.float32),
+        next_observations=np.asarray(d["next_observations"], np.float32),
+        rewards=np.asarray(d["rewards"], np.float32),
+        masks=np.asarray(d["masks"], np.float32),
+        dones=np.asarray(d["dones"], bool),
+    )
+
+
+def load_state_demos(path):
+    """npz -> list of RLPD transition dicts (is_intervention=True). Loads each
+    array once; prefer `load_state_demos_arrays` + a bulk insert for large sets."""
+    a = load_state_demos_arrays(path)
+    n = len(a["actions"])
+    return [dict(
+        observations=a["observations"][i], actions=a["actions"][i],
+        next_observations=a["next_observations"][i], rewards=float(a["rewards"][i]),
+        masks=float(a["masks"][i]), dones=bool(a["dones"][i]), is_intervention=True,
+    ) for i in range(n)]
 
 
 def main(

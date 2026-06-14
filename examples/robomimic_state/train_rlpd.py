@@ -78,16 +78,15 @@ def main(
     )
     session = wrl.Session(agent, env, cfg, rng_seed=seed)
 
-    demos = env.demo_transitions()
-    n_human = len(demos)
+    n_human = session.preload_demos(env.demo_transitions())
+    n = n_human
     if extra_demos:
-        from examples.collect_state_dp_demos import load_state_demos
-        dp_demos = load_state_demos(extra_demos)
-        assert dp_demos[0]["observations"].shape == demos[0]["observations"].shape, \
-            (dp_demos[0]["observations"].shape, demos[0]["observations"].shape)
-        demos = demos + dp_demos
-        print(f"[rlpd] + {len(dp_demos)} state-DP demo transitions from {extra_demos}")
-    n = session.preload_demos(demos)
+        from examples.collect_state_dp_demos import load_state_demos_arrays
+        arrays = load_state_demos_arrays(extra_demos)
+        assert arrays["observations"].shape[1] == sample_obs.shape[0], \
+            (arrays["observations"].shape, sample_obs.shape)
+        n = session.preload_demos_arrays(arrays)   # bulk, contiguous
+        print(f"[rlpd] + {len(arrays['actions'])} state-DP demo transitions from {extra_demos}")
     print(f"[rlpd] preloaded {n} demo transitions ({n_human} human + {n - n_human} DP)")
 
     if wandb_project:

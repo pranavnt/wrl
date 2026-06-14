@@ -186,6 +186,17 @@ class Session:
             self._demo_buffer.insert(t)
         return len(self._demo_buffer)
 
+    def preload_demos_arrays(self, arrays: dict) -> int:
+        """Bulk-load demo transitions from a dict of batched numpy arrays
+        (observations, next_observations, actions, rewards, masks, dones).
+        Marks them as interventions. Far faster / lower-memory than per-item
+        insert for large demo sets (e.g. DP-collected trajectories)."""
+        import numpy as _np
+        n = len(arrays["actions"])
+        arrays = {**arrays, "is_intervention": _np.ones(n, dtype=bool)}
+        self._demo_buffer.bulk_insert(arrays, n)
+        return len(self._demo_buffer)
+
     # ---- introspection ---------------------------------------------------
 
     def utd(self) -> float:

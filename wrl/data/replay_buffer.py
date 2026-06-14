@@ -106,6 +106,21 @@ class ReplayBuffer(Dataset):
         self._insert_index = (self._insert_index + 1) % self._capacity
         self._size = min(self._size + 1, self._capacity)
 
+    def bulk_insert(self, arrays: dict, n: int):
+        """Write `n` contiguous transitions from a dict of batched arrays (each
+        (n, ...)). Avoids the per-item dict/insert overhead for large demo sets.
+        Requires room without wraparound (only used for preload into a fresh
+        buffer with capacity >= existing + n)."""
+        assert self._insert_index + n <= self._capacity, (
+            f"bulk_insert of {n} exceeds capacity {self._capacity} at index "
+            f"{self._insert_index}; increase demo_buffer_capacity")
+        sl = slice(self._insert_index, self._insert_index + n)
+        for k in self.dataset_dict:
+            if k in arrays:
+                self.dataset_dict[k][sl] = arrays[k]
+        self._insert_index += n
+        self._size = min(self._size + n, self._capacity)
+
     def get_iterator(self, queue_size: int = 2, sample_args: dict = {}, device=None):
         queue = collections.deque()
 
