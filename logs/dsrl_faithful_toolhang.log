@@ -1,0 +1,346 @@
+[robosuite WARNING] No private macro file found! (macros.py:53)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:54)
+[robosuite WARNING] To setup, run: python /home/yam/wrl/.venv/lib/python3.11/site-packages/robosuite/scripts/setup_macros.py (macros.py:55)
+2026-06-14 01:12:11.128161: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:12:12.627650: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:12:13.208451: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:12:13.840288: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:12:14.337035: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:12:14.828625: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:12:15.170284: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:12:16.387441: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+[dsrl-f] Tp=16 Ta=8 d_a=7 latent=112 decoded=56
+[dsrl-f] state_dim=(53,)
+[server] listening on http://0.0.0.0:5601
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/yam/.netrc.
+wandb: Currently logged in as: pranavnt to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.27.2
+wandb: Run data is saved locally in /home/yam/wrl/wandb/run-20260614_011220-6cx1qulv
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run astral-sun-10
+wandb: ⭐️ View project at https://wandb.ai/pranavnt/wrl-dsrl
+wandb: 🚀 View run at https://wandb.ai/pranavnt/wrl-dsrl/runs/6cx1qulv
+2026-06-14 01:12:34.136189: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:12:34.136220: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:12:34.136247: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:12:34.136262: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:12:34.136267: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:12:34.136282: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:12:34.136286: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:12:34.136290: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:12:34.136293: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+[dsrl-f] ep_ret=0.00 success=0 chunks=88 learner_step=0 utd=0.00
+[dsrl-f] ep_ret=0.96 success=1 chunks=150 learner_step=0 utd=0.00
+[dsrl-f] ep_ret=0.94 success=1 chunks=194 learner_step=0 utd=0.00
+[dsrl-f] ep_ret=0.96 success=1 chunks=254 learner_step=0 utd=0.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=342 learner_step=0 utd=0.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=392 learner_step=0 utd=0.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=480 learner_step=0 utd=0.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=532 learner_step=0 utd=0.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=620 learner_step=0 utd=0.00
+[dsrl-f] ep_ret=0.94 success=1 chunks=682 learner_step=0 utd=0.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=733 learner_step=0 utd=0.00
+[dsrl-f] ep_ret=0.95 success=1 chunks=776 learner_step=0 utd=0.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=864 learner_step=0 utd=0.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=952 learner_step=0 utd=0.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=996 learner_step=0 utd=0.00
+[learner] warmup ok (online=1000, demo=0) — running updates
+2026-06-14 01:13:40.528804: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:13:40.528826: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:13:40.528830: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:13:41.313392: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:13:41.313420: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:13:41.313430: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:13:41.313557: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:13:41.313565: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:13:41.313573: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:13:41.313579: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-14 01:13:41.313587: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+[dsrl-f] ep_ret=0.95 success=1 chunks=1051 learner_step=1 utd=0.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=1139 learner_step=351 utd=1.23
+[dsrl-f] ep_ret=0.95 success=1 chunks=1199 learner_step=2396 utd=7.99
+[dsrl-f] ep_ret=1.00 success=1 chunks=1268 learner_step=2534 utd=7.99
+[dsrl-f] ep_ret=0.93 success=1 chunks=1315 learner_step=2628 utd=7.99
+[dsrl-f] ep_ret=0.00 success=0 chunks=1403 learner_step=2804 utd=7.99
+[dsrl-f] ep_ret=0.93 success=1 chunks=1473 learner_step=2944 utd=7.99
+[dsrl-f] ep_ret=0.98 success=1 chunks=1537 learner_step=3072 utd=7.99
+[dsrl-f] ep_ret=0.98 success=1 chunks=1601 learner_step=3200 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=1650 learner_step=3298 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=1738 learner_step=3474 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=1807 learner_step=3612 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=1879 learner_step=3756 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=1965 learner_step=3928 utd=8.00
+[dsrl-f] ep_ret=0.98 success=1 chunks=2024 learner_step=4046 utd=8.00
+[eval] learner_step=4046 bon=80.0%
+[dsrl-f] ep_ret=0.95 success=1 chunks=2066 learner_step=4130 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=2154 learner_step=4306 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=2242 learner_step=4482 utd=8.00
+[dsrl-f] ep_ret=0.96 success=1 chunks=2304 learner_step=4606 utd=8.00
+[dsrl-f] ep_ret=0.94 success=1 chunks=2361 learner_step=4720 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=2449 learner_step=4896 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=2496 learner_step=4990 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=2545 learner_step=5088 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=2611 learner_step=5220 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=2699 learner_step=5396 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=2787 learner_step=5572 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=2833 learner_step=5664 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=2921 learner_step=5840 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=2977 learner_step=5952 utd=8.00
+[dsrl-f] ep_ret=0.94 success=1 chunks=3025 learner_step=6048 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=3073 learner_step=6144 utd=8.00
+[dsrl-f] ep_ret=0.98 success=1 chunks=3122 learner_step=6242 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=3197 learner_step=6392 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=3285 learner_step=6568 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=3373 learner_step=6744 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=3461 learner_step=6920 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=3549 learner_step=7096 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=3637 learner_step=7272 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=3725 learner_step=7448 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=3813 learner_step=7624 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=3901 learner_step=7800 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=3963 learner_step=7924 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=4013 learner_step=8024 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=4071 learner_step=8140 utd=8.00
+[eval] learner_step=8140 bon=40.0%
+[dsrl-f] ep_ret=0.00 success=0 chunks=4159 learner_step=8316 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=4247 learner_step=8492 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=4308 learner_step=8613 utd=8.00
+[dsrl-f] ep_ret=0.94 success=1 chunks=4364 learner_step=8726 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=4452 learner_step=8902 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=4500 learner_step=8998 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=4563 learner_step=9122 utd=8.00
+[dsrl-f] ep_ret=0.95 success=1 chunks=4622 learner_step=9242 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=4710 learner_step=9418 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=4759 learner_step=9514 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=4847 learner_step=9692 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=4891 learner_step=9779 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=4942 learner_step=9882 utd=8.00
+[dsrl-f] ep_ret=0.95 success=1 chunks=4991 learner_step=9980 utd=8.00
+[dsrl-f] ep_ret=0.94 success=1 chunks=5038 learner_step=10074 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=5086 learner_step=10170 utd=8.00
+[dsrl-f] ep_ret=0.95 success=1 chunks=5142 learner_step=10282 utd=8.00
+[dsrl-f] ep_ret=0.94 success=1 chunks=5208 learner_step=10414 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=5296 learner_step=10590 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=5384 learner_step=10766 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=5455 learner_step=10907 utd=8.00
+[dsrl-f] ep_ret=0.98 success=1 chunks=5519 learner_step=11036 utd=8.00
+[dsrl-f] ep_ret=0.95 success=1 chunks=5568 learner_step=11134 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=5656 learner_step=11310 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=5715 learner_step=11428 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=5761 learner_step=11520 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=5814 learner_step=11626 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=5873 learner_step=11744 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=5961 learner_step=11920 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=6049 learner_step=12096 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=6109 learner_step=12216 utd=8.00
+[eval] learner_step=12216 bon=50.0%
+[dsrl-f] ep_ret=0.98 success=1 chunks=6163 learner_step=12324 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=6251 learner_step=12500 utd=8.00
+[dsrl-f] ep_ret=0.94 success=1 chunks=6301 learner_step=12600 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=6353 learner_step=12704 utd=8.00
+[dsrl-f] ep_ret=0.95 success=1 chunks=6403 learner_step=12804 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=6468 learner_step=12932 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=6515 learner_step=13028 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=6576 learner_step=13150 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=6649 learner_step=13296 utd=8.00
+[dsrl-f] ep_ret=0.94 success=1 chunks=6696 learner_step=13390 utd=8.00
+[dsrl-f] ep_ret=0.95 success=1 chunks=6756 learner_step=13510 utd=8.00
+[dsrl-f] ep_ret=0.94 success=1 chunks=6810 learner_step=13618 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=6859 learner_step=13716 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=6914 learner_step=13826 utd=8.00
+[dsrl-f] ep_ret=0.94 success=1 chunks=6969 learner_step=13936 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=7015 learner_step=14028 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=7103 learner_step=14204 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=7191 learner_step=14380 utd=8.00
+[dsrl-f] ep_ret=0.96 success=1 chunks=7252 learner_step=14502 utd=8.00
+[dsrl-f] ep_ret=0.96 success=1 chunks=7296 learner_step=14590 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=7384 learner_step=14766 utd=8.00
+[dsrl-f] ep_ret=0.95 success=1 chunks=7442 learner_step=14882 utd=8.00
+[dsrl-f] ep_ret=0.94 success=1 chunks=7483 learner_step=14964 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=7558 learner_step=15114 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=7605 learner_step=15208 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=7693 learner_step=15384 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=7748 learner_step=15494 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=7836 learner_step=15670 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=7887 learner_step=15772 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=7939 learner_step=15876 utd=8.00
+[dsrl-f] ep_ret=0.98 success=1 chunks=7996 learner_step=15990 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=8078 learner_step=16152 utd=8.00
+[dsrl-f] ep_ret=0.98 success=1 chunks=8129 learner_step=16256 utd=8.00
+[eval] learner_step=16256 bon=40.0%
+[dsrl-f] ep_ret=0.93 success=1 chunks=8193 learner_step=16384 utd=8.00
+[dsrl-f] ep_ret=0.94 success=1 chunks=8256 learner_step=16510 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=8310 learner_step=16618 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=8398 learner_step=16794 utd=8.00
+[dsrl-f] ep_ret=0.94 success=1 chunks=8444 learner_step=16886 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=8532 learner_step=17062 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=8609 learner_step=17216 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=8697 learner_step=17392 utd=8.00
+[dsrl-f] ep_ret=0.95 success=1 chunks=8781 learner_step=17560 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=8869 learner_step=17736 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=8923 learner_step=17844 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=8969 learner_step=17936 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=9057 learner_step=18112 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=9145 learner_step=18288 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=9193 learner_step=18383 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=9235 learner_step=18468 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=9280 learner_step=18558 utd=8.00
+[dsrl-f] ep_ret=0.98 success=1 chunks=9361 learner_step=18720 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=9449 learner_step=18896 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=9490 learner_step=18978 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=9578 learner_step=19154 utd=8.00
+[dsrl-f] ep_ret=0.95 success=1 chunks=9657 learner_step=19312 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=9745 learner_step=19488 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=9804 learner_step=19606 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=9854 learner_step=19706 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=9932 learner_step=19862 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=9984 learner_step=19966 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=10072 learner_step=20142 utd=8.00
+[dsrl-f] ep_ret=0.98 success=1 chunks=10141 learner_step=20280 utd=8.00
+[eval] learner_step=20280 bon=70.0%
+[dsrl-f] ep_ret=0.93 success=1 chunks=10197 learner_step=20392 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=10285 learner_step=20568 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=10373 learner_step=20744 utd=8.00
+[dsrl-f] ep_ret=0.96 success=1 chunks=10425 learner_step=20848 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=10513 learner_step=21024 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=10601 learner_step=21200 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=10655 learner_step=21308 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=10743 learner_step=21484 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=10800 learner_step=21598 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=10888 learner_step=21774 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=10976 learner_step=21950 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=11064 learner_step=22126 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=11152 learner_step=22302 utd=8.00
+[dsrl-f] ep_ret=0.96 success=1 chunks=11206 learner_step=22410 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=11264 learner_step=22526 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=11352 learner_step=22702 utd=8.00
+[dsrl-f] ep_ret=0.96 success=1 chunks=11435 learner_step=22868 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=11498 learner_step=22992 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=11562 learner_step=23122 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=11612 learner_step=23222 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=11700 learner_step=23398 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=11788 learner_step=23574 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=11876 learner_step=23750 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=11964 learner_step=23926 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=12052 learner_step=24102 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=12140 learner_step=24278 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=12189 learner_step=24376 utd=8.00
+[eval] learner_step=24376 bon=50.0%
+[dsrl-f] ep_ret=0.96 success=1 chunks=12232 learner_step=24462 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=12320 learner_step=24638 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=12375 learner_step=24748 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=12447 learner_step=24892 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=12496 learner_step=24990 utd=8.00
+[dsrl-f] ep_ret=0.96 success=1 chunks=12547 learner_step=25092 utd=8.00
+[dsrl-f] ep_ret=0.95 success=1 chunks=12598 learner_step=25194 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=12652 learner_step=25302 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=12740 learner_step=25478 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=12786 learner_step=25570 utd=8.00
+[dsrl-f] ep_ret=0.96 success=1 chunks=12844 learner_step=25686 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=12891 learner_step=25780 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=12979 learner_step=25956 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=13067 learner_step=26132 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=13122 learner_step=26240 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=13180 learner_step=26358 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=13268 learner_step=26534 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=13356 learner_step=26710 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=13412 learner_step=26822 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=13500 learner_step=26998 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=13588 learner_step=27174 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=13676 learner_step=27350 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=13724 learner_step=27446 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=13812 learner_step=27622 utd=8.00
+[dsrl-f] ep_ret=0.96 success=1 chunks=13874 learner_step=27746 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=13962 learner_step=27922 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=14050 learner_step=28098 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=14138 learner_step=28274 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=14197 learner_step=28392 utd=8.00
+[eval] learner_step=28392 bon=50.0%
+[dsrl-f] ep_ret=1.00 success=1 chunks=14243 learner_step=28484 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=14331 learner_step=28660 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=14419 learner_step=28836 utd=8.00
+[dsrl-f] ep_ret=0.94 success=1 chunks=14472 learner_step=28942 utd=8.00
+[dsrl-f] ep_ret=0.98 success=1 chunks=14524 learner_step=29046 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=14577 learner_step=29152 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=14665 learner_step=29328 utd=8.00
+[dsrl-f] ep_ret=0.98 success=1 chunks=14726 learner_step=29450 utd=8.00
+[dsrl-f] ep_ret=0.98 success=1 chunks=14809 learner_step=29616 utd=8.00
+[dsrl-f] ep_ret=0.98 success=1 chunks=14857 learner_step=29712 utd=8.00
+[dsrl-f] ep_ret=0.95 success=1 chunks=14908 learner_step=29814 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=14967 learner_step=29932 utd=8.00
+[dsrl-f] ep_ret=0.95 success=1 chunks=15012 learner_step=30022 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=15100 learner_step=30198 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=15147 learner_step=30292 utd=8.00
+[dsrl-f] ep_ret=0.98 success=1 chunks=15192 learner_step=30382 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=15240 learner_step=30478 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=15328 learner_step=30654 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=15384 learner_step=30766 utd=8.00
+[dsrl-f] ep_ret=0.98 success=1 chunks=15428 learner_step=30854 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=15516 learner_step=31030 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=15604 learner_step=31206 utd=8.00
+[dsrl-f] ep_ret=0.98 success=1 chunks=15667 learner_step=31332 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=15755 learner_step=31508 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=15823 learner_step=31644 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=15911 learner_step=31820 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=15999 learner_step=31996 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=16087 learner_step=32172 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=16142 learner_step=32282 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=16230 learner_step=32458 utd=8.00
+[eval] learner_step=32458 bon=50.0%
+[dsrl-f] ep_ret=0.99 success=1 chunks=16276 learner_step=32550 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=16330 learner_step=32658 utd=8.00
+[dsrl-f] ep_ret=0.96 success=1 chunks=16379 learner_step=32756 utd=8.00
+[dsrl-f] ep_ret=0.96 success=1 chunks=16435 learner_step=32868 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=16523 learner_step=33044 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=16611 learner_step=33220 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=16699 learner_step=33396 utd=8.00
+[dsrl-f] ep_ret=0.95 success=1 chunks=16748 learner_step=33494 utd=8.00
+[dsrl-f] ep_ret=0.98 success=1 chunks=16800 learner_step=33598 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=16849 learner_step=33696 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=16909 learner_step=33816 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=16976 learner_step=33950 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=17064 learner_step=34126 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=17152 learner_step=34302 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=17240 learner_step=34478 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=17328 learner_step=34654 utd=8.00
+[dsrl-f] ep_ret=0.96 success=1 chunks=17377 learner_step=34752 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=17440 learner_step=34878 utd=8.00
+[dsrl-f] ep_ret=0.99 success=1 chunks=17502 learner_step=35002 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=17547 learner_step=35092 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=17635 learner_step=35268 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=17723 learner_step=35444 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=17811 learner_step=35620 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=17866 learner_step=35730 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=17954 learner_step=35906 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=18042 learner_step=36082 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=18130 learner_step=36258 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=18218 learner_step=36434 utd=8.00
+[dsrl-f] ep_ret=0.95 success=1 chunks=18280 learner_step=36558 utd=8.00
+[eval] learner_step=36558 bon=60.0%
+[dsrl-f] ep_ret=0.00 success=0 chunks=18368 learner_step=36734 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=18456 learner_step=36910 utd=8.00
+[dsrl-f] ep_ret=0.97 success=1 chunks=18507 learner_step=37012 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=18595 learner_step=37188 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=18641 learner_step=37280 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=18729 learner_step=37456 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=18817 learner_step=37632 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=18905 learner_step=37808 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=18993 learner_step=37984 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=19042 learner_step=38082 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=19130 learner_step=38258 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=19178 learner_step=38354 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=19266 learner_step=38530 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=19335 learner_step=38667 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=19423 learner_step=38844 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=19511 learner_step=39020 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=19599 learner_step=39196 utd=8.00
+[dsrl-f] ep_ret=0.94 success=1 chunks=19667 learner_step=39332 utd=8.00
+[dsrl-f] ep_ret=1.00 success=1 chunks=19740 learner_step=39478 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=19828 learner_step=39654 utd=8.00
+[dsrl-f] ep_ret=0.00 success=0 chunks=19916 learner_step=39830 utd=8.00
+[dsrl-f] ep_ret=0.93 success=1 chunks=19977 learner_step=39952 utd=8.00
+[learner] reached max_steps=40000
+[final-eval] base=52.0% dsrl=52.0% discordant(base+/dsrl-=16, base-/dsrl+=16) McNemar p=1.0000 n=50
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mastral-sun-10[0m at: [34mhttps://wandb.ai/pranavnt/wrl-dsrl/runs/6cx1qulv[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20260614_011220-6cx1qulv/logs[0m
