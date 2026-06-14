@@ -98,6 +98,7 @@ def main(
     max_episode_steps: int = 700,
     batch_size: int = 256,
     cta_ratio: int = 4,
+    max_utd: float = 0.0,           # learner-side UTD cap (0=off); set ~6 for the light state policy
     training_starts: int = 1_000,
     random_chunks: int = 200,       # base-noise warmup (w ~ N(0,I) => base DP behavior)
     max_steps: int = 200_000,
@@ -172,7 +173,7 @@ def main(
     cfg = wrl.Config(
         batch_size=batch_size, cta_ratio=cta_ratio, training_starts=training_starts,
         replay_buffer_capacity=200_000, demo_buffer_capacity=1, max_steps=max_steps,
-        image_keys=image_keys_cfg,
+        max_utd=max_utd, image_keys=image_keys_cfg,
     )
     session = wrl.Session(agent, cenv, cfg, rng_seed=seed)
     session.start_learner()

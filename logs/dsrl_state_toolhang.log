@@ -1,0 +1,128 @@
+[robosuite WARNING] No private macro file found! (macros.py:53)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:54)
+[robosuite WARNING] To setup, run: python /home/yam/wrl/.venv/lib/python3.11/site-packages/robosuite/scripts/setup_macros.py (macros.py:55)
+2026-06-13 21:37:36.294506: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:37:37.710071: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:37:38.340920: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:37:39.042282: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:37:39.562869: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:37:40.011687: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:37:40.492067: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:37:41.791089: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+[dsrl] Tp=16 Ta=8 d_a=7 latent_dim=112 obs_hist=2 scale=1.0
+[dsrl] STATE noise policy: state_dim=(53,)
+[server] listening on http://0.0.0.0:5599
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/yam/.netrc.
+wandb: Currently logged in as: pranavnt to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.27.2
+wandb: Run data is saved locally in /home/yam/wrl/wandb/run-20260613_213745-q5bonokt
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run driven-paper-8
+wandb: ⭐️ View project at https://wandb.ai/pranavnt/wrl-dsrl
+wandb: 🚀 View run at https://wandb.ai/pranavnt/wrl-dsrl/runs/q5bonokt
+2026-06-13 21:37:59.835028: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:37:59.835060: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:37:59.835102: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:37:59.835107: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:37:59.835111: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:37:59.835126: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:37:59.835130: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:37:59.835133: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:37:59.835137: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+[dsrl] ep_ret=0.00 success=0 chunks=88 learner_step=0 utd=0.00 online=88
+[dsrl] ep_ret=0.96 success=1 chunks=137 learner_step=0 utd=0.00 online=137
+[dsrl] ep_ret=0.94 success=1 chunks=195 learner_step=0 utd=0.00 online=195
+2026-06-13 21:38:22.189370: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:38:22.189399: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:38:22.189403: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+[dsrl] ep_ret=0.94 success=1 chunks=262 learner_step=0 utd=0.00 online=262
+[dsrl] ep_ret=0.00 success=0 chunks=350 learner_step=0 utd=0.00 online=350
+[dsrl] ep_ret=0.97 success=1 chunks=397 learner_step=0 utd=0.00 online=397
+[dsrl] ep_ret=0.00 success=0 chunks=485 learner_step=0 utd=0.00 online=485
+[dsrl] ep_ret=0.97 success=1 chunks=537 learner_step=0 utd=0.00 online=537
+[dsrl] ep_ret=0.00 success=0 chunks=625 learner_step=0 utd=0.00 online=625
+[dsrl] ep_ret=0.00 success=0 chunks=713 learner_step=0 utd=0.00 online=713
+[dsrl] ep_ret=0.99 success=1 chunks=774 learner_step=0 utd=0.00 online=774
+[dsrl] ep_ret=0.00 success=0 chunks=862 learner_step=0 utd=0.00 online=862
+[dsrl] ep_ret=1.00 success=1 chunks=917 learner_step=0 utd=0.00 online=917
+[dsrl] ep_ret=0.98 success=1 chunks=978 learner_step=0 utd=0.00 online=978
+[learner] warmup ok (online=1001, demo=0) — running updates
+2026-06-13 21:39:09.083214: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+[dsrl] ep_ret=0.99 success=1 chunks=1034 learner_step=0 utd=0.00 online=1034
+2026-06-13 21:39:16.664175: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:39:16.664211: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+2026-06-13 21:39:16.664218: W external/xla/xla/service/gpu/autotuning/dot_search_space.cc:200] All configs were filtered out because none of them sufficiently match the hints. Maybe the hints set does not contain a good representative set of valid configs?Working around this by using the full hints set instead.
+[dsrl] ep_ret=0.00 success=0 chunks=1122 learner_step=0 utd=0.00 online=1122
+[dsrl] ep_ret=0.00 success=0 chunks=1210 learner_step=644 utd=2.13 online=1210
+[dsrl] ep_ret=0.96 success=1 chunks=1277 learner_step=1810 utd=5.67 online=1277
+[dsrl] ep_ret=0.93 success=1 chunks=1325 learner_step=2583 utd=7.80 online=1325
+[dsrl] ep_ret=0.00 success=0 chunks=1413 learner_step=3985 utd=11.28 online=1413
+[dsrl] ep_ret=0.98 success=1 chunks=1469 learner_step=4842 utd=13.18 online=1469
+[dsrl] ep_ret=0.97 success=1 chunks=1522 learner_step=5839 utd=15.35 online=1522
+[dsrl] ep_ret=0.00 success=0 chunks=1610 learner_step=7225 utd=17.95 online=1610
+[dsrl] ep_ret=0.94 success=1 chunks=1663 learner_step=8126 utd=19.55 online=1663
+[dsrl] ep_ret=0.93 success=1 chunks=1711 learner_step=8900 utd=20.81 online=1711
+[dsrl] ep_ret=0.94 success=1 chunks=1779 learner_step=10025 utd=22.54 online=1779
+[dsrl] ep_ret=0.96 success=1 chunks=1835 learner_step=10962 utd=23.90 online=1835
+[dsrl] ep_ret=0.00 success=0 chunks=1923 learner_step=12524 utd=26.05 online=1923
+[dsrl] ep_ret=0.98 success=1 chunks=1977 learner_step=13481 utd=27.28 online=1977
+[dsrl] ep_ret=0.96 success=1 chunks=2047 learner_step=14568 utd=28.47 online=2047
+[eval] learner_step=14568 bon=50.0% argmax=60.0% |w|=7.9 (base|w|~10.6)
+[dsrl] ep_ret=0.00 success=0 chunks=2135 learner_step=38294 utd=71.75 online=2135
+[dsrl] ep_ret=0.98 success=1 chunks=2213 learner_step=39824 utd=71.98 online=2213
+[dsrl] ep_ret=0.94 success=1 chunks=2267 learner_step=40731 utd=71.87 online=2267
+[dsrl] ep_ret=0.00 success=0 chunks=2355 learner_step=42325 utd=71.89 online=2355
+[dsrl] ep_ret=0.00 success=0 chunks=2443 learner_step=43931 utd=71.93 online=2443
+[dsrl] ep_ret=0.00 success=0 chunks=2531 learner_step=45243 utd=71.50 online=2531
+[dsrl] ep_ret=0.00 success=0 chunks=2619 learner_step=46568 utd=71.12 online=2619
+[dsrl] ep_ret=0.00 success=0 chunks=2707 learner_step=47830 utd=70.68 online=2707
+[dsrl] ep_ret=0.99 success=1 chunks=2769 learner_step=48909 utd=70.65 online=2769
+[dsrl] ep_ret=0.00 success=0 chunks=2857 learner_step=50157 utd=70.22 online=2857
+[dsrl] ep_ret=0.94 success=1 chunks=2938 learner_step=51706 utd=70.40 online=2938
+[dsrl] ep_ret=0.95 success=1 chunks=2993 learner_step=52642 utd=70.35 online=2993
+[dsrl] ep_ret=0.00 success=0 chunks=3081 learner_step=53978 utd=70.08 online=3081
+[dsrl] ep_ret=0.00 success=0 chunks=3169 learner_step=55201 utd=69.68 online=3169
+[dsrl] ep_ret=0.96 success=1 chunks=3224 learner_step=56067 utd=69.56 online=3224
+[dsrl] ep_ret=0.00 success=0 chunks=3312 learner_step=57426 utd=69.36 online=3312
+[dsrl] ep_ret=0.95 success=1 chunks=3359 learner_step=58231 utd=69.34 online=3359
+[dsrl] ep_ret=0.00 success=0 chunks=3447 learner_step=59479 utd=69.02 online=3447
+[dsrl] ep_ret=0.00 success=0 chunks=3535 learner_step=60664 utd=68.64 online=3535
+[dsrl] ep_ret=0.00 success=0 chunks=3623 learner_step=62193 utd=68.66 online=3623
+[dsrl] ep_ret=0.00 success=0 chunks=3711 learner_step=63523 utd=68.47 online=3711
+[dsrl] ep_ret=0.98 success=1 chunks=3757 learner_step=64238 utd=68.39 online=3757
+[dsrl] ep_ret=0.94 success=1 chunks=3821 learner_step=65222 utd=68.28 online=3821
+[dsrl] ep_ret=0.93 success=1 chunks=3864 learner_step=65924 utd=68.24 online=3864
+[dsrl] ep_ret=0.00 success=0 chunks=3952 learner_step=67202 utd=68.02 online=3952
+[dsrl] ep_ret=0.99 success=1 chunks=4007 learner_step=68157 utd=68.04 online=4007
+[dsrl] ep_ret=1.00 success=1 chunks=4078 learner_step=69387 utd=68.06 online=4078
+[eval] learner_step=69387 bon=40.0% argmax=30.0% |w|=7.6 (base|w|~10.6)
+[dsrl] ep_ret=0.96 success=1 chunks=4129 learner_step=94072 utd=91.13 online=4129
+[dsrl] ep_ret=0.97 success=1 chunks=4180 learner_step=94895 utd=90.81 online=4180
+[dsrl] ep_ret=0.94 success=1 chunks=4245 learner_step=96019 utd=90.48 online=4245
+[dsrl] ep_ret=0.93 success=1 chunks=4294 learner_step=96849 utd=90.22 online=4294
+[dsrl] ep_ret=0.00 success=0 chunks=4382 learner_step=98164 utd=89.61 online=4382
+[dsrl] ep_ret=0.00 success=0 chunks=4470 learner_step=99305 utd=88.86 online=4470
+[dsrl] ep_ret=0.00 success=0 chunks=4558 learner_step=100488 utd=88.19 online=4558
+[dsrl] ep_ret=0.93 success=1 chunks=4610 learner_step=101276 utd=87.88 online=4610
+[dsrl] ep_ret=0.94 success=1 chunks=4656 learner_step=102036 utd=87.66 online=4656
+[dsrl] ep_ret=0.00 success=0 chunks=4744 learner_step=103292 utd=87.09 online=4744
+[dsrl] ep_ret=0.98 success=1 chunks=4830 learner_step=104803 utd=86.79 online=4830
+[dsrl] ep_ret=0.00 success=0 chunks=4918 learner_step=106320 utd=86.47 online=4918
+[dsrl] ep_ret=0.00 success=0 chunks=5006 learner_step=107718 utd=86.07 online=5006
+[dsrl] ep_ret=0.97 success=1 chunks=5058 learner_step=108566 utd=85.86 online=5058
+[dsrl] ep_ret=0.98 success=1 chunks=5102 learner_step=109264 utd=85.66 online=5102
+[dsrl] ep_ret=0.95 success=1 chunks=5159 learner_step=110210 utd=85.45 online=5159
+[dsrl] ep_ret=0.97 success=1 chunks=5201 learner_step=110935 utd=85.32 online=5201
+[dsrl] ep_ret=0.00 success=0 chunks=5289 learner_step=112428 utd=85.03 online=5289
+[dsrl] ep_ret=0.99 success=1 chunks=5338 learner_step=113261 utd=84.87 online=5338
+[dsrl] ep_ret=0.97 success=1 chunks=5393 learner_step=114103 utd=84.63 online=5393
+[dsrl] ep_ret=0.98 success=1 chunks=5456 learner_step=115102 utd=84.39 online=5456
+[dsrl] ep_ret=0.00 success=0 chunks=5544 learner_step=116331 utd=83.93 online=5544
+[dsrl] ep_ret=0.96 success=1 chunks=5618 learner_step=117605 utd=83.73 online=5618
+[dsrl] ep_ret=0.00 success=0 chunks=5706 learner_step=118830 utd=83.30 online=5706
+[dsrl] ep_ret=0.97 success=1 chunks=5760 learner_step=119804 utd=83.20 online=5760
+[learner] reached max_steps=120000
+[final-eval] base=64.0% dsrl=42.0% discordant(base+/dsrl-=16, base-/dsrl+=5) McNemar p=0.0266 n=50
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mdriven-paper-8[0m at: [34mhttps://wandb.ai/pranavnt/wrl-dsrl/runs/q5bonokt[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20260613_213745-q5bonokt/logs[0m
