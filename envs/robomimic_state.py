@@ -29,6 +29,10 @@ _ROBOT_BASE_KEYS = (
     "gripper_qpos", "gripper_qvel",
     "joint_pos", "joint_pos_cos", "joint_pos_sin", "joint_vel",
 )
+# robomimic's canonical "low_dim" obs set (what plantok/robomimic BC uses to hit
+# ~85% on tool-hang). Velocities + joint angles are noisy and hurt BC, so the lean
+# set is the better state for a state diffusion policy.
+_LEAN_ROBOT_KEYS = ("eef_pos", "eef_quat", "gripper_qpos")
 
 
 def _coerce_env_kwargs_for_robosuite_1_4(env_kwargs: dict) -> None:
@@ -41,13 +45,14 @@ def _coerce_env_kwargs_for_robosuite_1_4(env_kwargs: dict) -> None:
         env_kwargs["controller_configs"] = inner
 
 
-def _robot_obs_keys(obs_keys):
+def _robot_obs_keys(obs_keys, lean=False):
+    base = _LEAN_ROBOT_KEYS if lean else _ROBOT_BASE_KEYS
     out = []
     for idx in range(4):
         prefix = f"robot{idx}_"
         if not any(k.startswith(prefix) for k in obs_keys):
             continue
-        for bk in _ROBOT_BASE_KEYS:
+        for bk in base:
             key = f"{prefix}{bk}"
             if key in obs_keys:
                 out.append(key)
@@ -58,8 +63,9 @@ def _robot_obs_keys(obs_keys):
 
 class RoboMimicStateEnv(gym.Env):
     def __init__(self, dataset_path: str, *, max_episode_steps: int = 700,
-                 reset_to_demo_prob: float = 0.0):
+                 reset_to_demo_prob: float = 0.0, lean_obs: bool = False):
         self.dataset_path = dataset_path
+        self.lean_obs = lean_obs
         self._max_episode_steps = max_episode_steps
         # fraction of TRAINING resets that start from a demo's initial sim state
         # (narrows the reset distribution so success is reachable on hard sparse
@@ -81,7 +87,7 @@ class RoboMimicStateEnv(gym.Env):
             idx = np.random.RandomState(0).choice(len(states), 60000, replace=False)
             states = states[idx]
         self._demo_init_states = states
-        self.robot_obs_keys = _robot_obs_keys(obs_keys)
+        self.robot_obs_keys = _robot_obs_keys(obs_keys, lean=lean_obs)
         self._object_key = "object" if "object" in obs_keys else "object-state"
 
         # robomimic actions are normalized to [-1, 1]

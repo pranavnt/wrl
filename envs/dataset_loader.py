@@ -174,7 +174,7 @@ class RobomimicStateData:
     SAME order as `envs.robomimic_state.RoboMimicStateEnv`, so a DP trained here
     matches the env it is rolled out / deployed on. No images."""
 
-    def __init__(self, dataset_path, horizon):
+    def __init__(self, dataset_path, horizon, lean=False):
         from envs.robomimic_state import _robot_obs_keys
 
         self.H = horizon
@@ -182,7 +182,7 @@ class RobomimicStateData:
         with h5py.File(dataset_path, "r") as f:
             demos = sorted(f["data"].keys(), key=lambda d: int(d.split("_")[1]))
             obs_keys = list(f["data"][demos[0]]["obs"].keys())
-            robot_keys = _robot_obs_keys(obs_keys)
+            robot_keys = _robot_obs_keys(obs_keys, lean=lean)
             object_key = "object" if "object" in obs_keys else "object-state"
             self.state_keys = list(robot_keys) + [object_key]
             for di, demo in enumerate(demos):
@@ -226,5 +226,5 @@ class RobomimicStateData:
         return {"observations": obs, "actions": self.actions[aidx]}
 
 
-def load_robomimic_state(dataset_path, horizon):
-    return RobomimicStateData(dataset_path, horizon)
+def load_robomimic_state(dataset_path, horizon, lean=False):
+    return RobomimicStateData(dataset_path, horizon, lean=lean)

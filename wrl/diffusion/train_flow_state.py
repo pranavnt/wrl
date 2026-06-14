@@ -49,6 +49,7 @@ def main(
     tp: int = 16,
     ta: int = 8,
     obs_history: int = 2,
+    lean_obs: bool = True,        # canonical robomimic low_dim set (eef+gripper+object)
     batch_size: int = 256,
     train_steps: int = 100000,
     lr: float = 1e-4,
@@ -63,9 +64,10 @@ def main(
     seed: int = 0,
     wandb_project: str = "",
 ):
-    env = RoboMimicStateEnv(dataset_path, max_episode_steps=max_episode_steps)
+    env = RoboMimicStateEnv(dataset_path, max_episode_steps=max_episode_steps,
+                            lean_obs=lean_obs)
     d_a = env.action_space.shape[0]
-    data = load_robomimic_state(dataset_path, tp)
+    data = load_robomimic_state(dataset_path, tp, lean=lean_obs)
     a_mean, a_std = data.action_stats()
     print(f"[flow-s] state_dim={data.state_dim} d_a={d_a} Tp={tp} Ta={ta} "
           f"obs_hist={obs_history} N={data.N} demos_state_keys={data.state_keys}")
