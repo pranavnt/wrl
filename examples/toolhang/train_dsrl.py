@@ -19,6 +19,7 @@ all DSRL-specific logic (decode, base-noise warmup) lives in the actor loop here
 import math
 import time
 
+import gymnasium as gym
 import jax
 import jax.numpy as jnp
 import numpy as np
@@ -40,10 +41,42 @@ def _mcnemar_exact_p(b: int, c: int) -> float:
     return min(1.0, 2.0 * tail)
 
 
+class LatentDecodeEnv(gym.Wrapper):
+    """Make the DSRL latent the env action: the action space is the DP latent
+    w-space (Tp*d_a,); step() decodes w = scale*a through the FROZEN DP to the
+    robot chunk (using the chunk wrapper's obs history) and steps the inner
+    chunk env. So the replay buffer stores the latent (what SAC learns) and the
+    robot only ever sees decoded chunks. Obs space is unchanged (the env's)."""
+
+    def __init__(self, chunk_env, fp, latent_scale, Tp, Ta, d_a, obs_hist, norm_clip_ratio=1.1):
+        super().__init__(chunk_env)
+        self.fp, self.latent_scale = fp, latent_scale
+        self.Tp, self.Ta, self.d_a, self.obs_hist = Tp, Ta, d_a, obs_hist
+        self.action_space = gym.spaces.Box(-1.0, 1.0, (Tp * d_a,), np.float32)
+        # clip the latent onto the N(0,I) prior shell (radius ~sqrt(latent_dim))
+        # so the frozen DP never sees an OOD-norm noise -> no decode garbage. The
+        # actor keeps full DIRECTIONAL steering; only magnitude is capped.
+        self.r_max = float(np.sqrt(Tp * d_a) * norm_clip_ratio)
+
+    def decode(self, w):
+        norm = float(np.linalg.norm(w))
+        if norm > self.r_max:
+            w = w * (self.r_max / (norm + 1e-8))
+        chunk = self.fp.decode_noise(
+            jax.device_put(self.env.base_obs(self.obs_hist)),
+            jnp.asarray(w, jnp.float32).reshape(self.Tp, self.d_a))
+        return np.asarray(jax.device_get(chunk), np.float32)
+
+    def step(self, a):
+        w = self.latent_scale * np.asarray(a, np.float32)
+        return self.env.step(self.decode(w))
+
+
 def main(
     dataset_path: str,
     checkpoint: str,
     latent_scale: float = 3.0,      # w = latent_scale * tanh(actor); covers N(0,I) bulk
+    norm_clip_ratio: float = 1.1,   # cap |w| at sqrt(latent_dim)*ratio (prior shell; anti-OOD)
     discount: float = 0.99,
     image_size: int = 84,
     max_episode_steps: int = 700,
@@ -75,13 +108,9 @@ def main(
     env = make_robomimic_pixel_env(dataset_path, image_size=image_size,
                                    max_episode_steps=max_episode_steps)
     assert env.action_space.shape[0] == d_a, (env.action_space.shape, d_a)
-    cenv = ActionChunkWrapper(env, d_a, Ta, discount=discount, frame_history=obs_hist)
-
-    def decode(oh, w):
-        """frozen DP: latent w (latent_dim,) -> executed chunk (Ta*d_a,)."""
-        chunk = fp.decode_noise(jax.device_put(oh),
-                                jnp.asarray(w, jnp.float32).reshape(Tp, d_a))
-        return np.asarray(jax.device_get(chunk), np.float32)
+    chunk_env = ActionChunkWrapper(env, d_a, Ta, discount=discount, frame_history=obs_hist)
+    cenv = LatentDecodeEnv(chunk_env, fp, latent_scale, Tp, Ta, d_a, obs_hist,
+                           norm_clip_ratio=norm_clip_ratio)
 
     # ---- SAC over the latent action -------------------------------------
     sample_obs = env.observation_space.sample()
@@ -115,25 +144,32 @@ def main(
         """SAC-space action a whose decoded w ~ N(0,I) (= base DP)."""
         return np.clip(rng.normal(0.0, sigma, latent_dim), -1.0, 1.0).astype(np.float32)
 
-    def _rollout(use_base, reset_seed):
+    def _rollout(mode, reset_seed):
+        """mode: 'base' (w~N(0,I)), 'argmax' (actor mean), 'sample' (actor sample).
+        Returns (success, mean latent norm ||w|| over the episode)."""
         o, _ = cenv.reset(seed=reset_seed)
-        s, done, trunc = 0.0, False, False
+        s, done, trunc, norms = 0.0, False, False, []
         while not (done or trunc):
-            oh = cenv.base_obs(obs_hist)
-            if use_base:
+            if mode == "base":
                 a = base_latent()
             else:
-                a = np.asarray(session.policy.sample(o, argmax=True), np.float32)
-            o, r, done, trunc, info = cenv.step(decode(oh, latent_scale * a))
+                a = np.asarray(session.policy.sample(o, argmax=(mode == "argmax")), np.float32)
+            norms.append(float(np.linalg.norm(latent_scale * a)))
+            o, r, done, trunc, info = cenv.step(a)
             s = max(s, float(info.get("success", 0.0)))
-        return int(s > 0)
+        return int(s > 0), float(np.mean(norms))
 
     def evaluate(n):
-        return float(np.mean([_rollout(False, 30000 + i) for i in range(n)]))
+        amax = [_rollout("argmax", 30000 + i) for i in range(n)]
+        samp = [_rollout("sample", 40000 + i) for i in range(n)]
+        sr_a = float(np.mean([x[0] for x in amax]))
+        sr_s = float(np.mean([x[0] for x in samp]))
+        wnorm = float(np.mean([x[1] for x in amax]))
+        return sr_a, sr_s, wnorm
 
     def paired_eval(n):
-        base_s = np.array([_rollout(True, 1000 + i) for i in range(n)])
-        dsrl_s = np.array([_rollout(False, 1000 + i) for i in range(n)])
+        base_s = np.array([_rollout("base", 1000 + i)[0] for i in range(n)])
+        dsrl_s = np.array([_rollout("argmax", 1000 + i)[0] for i in range(n)])
         b = int(((base_s == 1) & (dsrl_s == 0)).sum())
         c = int(((base_s == 0) & (dsrl_s == 1)).sum())
         return base_s.mean(), dsrl_s.mean(), b, c, _mcnemar_exact_p(b, c)
@@ -143,12 +179,11 @@ def main(
     ep_ret, ep_succ, t0 = 0.0, 0.0, time.time()
     try:
         while session.status()["learner_running"]:
-            oh = cenv.base_obs(obs_hist)
             if chunk_step < random_chunks:
                 a = base_latent()
             else:
                 a = np.asarray(session.policy.sample(obs), np.float32)
-            next_obs, r, done, trunc, info = cenv.step(decode(oh, latent_scale * a))
+            next_obs, r, done, trunc, info = cenv.step(a)
             session.buffer.add(obs, a, next_obs, r, done)
             ep_ret += r
             ep_succ = max(ep_succ, float(info.get("success", 0.0)))
@@ -168,11 +203,13 @@ def main(
                     session.wait_for_utd(min_utd)
                 if eval_every > 0 and chunk_step - last_eval >= eval_every:
                     last_eval = chunk_step
-                    sr = evaluate(eval_episodes)
-                    print(f"[eval] learner_step={st['learner_step']} success={sr:.1%}")
+                    sr_a, sr_s, wnorm = evaluate(eval_episodes)
+                    print(f"[eval] learner_step={st['learner_step']} argmax={sr_a:.1%} "
+                          f"sample={sr_s:.1%} |w|={wnorm:.1f} (base|w|~{math.sqrt(latent_dim):.1f})")
                     if wandb_project:
                         import wandb
-                        wandb.log({"eval/success": sr, "learner_step": st["learner_step"]})
+                        wandb.log({"eval/success": sr_a, "eval/success_sample": sr_s,
+                                   "eval/latent_norm": wnorm, "learner_step": st["learner_step"]})
                 obs, _ = cenv.reset()
                 ep_ret, ep_succ = 0.0, 0.0
             else:
