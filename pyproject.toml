@@ -14,6 +14,9 @@ dependencies = [
     # time, which crashes on JAX>=0.5 because TFP 0.25.0 reads a private JAX
     # symbol that was removed. Pin the known-working combo.
     "distrax<0.1.6",
+    # robomimic pulls in egl_probe, whose pinned CMakeLists is rejected by modern
+    # cmake (e.g. the HYAK module). Use the fork that relaxes cmake_minimum_required.
+    "egl-probe",
     "einops",
     "flax<0.11",
     "gymnasium",
@@ -46,6 +49,9 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest", "ruff"]
 cuda = ["jax[cuda12]"]
+
+[tool.uv.sources]
+egl-probe = { git = "https://github.com/pranavnt/egl_probe" }
 
 [build-system]
 requires = ["uv_build>=0.11.6,<0.12.0"]
