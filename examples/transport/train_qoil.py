@@ -48,6 +48,7 @@ def main(
     edit_scale: float = 0.25,
     discount: float = 0.99,
     image_size: int = 84,
+    base_n_sample_steps: int = 8,    # override frozen base DP's Euler steps (0=ckpt default)
     max_episode_steps: int = 800,
     batch_size: int = 256,
     cta_ratio: int = 4,
@@ -66,6 +67,9 @@ def main(
 
     # ---- frozen base DP (pixels) + DPPO expert (action + V*) -------------
     fp = FlowPolicy.load(base)
+    if base_n_sample_steps:          # fewer Euler steps on the frozen base (speed; 32->8 ~ -15ms/chunk)
+        fp = fp.replace(config={**fp.config, "n_sample_steps": base_n_sample_steps})
+        print(f"[qoil] base n_sample_steps -> {base_n_sample_steps}")
     Ta, d_a = fp.config["Ta"], fp.config["d_a"]
     base_obs_hist = fp.config["obs_history"]
     chunk_dim = Ta * d_a
