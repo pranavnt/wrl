@@ -29,7 +29,7 @@ BASE=${BASE:-$WRL/checkpoints/flowdp_transport_pixel_avg_step45000.pkl}
 DPPO_CKPT=${DPPO_CKPT:-$DPPO_ROOT/log/robomimic-finetune/transport_ft_diffusion_mlp_ta8_td20_tdf10/checkpoint/state_200.pt}
 DPPO_CONFIG=${DPPO_CONFIG:-$DPPO_ROOT/cfg/robomimic/finetune/transport/ft_ppo_diffusion_mlp.yaml}
 DPPO_NORM=${DPPO_NORM:-$DPPO_ROOT/data/robomimic/transport/normalization.npz}
-DATASET=${DATASET:-$WRL/data/robomimic/transport/ph/image_84.hdf5}
+DATASET=${DATASET:-$WRL/data/robomimic/transport/ph/low_dim_v141.hdf5}  # env_meta only (no demos loaded)
 
 WANDB_PROJECT=${WANDB_PROJECT:-wrl-qoil-sweep}
 WANDB_GROUP=${WANDB_GROUP:-transport-sweep-v1}

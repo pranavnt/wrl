@@ -63,6 +63,7 @@ _RENDER_KEYS = (
     "has_renderer", "has_offscreen_renderer", "use_camera_obs", "use_object_obs",
     "camera_names", "camera_heights", "camera_widths", "camera_depths",
     "reward_shaping", "render_camera", "horizon", "ignore_done", "hard_reset",
+    "render_gpu_device_id",   # render device is set via MUJOCO_EGL_DEVICE_ID
 )
 
 
