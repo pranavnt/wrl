@@ -23,12 +23,14 @@
 set -euo pipefail
 
 # ---- paths (override by exporting before sbatch, or edit here) -------------
+# The DPPO expert runs from wrl's VENDORED model copy (wrl/base_policy/_dppo_min)
+# -> no DPPO repo needed on klone, only the 3 expert data files below.
 WRL=${WRL:-/gscratch/weirdlab/pranavnt/wrl}
-DPPO_ROOT=${DPPO_ROOT:-/gscratch/weirdlab/pranavnt/dppo}
+EXPERT=${EXPERT:-$WRL/checkpoints/expert}
 BASE=${BASE:-$WRL/checkpoints/flowdp_transport_pixel_avg_step45000.pkl}
-DPPO_CKPT=${DPPO_CKPT:-$DPPO_ROOT/log/robomimic-finetune/transport_ft_diffusion_mlp_ta8_td20_tdf10/checkpoint/state_200.pt}
-DPPO_CONFIG=${DPPO_CONFIG:-$DPPO_ROOT/cfg/robomimic/finetune/transport/ft_ppo_diffusion_mlp.yaml}
-DPPO_NORM=${DPPO_NORM:-$DPPO_ROOT/data/robomimic/transport/normalization.npz}
+DPPO_CKPT=${DPPO_CKPT:-$EXPERT/state_200.pt}
+DPPO_CONFIG=${DPPO_CONFIG:-$EXPERT/ft_ppo_diffusion_mlp.yaml}
+DPPO_NORM=${DPPO_NORM:-$EXPERT/normalization.npz}
 DATASET=${DATASET:-$WRL/data/robomimic/transport/ph/low_dim_v141.hdf5}  # env_meta only (no demos loaded)
 
 WANDB_PROJECT=${WANDB_PROJECT:-wrl-qoil-sweep}
@@ -39,7 +41,6 @@ cd "$WRL"
 
 # ---- env ------------------------------------------------------------------
 export MUJOCO_GL=egl PYOPENGL_PLATFORM=egl MUJOCO_EGL_DEVICE_ID=0
-export PYTHONPATH="$DPPO_ROOT:${PYTHONPATH:-}"   # DPPO model classes for the expert
 export XLA_PYTHON_CLIENT_MEM_FRACTION=0.7        # leave VRAM for the torch DPPO expert
 export WANDB_SILENT=true
 

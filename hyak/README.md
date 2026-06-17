@@ -10,15 +10,16 @@ run (no fleet server). ~6h/job at 80k learner steps.
 
 ## 0. One-time setup on klone (`/gscratch/weirdlab/pranavnt/wrl`)
 
-You handle placement; the jobs expect (override via env vars in `sweep.sbatch`):
+The DPPO expert runs from wrl's **vendored** model copy (`wrl/base_policy/_dppo_min`)
+— **no DPPO repo on klone**, only the 3 expert data files. The jobs expect
+(override via env vars in `sweep.sbatch`):
 
 | What | Default path |
 |---|---|
 | this repo | `/gscratch/weirdlab/pranavnt/wrl` |
-| DPPO repo (expert code + cfg + norm) | `/gscratch/weirdlab/pranavnt/dppo` |
 | frozen pixel DP base | `$WRL/checkpoints/flowdp_transport_pixel_avg_step45000.pkl` |
-| DPPO expert ckpt | `$DPPO_ROOT/log/.../checkpoint/state_200.pt` |
-| transport image dataset | `$WRL/data/robomimic/transport/ph/image_84.hdf5` |
+| expert weights / config / norm | `$WRL/checkpoints/expert/{state_200.pt, ft_ppo_diffusion_mlp.yaml, normalization.npz}` |
+| transport env_meta dataset | `$WRL/data/robomimic/transport/ph/low_dim_v141.hdf5` |
 
 Rebuild the venv for the cluster GPU (L40S = sm_89; don't copy the 5090 `.venv`):
 
@@ -73,6 +74,9 @@ Per-config best-eval checkpoints land in `checkpoints/sweep/qoil_<run>_transport
 (`{params, eval, learner}`). Compare `eval/success` across the group in W&B.
 
 ## Notes
+- The expert (π_h action + V* critic) loads from the vendored DPPO model in
+  `wrl/base_policy/_dppo_min` — byte-identical to the DPPO repo (parity-tested,
+  Δ=0.0), so no DPPO code/PYTHONPATH is needed on klone.
 - `--http-port 0` disables the in-process HTTP server so co-located array tasks
   don't clash on a port.
 - `XLA_PYTHON_CLIENT_MEM_FRACTION=0.7` leaves VRAM for the torch DPPO expert

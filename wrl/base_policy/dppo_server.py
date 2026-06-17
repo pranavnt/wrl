@@ -22,7 +22,8 @@ import tyro
 from wrl.base_policy.server import serve_base_policy
 
 
-def make_dppo_policy_fn(config, checkpoint, normalization, device="cuda", deterministic=True):
+def make_dppo_policy_fn(config, checkpoint, normalization, device="cuda",
+                        deterministic=True, vendored=True):
     import os
     import hydra
     from omegaconf import OmegaConf
@@ -39,6 +40,31 @@ def make_dppo_policy_fn(config, checkpoint, normalization, device="cuda", determ
     OmegaConf.register_new_resolver("round_down", lambda x: int(np.floor(x)), replace=True)
     cfg = OmegaConf.load(config)
     cfg.device = device                      # override the config's hardcoded cuda:0
+    if vendored:
+        # retarget the model's `_target_: model.*` classes to wrl's vendored copy
+        # so NO external DPPO repo is needed on the host (e.g. HYAK). The vendored
+        # files are byte-identical to DPPO's, so behavior is unchanged.
+        cont = OmegaConf.to_container(cfg, resolve=False)
+
+        def _revendor(o):
+            if isinstance(o, dict):
+                t = o.get("_target_")
+                if isinstance(t, str) and t.startswith("model."):
+                    o["_target_"] = "wrl.base_policy._dppo_min." + t
+                for v in o.values():
+                    _revendor(v)
+            elif isinstance(o, list):
+                for v in o:
+                    _revendor(v)
+
+        _revendor(cont)
+        # the model __init__ torch-loads network_path (the pretrain base ckpt) and
+        # then we overwrite ALL weights with `checkpoint` below (strict load), so
+        # that pretrain read is redundant — null it to drop the last external-file
+        # dependency (no DPPO log dir / pretrain ckpt needed on the host).
+        if isinstance(cont.get("model"), dict):
+            cont["model"]["network_path"] = None
+        cfg = OmegaConf.create(cont)
     model = hydra.utils.instantiate(cfg.model)
     blob = torch.load(checkpoint, weights_only=True, map_location=device)
     model.load_state_dict(blob["model"])
@@ -89,12 +115,14 @@ def make_dppo_policy_fn(config, checkpoint, normalization, device="cuda", determ
     return policy_fn
 
 
-def make_dppo_expert(config, checkpoint, normalization, device="cuda", deterministic=True):
+def make_dppo_expert(config, checkpoint, normalization, device="cuda",
+                     deterministic=True, vendored=True):
     """Returns (action_fn, value_fn): the DPPO expert pi_h and its V*(s) critic,
     loaded once in-process for the HIL loop (action only on intervention; V* every
-    step for PAM gating)."""
+    step for PAM gating). vendored=True uses wrl's bundled DPPO model copy (no
+    external DPPO repo needed)."""
     fn = make_dppo_policy_fn(config, checkpoint, normalization, device=device,
-                             deterministic=deterministic)
+                             deterministic=deterministic, vendored=vendored)
     return fn, fn.value_batch_fn
 
 
