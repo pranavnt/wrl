@@ -17,7 +17,7 @@
 #SBATCH --mem=48G
 #SBATCH --time=10:00:00
 #SBATCH --requeue
-#SBATCH --array=1-81%16
+#SBATCH --array=1-81
 #SBATCH --output=/gscratch/weirdlab/pranavnt/wrl/hyak/logs/%x_%A_%a.out
 
 set -euo pipefail

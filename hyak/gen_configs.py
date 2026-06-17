@@ -20,4 +20,4 @@ with open(out, "w") as f:
     for es, bc, b, s in rows:
         f.write(f"{es} {bc} {b} {s}\n")
 print(f"wrote {len(rows)} configs -> {out}")
-print(f"set sweep.sbatch:  #SBATCH --array=1-{len(rows)}%16")
+print(f"set sweep.sbatch:  #SBATCH --array=1-{len(rows)}")

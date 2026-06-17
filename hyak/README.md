@@ -58,9 +58,8 @@ Edit the arrays at the top of `gen_configs.py` to resize, then update
 sbatch hyak/sweep.sbatch
 ```
 
-`%16` in `--array=1-81%16` caps concurrent jobs at 16 — raise it if `ckpt` is
-idle (`hyakalloc` shows free resources), lower it if you're getting preempted a
-lot.
+`--array=1-81` runs all 81 configs with no concurrency cap (Slurm schedules as
+many as `ckpt` has idle nodes for). To throttle, append `%N` (e.g. `1-81%20`).
 
 ## 3. Monitor
 
