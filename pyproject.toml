@@ -22,6 +22,9 @@ dependencies = [
     "gymnasium",
     "h5py>=3.16.0",
     "httpx",
+    # hydra-core (+ omegaconf) instantiates the vendored DPPO expert in
+    # wrl/base_policy/dppo_server.py. Generic config lib, not DPPO repo code.
+    "hydra-core",
     "hypercorn",
     "imageio[ffmpeg]",
     "jax<0.7",
