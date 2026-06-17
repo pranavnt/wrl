@@ -54,12 +54,15 @@ def main(
     cta_ratio: int = 4,
     training_starts: int = 1000,
     random_chunks: int = 50,
-    max_steps: int = 200_000,
+    max_steps: int = 80_000,         # learner-step budget for the job
     eval_every: int = 5000,
     eval_episodes: int = 20,
     http_port: int = 5610,
     seed: int = 0,
     wandb_project: str = "",
+    wandb_group: str = "",           # groups all configs of one sweep in the wandb UI
+    run_name: str = "",              # unique per sweep config (ckpt + wandb name). "" -> algo
+    ckpt_dir: str = "checkpoints",
 ):
     bonus = intervention_bonus if algo == "qoil" else 0.0
     bcw = 0.0 if algo == "hil" else bc_weight
@@ -105,12 +108,16 @@ def main(
                      extra_fields=residual_extra_fields(chunk_dim))
     session = wrl.Session(agent, cenv, cfg, rng_seed=seed)
     session.start_learner()
-    session.start_server(port=http_port)
+    if http_port:                    # 0 -> self-contained job (no remote actors); avoids port clash
+        session.start_server(port=http_port)
 
     if wandb_project:
         import wandb
-        wandb.init(project=wandb_project, config=dict(algo=algo, bonus=bonus, bc_weight=bcw,
-                   pam_k=pam_k, pam_delta=pam_delta, edit_scale=edit_scale))
+        wandb.init(project=wandb_project, name=run_name or None,
+                   group=wandb_group or None,
+                   config=dict(algo=algo, bonus=bonus, bc_weight=bcw, pam_k=pam_k,
+                               pam_delta=pam_delta, edit_scale=edit_scale, seed=seed,
+                               max_steps=max_steps, run_name=run_name))
 
     # ---- PAM stagnation gate (per env-step V* history) ------------------
     vhist = collections.deque(maxlen=pam_k + 1)
@@ -179,8 +186,8 @@ def main(
                     print(f"[eval] learner={st['learner_step']} success={sr:.1%}")
                     try:
                         import os, pickle
-                        ck = f"checkpoints/qoil_{algo}_transport.pkl"
-                        os.makedirs("checkpoints", exist_ok=True)
+                        ck = f"{ckpt_dir}/qoil_{run_name or algo}_transport.pkl"
+                        os.makedirs(ckpt_dir, exist_ok=True)
                         ag = session.snapshot_agent()
                         with open(ck + ".tmp", "wb") as f:
                             pickle.dump({"params": jax.tree_util.tree_map(np.asarray, ag.state.params),
