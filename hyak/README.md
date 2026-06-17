@@ -25,9 +25,15 @@ Rebuild the venv for the cluster GPU (L40S = sm_89; don't copy the 5090 `.venv`)
 
 ```bash
 cd /gscratch/weirdlab/pranavnt/wrl
-module load cuda/12.x          # match your jax/torch wheels
-uv sync                        # builds .venv from pyproject/uv.lock
+module load cmake gcc          # cmake builds egl_probe; run on a COMPUTE node
+                               # (the module cmake SIGILLs on the login node's CPU)
+uv sync --extra cuda           # builds .venv with GPU jaxlib (jax[cuda12])
 ```
+
+The sbatch runs `$WRL/.venv/bin/python` directly, so this `.venv` (on /gscratch)
+must include the `cuda` extra — a plain `uv sync` installs CPU jaxlib and jobs
+will silently run on CPU. Verify: `.venv/bin/python -c "import jax; print(jax.devices())"`
+should show a `CudaDevice`.
 
 Sanity-check one config on an interactive node before the array:
 

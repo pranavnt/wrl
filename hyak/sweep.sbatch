@@ -51,8 +51,9 @@ RUN="es${EDIT/./}_bc${BC/./}_b${BONUS/./}_s${SEED}"
 echo "[sweep] task=$SLURM_ARRAY_TASK_ID run=$RUN  (edit=$EDIT bc=$BC bonus=$BONUS seed=$SEED)"
 echo "[sweep] node=$(hostname) gpu=$CUDA_VISIBLE_DEVICES base=$BASE"
 
-# ---- run (uv-managed venv) ------------------------------------------------
-uv run python examples/transport/train_qoil.py \
+# ---- run (prebuilt venv: `uv sync --extra cuda` once; direct python avoids
+#          81 array tasks each re-checking the uv lock / touching the network) --
+"$WRL/.venv/bin/python" examples/transport/train_qoil.py \
     --algo qoil \
     --base "$BASE" \
     --dppo-checkpoint "$DPPO_CKPT" \
