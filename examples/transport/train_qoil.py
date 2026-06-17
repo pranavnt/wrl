@@ -70,7 +70,7 @@ def main(
     base_obs_hist = fp.config["obs_history"]
     chunk_dim = Ta * d_a
     from wrl.base_policy.dppo_server import make_dppo_expert
-    expert_act, expert_val = make_dppo_expert(dppo_config, dppo_checkpoint, dppo_norm, device="cuda")
+    expert_act, expert_val_batch = make_dppo_expert(dppo_config, dppo_checkpoint, dppo_norm, device="cuda")
 
     env = make_robomimic_pixel_env(dataset_path, image_size=image_size,
                                    max_episode_steps=max_episode_steps, include_lowdim=True)
@@ -112,8 +112,9 @@ def main(
     vhist = collections.deque(maxlen=pam_k + 1)
 
     def update_vhist(step_lowdims):
-        for s in step_lowdims:
-            vhist.append(expert_val({"state": s}))
+        if step_lowdims:                       # one batched critic forward for all 8 steps
+            for v in expert_val_batch(step_lowdims):
+                vhist.append(float(v))
 
     def stagnating():
         return len(vhist) > pam_k and (vhist[-1] - vhist[0]) < pam_delta

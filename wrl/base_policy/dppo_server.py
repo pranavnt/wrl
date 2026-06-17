@@ -74,7 +74,18 @@ def make_dppo_policy_fn(config, checkpoint, normalization, device="cuda", determ
             v = model.critic(_cond(observation)).view(-1).cpu().numpy()
         return float(v[0])
 
-    policy_fn.value_fn = value_fn   # attach for in-process use
+    def value_batch_fn(states):
+        """Batched V*: states is (N, obs_dim) or a list of (obs_dim,) -> (N,)
+        values in ONE critic forward (vs N separate calls; for per-step PAM)."""
+        st = np.asarray(states, np.float32).reshape(-1, obs_dim)
+        st = 2.0 * ((st - obs_min) / (obs_max - obs_min + 1e-6) - 0.5)
+        st = np.clip(st, -1.0, 1.0)[:, None, :]              # (N, 1, obs_dim)
+        with torch.no_grad():
+            v = model.critic({"state": torch.as_tensor(st, device=device)}).view(-1)
+        return v.cpu().numpy()
+
+    policy_fn.value_fn = value_fn          # attach for in-process use
+    policy_fn.value_batch_fn = value_batch_fn
     return policy_fn
 
 
@@ -84,7 +95,7 @@ def make_dppo_expert(config, checkpoint, normalization, device="cuda", determini
     step for PAM gating)."""
     fn = make_dppo_policy_fn(config, checkpoint, normalization, device=device,
                              deterministic=deterministic)
-    return fn, fn.value_fn
+    return fn, fn.value_batch_fn
 
 
 def main(config: str, checkpoint: str, normalization: str,
