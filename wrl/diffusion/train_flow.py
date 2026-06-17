@@ -110,6 +110,7 @@ def main(
                 wandb.log({"flow_loss": loss, "ema": ema, "step": step})
         if eval_every and step % eval_every == 0:
             fp.save(out_path)
+            fp.save(out_path.replace(".pkl", f"_step{step}.pkl"))   # keep intermediates
             succ, succ_online = [], []
             for ep in range(eval_episodes):
                 eval_rng, k1, k2 = jax.random.split(eval_rng, 3)

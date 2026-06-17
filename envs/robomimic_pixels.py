@@ -144,9 +144,11 @@ class RoboMimicPixelEnv(gym.Env):
         obs_spaces["state"] = gym.spaces.Box(-np.inf, np.inf, (1, proprio_dim), np.float32)
         self._object_key = "object-state" if "object-state" in first else "object"
         if include_lowdim:
-            lowdim = self._lowdim(first)
-            self.lowdim_dim = int(lowdim.shape[0])
-            obs_spaces["lowdim"] = gym.spaces.Box(-np.inf, np.inf, (self.lowdim_dim,), np.float32)
+            # lowdim (proprio + object-state) is returned in the obs dict for a
+            # privileged V*/expert, but is DELIBERATELY kept OUT of
+            # observation_space so it's never stored in the (pixel-policy) buffer
+            # or seen by the learner's encoder -> the learner stays pixels+proprio.
+            self.lowdim_dim = int(self._lowdim(first).shape[0])
         self.observation_space = gym.spaces.Dict(obs_spaces)
 
         adim = self.env.action_dim

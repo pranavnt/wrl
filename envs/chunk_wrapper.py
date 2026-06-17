@@ -58,11 +58,15 @@ class ActionChunkWrapper(gym.Wrapper):
         chunk = np.asarray(chunk, np.float32).reshape(self.horizon, self.action_dim)
         total_reward, gamma = 0.0, 1.0
         obs, done, trunc, info = None, False, False, {}
+        step_lowdims = []   # per-env-step lean state (for per-step PAM V* tracking)
         for i in range(self.horizon):
             obs, reward, done, trunc, info = self.env.step(chunk[i])
             self._push(obs)
+            if isinstance(obs, dict) and "lowdim" in obs:
+                step_lowdims.append(np.asarray(obs["lowdim"], np.float32))
             total_reward += gamma * float(reward)
             gamma *= self.discount
             if done or trunc:
                 break
+        info = {**info, "step_lowdims": step_lowdims}
         return obs, total_reward, done, trunc, info
