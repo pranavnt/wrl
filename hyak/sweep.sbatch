@@ -35,6 +35,7 @@ DATASET=${DATASET:-$WRL/data/robomimic/transport/ph/low_dim_v141.hdf5}  # env_me
 
 WANDB_PROJECT=${WANDB_PROJECT:-wrl-qoil-sweep}
 WANDB_GROUP=${WANDB_GROUP:-transport-sweep-v1}
+CONFIGS=${CONFIGS:-$WRL/hyak/configs.txt}   # override for other sweeps (e.g. configs_v2.txt)
 MAX_STEPS=${MAX_STEPS:-80000}
 
 cd "$WRL"
@@ -45,7 +46,7 @@ export XLA_PYTHON_CLIENT_MEM_FRACTION=0.7        # leave VRAM for the torch DPPO
 export WANDB_SILENT=true
 
 # ---- pick this task's config ----------------------------------------------
-LINE=$(sed -n "${SLURM_ARRAY_TASK_ID}p" "$WRL/hyak/configs.txt")
+LINE=$(sed -n "${SLURM_ARRAY_TASK_ID}p" "$CONFIGS")
 read -r EDIT BC BONUS SEED <<< "$LINE"
 RUN="es${EDIT/./}_bc${BC/./}_b${BONUS/./}_s${SEED}"
 echo "[sweep] task=$SLURM_ARRAY_TASK_ID run=$RUN  (edit=$EDIT bc=$BC bonus=$BONUS seed=$SEED)"
