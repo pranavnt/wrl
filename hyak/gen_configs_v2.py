@@ -6,8 +6,8 @@ two viable values (0.35 was clearly worst). Each line: `edit_scale bc_weight
 intervention_bonus seed`.
 
     python hyak/gen_configs_v2.py
-    # launch (separate wandb group; v2 has 60 configs):
-    CONFIGS=$WRL/hyak/configs_v2.txt WANDB_GROUP=transport-sweep-v2 \
+    # launch (separate wandb group; v2 has 60 configs, 34k steps each):
+    CONFIGS=$WRL/hyak/configs_v2.txt WANDB_GROUP=transport-sweep-v2 MAX_STEPS=34000 \
         sbatch --array=1-60 hyak/sweep.sbatch
 """
 import itertools
