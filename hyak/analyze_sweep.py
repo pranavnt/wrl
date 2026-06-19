@@ -18,7 +18,7 @@ import wandb
 
 ENTITY, PROJECT = "pranavnt", "wrl-qoil-sweep"
 GROUP = sys.argv[1] if len(sys.argv) > 1 else "transport-sweep-v1"   # e.g. transport-sweep-v2
-DONE_LS = 40_000
+DONE_LS = int(sys.argv[2]) if len(sys.argv) > 2 else 40_000          # "done" learner-step bar
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "sweep_plots", GROUP)
 os.makedirs(OUT, exist_ok=True)
 print(f"analyzing group {GROUP} -> {OUT}")
@@ -41,9 +41,11 @@ for key, rs in by_cfg.items():
     es, bc, bonus, seed = key
     best = max(rs, key=lambda r: r.summary.get("learner_step", 0) or 0)
     ls = best.summary.get("learner_step", 0) or 0
-    # scan_history returns ALL rows (history() subsamples and drops sparse evals)
-    traj = [(row["learner_step"], row["eval/success"])
-            for row in best.scan_history(keys=["eval/success", "learner_step"])
+    # UNKEYED scan_history: keyed scan_history(keys=[...]) silently drops the
+    # sparse eval rows for some runs; history() subsamples them out. Iterating all
+    # rows and filtering is the only reliable way to recover every eval point.
+    traj = [(row.get("learner_step") or 0, row["eval/success"])
+            for row in best.scan_history()
             if row.get("eval/success") is not None]
     traj.sort()
     best_eval = max((s for _, s in traj), default=np.nan)
@@ -85,9 +87,9 @@ plt.savefig(f1, dpi=130); plt.close()
 
 # ================= Figure 2: best eval vs each hyperparam ===================
 # done configs as solid (real results); in-progress as faint (lower bounds).
-axes_specs = [("edit_scale", [0.15, 0.25, 0.35]),
-              ("bc_weight", [0.1, 0.25, 0.5]),
-              ("bonus", [0.05, 0.1, 0.2])]
+# axis values are DERIVED from the data so any sweep grid plots correctly.
+axes_specs = [(f, sorted({r[f] for r in rows}))
+              for f in ("edit_scale", "bc_weight", "bonus")]
 fig, axs = plt.subplots(1, 3, figsize=(15, 5), sharey=True)
 for ax, (field, vals) in zip(axs, axes_specs):
     for i, v in enumerate(vals):
