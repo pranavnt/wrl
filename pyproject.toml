@@ -34,7 +34,13 @@ dependencies = [
     "moviepy>=2.0",
     "msgpack",
     "msgpack-numpy",
-    "numpy",
+    # robosuite depends on an unpinned numba. Left alone, the resolver picks
+    # numpy>=2.3, which no modern numba supports, so it backtracks numba to the
+    # ancient 0.53.1 -> llvmlite 0.36.0, which has no 3.11 wheel and refuses to
+    # build on Python 3.11. Pin a modern numba (ships an llvmlite 0.44 wheel)
+    # and cap numpy to the range numba supports.
+    "numba>=0.61",
+    "numpy<2.3",
     "opencv-python",
     "optax",
     "orbax-checkpoint",
