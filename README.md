@@ -95,3 +95,11 @@ uv run python -m pytest tests/ -q
 `test_session_e2e_dummy.py` exercises the whole residual fleet pipeline (dummy
 pixel env + mock base server + learner + HTTP) without mujoco; the robomimic
 test skips cleanly if GL is unavailable.
+
+## Docs
+
+- [docs/sweep_findings.md](docs/sweep_findings.md) — Q-OIL transport
+  hyperparameter sweep (v3–v5): `bc_weight` vs `intervention_bonus`, conclusions,
+  chosen operating point.
+- [docs/yam_port.md](docs/yam_port.md) — plan for porting the residual Q-OIL
+  agent to the i2rt YAM arms via tri-ml/raiden.
